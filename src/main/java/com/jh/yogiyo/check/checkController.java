@@ -13,6 +13,7 @@ public class checkController {
 	public ModelAndView checkoutPage() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("check/checkoutPage");
+		System.out.println("CheckoutPage");
 		return mv;
 	}
 }
