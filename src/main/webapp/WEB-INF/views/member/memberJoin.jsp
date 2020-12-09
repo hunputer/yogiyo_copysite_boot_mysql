@@ -43,7 +43,7 @@
 		margin-bottom: 20px;
 	}
 	
-	.joinbtn{
+	#joinbtn{
 		width: 100%;
 		height: 44px;
 		background-color: #FA0050;
@@ -69,6 +69,11 @@
 		color: blue;
 	}
 	
+	#pwCheckContent{
+		font-size: 12px;
+		color: blue;
+	}
+	
 	
 </style>
 </head>
@@ -76,13 +81,13 @@
 	<c:import url="../template/header_notSearch.jsp"></c:import>
 	<div class="container">
 		   <div class="loginForm">
-		   	   <form action="./memberJoin" method="post">
+		   	   <form id="frm" action="./memberJoin" method="post">
 		   		<div class="joinRow">
 		   			<div><label for="id">회원종류</label></div>
 					<div class="list-group-item">
 						<select class="memberSelect" name="memberCode">
 							<option value="1">일반회원</option>
-							<option value="2">사장님</option>
+							<option value="2">점주회원</option>
 						</select>
 					</div>
 		   		</div>
@@ -101,6 +106,7 @@
 				<div class="joinRow">
 					<div><label for="pw">비밀번호확인</label></div>
 					<div class="list-group-item"><input type="text" class="login" id="pwCheck" placeholder="비밀번호를 한번더 입력하세요"></div>
+					<div id="checkPw"></div>
 				</div>
 				
 				<div class="joinRow">
@@ -118,14 +124,17 @@
 					<div class="list-group-item"><input type="text" class="login" id="phone" name="phone" placeholder="핸드폰 번호를 입력하세요"></div>
 				</div>
 				
-				<div class="joinRow">
-					<button class="joinbtn">가입하기</button>
-				</div>
 			</form>
+			<div class="joinRow">
+				<input type="button" id="joinbtn" value="가입하기">
+			</div>
 		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
 	<script type="text/javascript">
+		var chId = 0;
+		var chPw = 0;
+	
 		$("#id").blur(function(){
 			var id = $("#id").val();
 			if(id != ''){
@@ -134,15 +143,57 @@
 					var check = $("#idCheckContent").html();
 					if(check=='중복된 아이디입니다'){
 						$('#idCheckContent').css('color','red');
+						chId = 0;
 					}else{
 						$('#idCheckContent').css('color','blue');
+						chId = 1;
 					}
 				});
 			}else{
 				$("#checkId").html("<h3 id='idCheckContent'>아이디를 입력하세요</h3>");
 				$('#idCheckContent').css('color','red');
+				chId = 0;
 			}
 		});
+
+		$("#pwCheck").blur(function(){
+			var pw1 = $("#pw").val();
+			var pw2 = $("#pwCheck").val();
+			if(pw1 == pw2 && pw2 != 0){
+				$("#checkPw").html("<h3 style='color:blue' id='pwCheckContent'>비밀번호가 일치합니다</h3>")
+				chPw = 1;
+			}else{
+				$("#checkPw").html("<h3 style='color:red' id='pwCheckContent'>비밀번호가 일치하지 않습니다</h3>")
+				chPw = 0;
+			}
+		})
+		
+		$("#joinbtn").click(function(){
+			var id = $("#id").val();
+			var pw = $("#pw").val();
+			var pw2 = $("#pwCheck").val();
+			var name = $("#name").val();
+			var address = $("#address").val();
+			var phone = $("#phone").val();
+			if(id == ''){
+				alert("아이디를 입력하세요");
+			}else if(chId == 0){
+				alert("아이디를 확인하세요");
+			}else if(pw == ''){
+				alert("비밀번호를 입력하세요");
+			}else if(pw2 ==0){
+				alert("비밀번호가 다릅니다");
+			}else if(name == ''){
+				alert("이름을 입력하세요");
+			}else if(address == ''){
+				alert("주소를 입력하세요");
+			}else if(phone == ''){
+				alert("핸드폰을 입력하세요");
+			}else{
+				$("#frm").submit();
+			}
+		});
+		
 	</script>
 </body>
 </html>
