@@ -142,67 +142,67 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div id="category" class="category-menu clearfix collapse in" aria-expanded="true">
 		    <ul>
-		    	<a href="#">
+		    	<a href="${pageContext.request.contextPath}/store/storeList?address=${param.address}">
 			    	<li>
 			      		<span class="category-name ng-binding">전체보기</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=1&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">프랜차이즈</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=2&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">치킨</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=3&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">피자/양식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=4&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">중국집</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=5&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">한식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=6&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">일식/돈까스</span>
 			      	</li>
 			    </a>  	
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=7&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">족발/보쌈</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=8&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">분식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=9&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">카페/디저트</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=10&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">편의점/마트</span>
 			      	</li>
@@ -218,57 +218,24 @@
 			  <div class="ng-scope">
         			<p>요기요 등록 음식점</p>
       		  </div>
-      		  <div class="col-sm-6">
-      		  	<div class="item">
-      		  		<div class="logo1">
-      		  			
-      		  		</div>
-      		  		<div class="restaurant-name">
-      		  			정성달아김밥천국
-      		  		</div>
-      		  		<div class="restaurant-info">
-      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | 8500원 이상 배달
-      		  		</div>
-      		  		<div class="restaurant-time">
-      		  				25분~35분 예상
-      		  		</div>
-      		  	</div>
+      		  <c:forEach items="${list}" var="vo">
+	      		  <div class="col-sm-6">
+	      		  	<div class="item">
+	      		  		<div class="logo1">
+	      		  			
+	      		  		</div>
+	      		  		<div class="restaurant-name">
+	      		  			${vo.storeName}
+	      		  		</div>
+	      		  		<div class="restaurant-info">
+	      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | ${vo.storeManage[0].minPrice}원 이상 배달
+	      		  		</div>
+	      		  		<div class="restaurant-time">
+	      		  				${vo.storeManage[0].takeTime}분 예상
+	      		  		</div>
+	      		  	</div>
+      		  	</c:forEach>
       		  </div>
-      		  
-      		  <div class="col-sm-6">
-      		  	<div class="item">
-      		  		<div class="logo1">
-      		  			
-      		  		</div>
-      		  		<div class="restaurant-name">
-      		  			정성달아김밥천국
-      		  		</div>
-      		  		<div class="restaurant-info">
-      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | 8500원 이상 배달
-      		  		</div>
-      		  		<div class="restaurant-time">
-      		  				25분~35분 예상
-      		  		</div>
-      		  	</div>
-      		  </div>
-      		  
-      		  <div class="col-sm-6">
-      		  	<div class="item">
-      		  		<div class="logo1">
-      		  			
-      		  		</div>
-      		  		<div class="restaurant-name">
-      		  			정성달아김밥천국
-      		  		</div>
-      		  		<div class="restaurant-info">
-      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | 8500원 이상 배달
-      		  		</div>
-      		  		<div class="restaurant-time">
-      		  				25분~35분 예상
-      		  		</div>
-      		  	</div>
-      		  </div>
-      		  
       		  
 	      </div>
 	<c:import url="../template/footer.jsp"></c:import>

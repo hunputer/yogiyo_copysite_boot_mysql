@@ -109,21 +109,33 @@
 				<div class="nav-mid">
 					<a href="${pageContext.request.contextPath}/"><h1 class="logo"></h1></a>
 					<input type="button" style="background-color: #ff8a00;" class="btn-cart" value="주문표">
-					<input type="button" id="bnt-login" class="bnt-login" value="로그인">
+					<c:if test="${member == null}">
+						<input type="button" id="btn-login" class="bnt-login" value="로그인">
+					</c:if>
+					
+					<c:if test="${member != null}">
+						<input type="button" id="btn-logout" class="bnt-login" value="로그아웃">
+					</c:if>
 				</div>
 			</div>
 			<div id="searchForm" class="searchForm">
 				<div style="text-align: center; height : 40px;">
-					<input style="margin-right: 0px" id="search" type="text" placeholder="건물명, 도로명, 지번으로 검색하세요.">
-					<input type="button" id="searchBtn" value="검색">
+				<form action="${pageContext.request.contextPath}/store/storeList" method="get">
+					<input style="margin-right: 0px" id="search" name="address" type="text" value="${param.address}" placeholder="건물명, 도로명, 지번으로 검색하세요.">
+					<input type="submit" id="searchBtn" value="검색">
+				</form>	
 				</div>
 			</div>
 		</div>
 	</header>
 	
 	<script type="text/javascript">
-		$("#bnt-login").click(function(){
+		$("#btn-login").click(function(){
 			location.href="${pageContext.request.contextPath}/member/memberLogin"
+		});
+
+		$("#btn-logout").click(function(){
+			location.href="${pageContext.request.contextPath}/member/memberLogout"
 		});
 	</script>
 	

@@ -100,7 +100,7 @@
 	<footer>
 		<div class="footer-menu">
 			<ul>
-				<li class="mb"><a href="#">회원가입</a></li>
+				<li class="mb"><a href="${pageContext.request.contextPath}/member/memberJoin">회원가입</a></li>
 				<li class="mb"><span class="footerBar">|</span></li>
 				<li class="mb"><a href="#">마이페이지</a></li>
 				<li class="mb"><span class="footerBar">|</span></li>

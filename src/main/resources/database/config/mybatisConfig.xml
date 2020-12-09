@@ -5,6 +5,8 @@
 
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="com.jh.yogiyo.member.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.jh.yogiyo.store.StoreVO" alias="StoreVO"/>
+		<typeAlias type="com.jh.yogiyo.store.StoreManageVO" alias="StoreManageVO"/>
 	</typeAliases>
 </configuration>  
