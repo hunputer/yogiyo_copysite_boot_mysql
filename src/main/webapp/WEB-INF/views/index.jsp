@@ -60,7 +60,7 @@
 <div class="container">
    <div class="cal">
    	<a href="${pageContext.request.contextPath}/store/storeList?address=${param.address}">
-	   	<div class="thumbnail">
+	   	<div style="padding: 0px;" class="thumbnail">
 	   	 	<h1 class="cal-h1">전체보기</h1>
 	   	 	<img src="./images/category-01.png">
 	   	</div>
@@ -69,7 +69,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=1&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">프랜차이즈</h1>
    	 	<img src="./images/category-10.png">
    	</div>
@@ -78,7 +78,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=2&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">치킨</h1>
    	 	<img src="./images/category-02.png">
    	</div>
@@ -87,7 +87,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=3&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">피자/양식</h1>
    	 	<img src="./images/category-03.png">
    	</div>
@@ -96,7 +96,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=4&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">중국집</h1>
    	 	<img src="./images/category-04.png">
    	</div>
@@ -105,7 +105,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=5&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">한식</h1>
    	 	<img src="./images/category-05.png">
    	</div>
@@ -114,7 +114,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=6&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">일식/돈까스</h1>
    	 	<img src="./images/category-06.png">
    	</div>
@@ -123,7 +123,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=7&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">족발/보쌈</h1>
    	 	<img src="./images/category-07.png">
    	</div>
@@ -132,7 +132,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=8&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">분식</h1>
    	 	<img src="./images/category-09.png">
    	</div>
@@ -141,7 +141,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=9&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">카페/디저트</h1>
    	 	<img src="./images/category-11.png">
    	</div>
@@ -150,7 +150,7 @@
    
    <div class="cal">
    <a href="${pageContext.request.contextPath}/store/storeList?categoryNum=10&address=${param.address}">
-   	<div class="thumbnail">
+   	<div style="padding: 0px;" class="thumbnail">
    	 	<h1 class="cal-h1">편의점/마트</h1>
    	 	<img src="./images/category-convenience-store.png">
    	</div>
