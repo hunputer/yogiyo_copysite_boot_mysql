@@ -142,37 +142,37 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div id="category" class="category-menu clearfix collapse in" aria-expanded="true">
 		    <ul>
-		    	<a href="#">
+		    	<a href="${pageContext.request.contextPath}/store/storeList">
 			    	<li>
 			      		<span class="category-name ng-binding">전체보기</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=1">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=1">
 			      	<li>
 			      		<span class="category-name ng-binding">프랜차이즈</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=2">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=2">
 			      	<li>
 			      		<span class="category-name ng-binding">치킨</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=3">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=3">
 			      	<li>
 			      		<span class="category-name ng-binding">피자/양식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=4">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=4">
 			      	<li>
 			      		<span class="category-name ng-binding">중국집</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=5">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=5">
 			      	<li>
 			      		<span class="category-name ng-binding">한식</span>
 			      	</li>

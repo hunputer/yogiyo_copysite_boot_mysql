@@ -8,7 +8,11 @@
 		select S.*, SM.*
 		from store S left join storemanage SM
 		on S.num = SM.storeNum
-		where S.categoryNum = #{categoryNum}
+		<choose>
+			<when test="categoryNum != 0">
+				where S.categoryNum = #{categoryNum}
+			</when>
+		</choose>
 	</select>
 	
 	<resultMap type="StoreVO" id="getOneResult">
