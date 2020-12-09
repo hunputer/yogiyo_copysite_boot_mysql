@@ -93,7 +93,7 @@
 	      	<button type="submit" class="btn_login">로그인</button>
       	</form>
       	<div class="signupbox">
-    		<img src="../images/signin_banner.png" class="signup-img">
+    		<a href="./memberJoin"><img src="../images/signin_banner.png" class="signup-img"></a>
   		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
