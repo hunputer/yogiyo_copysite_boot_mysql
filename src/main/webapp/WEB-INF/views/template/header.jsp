@@ -120,8 +120,10 @@
 			</div>
 			<div id="searchForm" class="searchForm">
 				<div style="text-align: center; height : 40px;">
-					<input style="margin-right: 0px" id="search" type="text" placeholder="건물명, 도로명, 지번으로 검색하세요.">
-					<input type="button" id="searchBtn" value="검색">
+				<form action="${pageContext.request.contextPath}/store/storeList" method="get">
+					<input style="margin-right: 0px" id="search" name="address" type="text" value="${param.address}" placeholder="건물명, 도로명, 지번으로 검색하세요.">
+					<input type="submit" id="searchBtn" value="검색">
+				</form>	
 				</div>
 			</div>
 		</div>

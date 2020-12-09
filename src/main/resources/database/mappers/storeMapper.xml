@@ -7,10 +7,11 @@
 	<select id="getList" parameterType="StoreVO" resultMap="getOneResult">
 		select S.*, SM.*
 		from store S left join storemanage SM
-		on S.num = SM.storeNum
+		on S.num = SM.storeNum 
+		where S.address like '%${address}%'
 		<choose>
 			<when test="categoryNum != 0">
-				where S.categoryNum = #{categoryNum}
+				and S.categoryNum = #{categoryNum}
 			</when>
 		</choose>
 	</select>

@@ -142,67 +142,67 @@
 	<c:import url="../template/header.jsp"></c:import>
 	<div id="category" class="category-menu clearfix collapse in" aria-expanded="true">
 		    <ul>
-		    	<a href="${pageContext.request.contextPath}/store/storeList">
+		    	<a href="${pageContext.request.contextPath}/store/storeList?address=${param.address}">
 			    	<li>
 			      		<span class="category-name ng-binding">전체보기</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=1">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=1&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">프랜차이즈</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=2">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=2&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">치킨</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=3">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=3&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">피자/양식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=4">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=4&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">중국집</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=5">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=5&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">한식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=6">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=6&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">일식/돈까스</span>
 			      	</li>
 			    </a>  	
 		      	
-		      	<a href="./store/storeList?categoryNum=7">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=7&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">족발/보쌈</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=8">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=8&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">분식</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=9">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=9&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">카페/디저트</span>
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="./store/storeList?categoryNum=10">
+		      	<a href="${pageContext.request.contextPath}/store/storeList?categoryNum=10&address=${param.address}">
 			      	<li>
 			      		<span class="category-name ng-binding">편의점/마트</span>
 			      	</li>
