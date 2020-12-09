@@ -14,5 +14,5 @@ public class StoreVO {
 	private String address;
 	private String zipCode;
 	private String id;
-	private List<StoreManageVO> storeManage;
+	private StoreManageVO storeManageVO;
 }

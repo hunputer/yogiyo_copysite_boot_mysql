@@ -100,12 +100,12 @@
 				
 				<div class="joinRow">
 					<div><label for="pw">비밀번호</label></div>
-					<div class="list-group-item"><input type="text" class="login" id="pw" name="pw" placeholder="비밀번호를 입력하세요"></div>
+					<div class="list-group-item"><input type="password" class="login" id="pw" name="pw" placeholder="비밀번호를 입력하세요"></div>
 				</div>
 				
 				<div class="joinRow">
 					<div><label for="pw">비밀번호확인</label></div>
-					<div class="list-group-item"><input type="text" class="login" id="pwCheck" placeholder="비밀번호를 한번더 입력하세요"></div>
+					<div class="list-group-item"><input type="password" class="login" id="pwCheck" placeholder="비밀번호를 한번더 입력하세요"></div>
 					<div id="checkPw"></div>
 				</div>
 				
@@ -116,7 +116,7 @@
 				
 				<div class="joinRow">
 					<div><label for="address">주소</label></div>
-					<div class="list-group-item"><input type="text" class="login" id="address" name="address" placeholder="주소를 입력하세요" onclick="execDaumPostcode()"></div>
+					<div class="list-group-item"><input type="text" class="login" id="address" name="address" placeholder="주소를 입력하세요" readonly="readonly" onclick="execDaumPostcode()"></div>
 					<div class="list-group-item"><input type="text" class="login" id="detailAddress" name="detailAddress" placeholder="상세주소를 입력하세요"></div>
 				</div>
 				
