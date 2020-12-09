@@ -64,8 +64,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView memberJoin(MemberVO memberVO) throws Exception{
+	public ModelAndView memberJoin(MemberVO memberVO, String detailAddress) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String address = memberVO.getAddress() + " " + detailAddress;
+		memberVO.setAddress(address);
 		int result = memberService.setInsert(memberVO);
 		String msg = "";
 		if(result == 1) {
@@ -77,5 +79,16 @@ public class MemberController {
 		return mv;
 	}
 	
-	
+	@PostMapping("memberIdCheck")
+	public ModelAndView memberIdCheck(MemberVO memberVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO member = memberService.getIdCheck(memberVO);
+		String msg = "중복된 아이디입니다";
+		if(member == null) {
+			msg = "사용가능한 아이디입니다";
+		}
+		mv.addObject("msg", msg);
+		mv.setViewName("member/memberIdCheck");
+		return mv;
+	}
 }

@@ -10,11 +10,14 @@ public class MemberService {
 	public MemberMapper memberMapper;
 	
 	public int setInsert(MemberVO memberVO) throws Exception{
-		memberVO.setZipCode("31234");
 		return memberMapper.setInsert(memberVO);
 	}
 	
 	public MemberVO getOne(MemberVO memberVO) throws Exception{
 		return memberMapper.getOne(memberVO);
+	}
+	
+	public MemberVO getIdCheck(MemberVO memberVO) throws Exception{
+		return memberMapper.getIdCheck(memberVO);
 	}
 }
