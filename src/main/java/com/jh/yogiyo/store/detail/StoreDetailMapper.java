@@ -8,4 +8,6 @@ import com.jh.yogiyo.store.StoreVO;
 public interface StoreDetailMapper {
 
 	public StoreVO getOne(StoreVO storeVO) throws Exception;
+	
+	public StoreVO getStoreManage(StoreVO storeVO) throws Exception;
 }

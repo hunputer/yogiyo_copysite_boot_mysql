@@ -58,7 +58,6 @@
 .sdDiv1{
 	width : 660px;
 	height: 2000px;
-	background-color: yellow;
 	display: inline-block;
 }
 .sdBanner{
@@ -77,7 +76,6 @@
 .sdHeader{
 	width: 660px;
 	height: 200px;
-	background-color: yellow;
 	border: 1px solid #DCDCDC;
 }
 .sdHeaderDiv1{
@@ -99,13 +97,19 @@
 	float: left;
 	width: 90px;
 	height: 90px;
-	background-color: fuchsia;
 	margin-top: 10px;
 	margin-left: 10px;
 }
 .sdHeaderDiv3{
 	width: 660px;
 	height: 45px;
+}
+.sdHeaderDiv3 > img{
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin-top: 7px;
+	margin-left: 10px;
 }
 .sdHeaderDiv2Div{
 	width: 400px;
@@ -117,9 +121,41 @@
 }
 .sdHeaderDiv2Div > ul{
 	list-style: none;
-	background-color: aqua;
 	-webkit-padding-start : 0px;
+	color: #A9A9A9;
 }
+.sdBottom{
+	width: 660px;
+	height: 2000px;
+	margin-top: 15px;
+	background-color: yellow;
+}
+.sdBtnDiv{
+	width: 660px;
+	height: 47px;
+	background-color: aqua;
+}
+.sdBtn{
+ 	float :left;
+	width: 220px;
+	height: 47px;
+	border: 1px solid #DCDCDC;
+	background-color: white;
+	text-align: center;
+	line-height: 47px;
+	font-size: 17px;
+	 
+}
+.sdBtn:hover {
+    background: #F5F5F5;
+    color: #fa0050;
+  }
+  .sdA:active {
+    background: #F5F5F5;
+    color: #fa0050;
+   	font-weight:  bold;
+  }
+
 </style>
 
 <script type="text/javascript">
@@ -142,43 +178,33 @@
 				<a href="#">
 					<li><span class="category-name ng-binding">전체보기</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">프랜차이즈</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">치킨</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">피자/양식</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">중국집</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">한식</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">일식/돈까스</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">족발/보쌈</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">분식</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">카페/디저트</span></li>
 				</a>
-
 				<a href="#">
 					<li><span class="category-name ng-binding">편의점/마트</span></li>
 				</a>
@@ -196,13 +222,30 @@
 					<div class="sdHeaderDiv2Div">
 						<ul>
 							<li>별점</li>
-							<li>최소주문금액</li>
-							<li>배달비</li>
-							<li>배달소요시간</li>
+							<li>최소주문금액 <span style="color: black;">  ${vo.storeManageVO.minPrice}원</span></li>
+							<li>배달비 <span style="color: black;">  ${vo.storeManageVO.driveFee}원</span></li>
+							<li>배달소요시간 <span style="color: black;">  약 ${vo.storeManageVO.takeTime}분</span></li>
 						</ul>
 					</div>
 				</div>
-				<div class="sdHeaderDiv3"></div>
+				<div class="sdHeaderDiv3">
+					<img src="../images/sdComment.PNG">
+					<div style="width:80px; height:45px; line-height:45px; float:left; margin-left: 4px; font-weight: bold;">사장님 알림</div>
+					<a href="#">
+						<div style="width:510px; height:45px; line-height:45px; display: inline-block; margin-left: 10px;text-overflow: ellipsis; white-space:nowrap; overflow: hidden;">
+							${vo.storeManageVO.storeComment}
+						</div>
+					</a>
+				</div>
+			</div>
+			
+			
+			<div class="sdBottom">
+				<div class="sdBtnDiv">
+					<a style="color: black;" class="sdA"><div class="sdBtn">메뉴</div></a>
+					<a style="color: black;" class="sdA"><div class="sdBtn">리뷰</div></a>
+					<a style="color: black;" class="sdA"><div class="sdBtn">정보</div></a>
+				</div>
 			</div>
 		</div>
 	

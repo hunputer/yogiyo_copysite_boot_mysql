@@ -19,7 +19,7 @@ public class StoreDetailController {
 	public ModelAndView getStoreDetail(StoreVO storeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		storeVO = storeDetailService.getOne(storeVO);
+		storeVO = storeDetailService.getStoreManage(storeVO);
 		
 		mv.addObject("vo", storeVO);
 		mv.setViewName("storeDetail/getDetail");

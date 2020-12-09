@@ -14,4 +14,8 @@ public class StoreDetailService {
 	public StoreVO getOne(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getOne(storeVO);
 	}
+	
+	public StoreVO getStoreManage(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getStoreManage(storeVO);
+	}
 }
