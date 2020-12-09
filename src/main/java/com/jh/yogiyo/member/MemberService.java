@@ -10,7 +10,6 @@ public class MemberService {
 	public MemberMapper memberMapper;
 	
 	public int setInsert(MemberVO memberVO) throws Exception{
-		memberVO.setZipCode("31234");
 		return memberMapper.setInsert(memberVO);
 	}
 	

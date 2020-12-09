@@ -64,8 +64,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("memberJoin")
-	public ModelAndView memberJoin(MemberVO memberVO) throws Exception{
+	public ModelAndView memberJoin(MemberVO memberVO, String detailAddress) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		String address = memberVO.getAddress() + " " + detailAddress;
+		memberVO.setAddress(address);
 		int result = memberService.setInsert(memberVO);
 		String msg = "";
 		if(result == 1) {
