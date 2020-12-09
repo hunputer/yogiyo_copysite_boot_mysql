@@ -64,6 +64,11 @@
 	    border-radius: 0;
 	}
 	
+	#idCheckContent{
+		font-size: 12px;
+		color: blue;
+	}
+	
 	
 </style>
 </head>
@@ -85,6 +90,7 @@
 				<div class="joinRow">
 					<div><label for="id">아이디</label></div>
 					<div class="list-group-item"><input type="text" class="login" id="id" name="id" placeholder="아이디를 입력하세요"></div>
+					<div id="checkId"></div>
 				</div>
 				
 				<div class="joinRow">
@@ -119,5 +125,24 @@
 		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
+	<script type="text/javascript">
+		$("#id").blur(function(){
+			var id = $("#id").val();
+			if(id != ''){
+				$.post("./memberIdCheck",{id : id},function(data) {
+					$("#checkId").html(data);
+					var check = $("#idCheckContent").html();
+					if(check=='중복된 아이디입니다'){
+						$('#idCheckContent').css('color','red');
+					}else{
+						$('#idCheckContent').css('color','blue');
+					}
+				});
+			}else{
+				$("#checkId").html("<h3 id='idCheckContent'>아이디를 입력하세요</h3>");
+				$('#idCheckContent').css('color','red');
+			}
+		});
+	</script>
 </body>
 </html>

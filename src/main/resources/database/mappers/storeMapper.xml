@@ -16,6 +16,7 @@
 		</choose>
 	</select>
 	
+	
 	<resultMap type="StoreVO" id="getOneResult">
 			<id column="num" property="num"/>
 			<result column="categoryNum" property="categoryNum"/>

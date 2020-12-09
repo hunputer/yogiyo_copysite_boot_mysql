@@ -17,4 +17,8 @@ public class MemberService {
 	public MemberVO getOne(MemberVO memberVO) throws Exception{
 		return memberMapper.getOne(memberVO);
 	}
+	
+	public MemberVO getIdCheck(MemberVO memberVO) throws Exception{
+		return memberMapper.getIdCheck(memberVO);
+	}
 }
