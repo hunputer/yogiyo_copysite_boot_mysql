@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/check/**")
-public class checkController {
+public class CheckController {
 	
 	@GetMapping("checkoutPage")
 	public ModelAndView checkoutPage() throws Exception{

@@ -81,13 +81,13 @@
 	<c:import url="../template/header_notSearch.jsp"></c:import>
 	<div class="container">	
 		<div class="title"></div>
-		<form action="#">
+		<form action="./memberLogin" method="post">
 			<ul class="list-group">
 		        <li class="list-group-item">
-		          <input type="text" id="loginEmail" name="loginEmail" placeholder="이메일 주소 입력(필수)" class="ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" required="required">
+		          <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" class="ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern" required="required">
 		        </li>
 		        <li class="list-group-item">
-		          <input type="password" id="loginPwd" name="loginPwd" placeholder="비밀번호 입력(필수)" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
+		          <input type="password" id="pw" name="pw" placeholder="비밀번호 입력하세요" class="ng-pristine ng-untouched ng-invalid ng-invalid-required" required="required">
 		        </li>
 	      	</ul>
 	      	<button type="submit" class="btn_login">로그인</button>

@@ -109,7 +109,13 @@
 				<div class="nav-mid">
 					<a href="${pageContext.request.contextPath}/"><h1 class="logo"></h1></a>
 					<input type="button" style="background-color: #ff8a00;" class="btn-cart" value="주문표">
-					<input type="button" id="bnt-login" class="bnt-login" value="로그인">
+					<c:if test="${member == null}">
+						<input type="button" id="btn-login" class="bnt-login" value="로그인">
+					</c:if>
+					
+					<c:if test="${member != null}">
+						<input type="button" id="btn-logout" class="bnt-login" value="로그아웃">
+					</c:if>
 				</div>
 			</div>
 			<div id="searchForm" class="searchForm">
@@ -122,8 +128,12 @@
 	</header>
 	
 	<script type="text/javascript">
-		$("#bnt-login").click(function(){
+		$("#btn-login").click(function(){
 			location.href="${pageContext.request.contextPath}/member/memberLogin"
+		});
+
+		$("#btn-logout").click(function(){
+			location.href="${pageContext.request.contextPath}/member/memberLogout"
 		});
 	</script>
 	

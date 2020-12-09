@@ -5,6 +5,6 @@
 
 <configuration>
 	<typeAliases>
-	
+		<typeAlias type="com.jh.yogiyo.member.MemberVO" alias="MemberVO"/>
 	</typeAliases>
 </configuration>  
