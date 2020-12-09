@@ -9,4 +9,36 @@
 		select * from store where num = #{num}
 	</select>
 	
+	<resultMap type="StoreVO" id="getOneResult">
+			<id column="num" property="num"/>
+			<result column="categoryNum" property="categoryNum"/>
+			<result column="storeName" property="storeName"/>
+			<result column="storeNum" property="storeNum"/>
+			<result column="tel" property="tel" />
+			<result column="address" property="address" />
+			<result column="zipCode" property="zipCode" />
+			<result column="id" property="id" />
+			<association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult"></association>
+	</resultMap>
+
+	<resultMap type="StoreManageVO" id="getStoreManageResult">
+		<result column="storeNum" property="storeNum"/>
+		<result column="openTime" property="openTime"/>
+		<result column="closeTime" property="closeTime"/>
+		<result column="holiday" property="holiday"/>
+		<result column="minPrice" property="minPrice" />
+		<result column="driveFee" property="driveFee" />
+		<result column="takeTime" property="takeTime" />
+		<result column="isOpen" property="isOpen" />
+		<result column="storeComment" property="storeComment" />
+	</resultMap>
+
+	<select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
+		select s.storeName, sm.*
+		from store s
+		inner join storemanage sm on s.num = sm.storeNum
+		where s.num=#{num}
+	</select>
+	
+	
 </mapper>

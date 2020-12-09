@@ -77,18 +77,26 @@
 .sdHeader{
 	width: 660px;
 	height: 200px;
-	background-color: silver;
+	background-color: yellow;
+	border: 1px solid #DCDCDC;
 }
 .sdHeaderDiv1{
 	width: 660px;
 	height: 45px;
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 45px;
+
 }
 .sdHeaderDiv2{
 	width: 660px;
 	height: 110px;
-	background-color: red;
+	border-bottom: 1px solid #DCDCDC;
+	border-top: 1px solid #DCDCDC;
 }
 .sdHeaderDiv2 > img{
+	float: left;
 	width: 90px;
 	height: 90px;
 	background-color: fuchsia;
@@ -98,6 +106,19 @@
 .sdHeaderDiv3{
 	width: 660px;
 	height: 45px;
+}
+.sdHeaderDiv2Div{
+	width: 400px;
+	height: 90px;
+	display: inline-block;
+	margin-top: 10px;
+	margin-left: 10px;
+	
+}
+.sdHeaderDiv2Div > ul{
+	list-style: none;
+	background-color: aqua;
+	-webkit-padding-start : 0px;
 }
 </style>
 
@@ -172,6 +193,14 @@
 				</div>
 				<div class="sdHeaderDiv2">
 					<img src="#">
+					<div class="sdHeaderDiv2Div">
+						<ul>
+							<li>별점</li>
+							<li>최소주문금액</li>
+							<li>배달비</li>
+							<li>배달소요시간</li>
+						</ul>
+					</div>
 				</div>
 				<div class="sdHeaderDiv3"></div>
 			</div>
