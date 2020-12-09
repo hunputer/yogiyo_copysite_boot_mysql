@@ -74,6 +74,31 @@
 	height: 300px;
 	background-color: fuchsia;
 }
+.sdHeader{
+	width: 660px;
+	height: 200px;
+	background-color: silver;
+}
+.sdHeaderDiv1{
+	width: 660px;
+	height: 45px;
+}
+.sdHeaderDiv2{
+	width: 660px;
+	height: 110px;
+	background-color: red;
+}
+.sdHeaderDiv2 > img{
+	width: 90px;
+	height: 90px;
+	background-color: fuchsia;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.sdHeaderDiv3{
+	width: 660px;
+	height: 45px;
+}
 </style>
 
 <script type="text/javascript">
@@ -141,7 +166,15 @@
 
 	<div class="sdContainer">
 		<div class="sdDiv1"> 
-		
+			<div class="sdHeader">
+				<div class="sdHeaderDiv1">
+					${vo.storeName}
+				</div>
+				<div class="sdHeaderDiv2">
+					<img src="#">
+				</div>
+				<div class="sdHeaderDiv3"></div>
+			</div>
 		</div>
 	
 		<div class="sdBanner">
