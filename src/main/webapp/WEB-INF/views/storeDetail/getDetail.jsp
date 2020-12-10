@@ -100,11 +100,12 @@
 	margin-top: 10px;
 	margin-left: 10px;
 }
-.sdHeaderDiv3{
+#sdHeaderDiv3{
 	width: 660px;
 	height: 45px;
+	cursor:pointer;
 }
-.sdHeaderDiv3 > img{
+#sdHeaderDiv3 > img{
 	float: left;
 	width: 30px;
 	height: 30px;
@@ -128,14 +129,13 @@
 	width: 660px;
 	height: 2000px;
 	margin-top: 15px;
-	background-color: yellow;
 }
 .sdBtnDiv{
 	width: 660px;
 	height: 47px;
-	background-color: aqua;
 }
-.sdBtn{
+
+.sdBtnCss{
  	float :left;
 	width: 220px;
 	height: 47px;
@@ -146,16 +146,51 @@
 	font-size: 17px;
 	 
 }
-.sdBtn:hover {
+.sdBtnCss:hover {
     background: #F5F5F5;
     color: #fa0050;
   }
-  .sdA:active {
+  .sdA:active, .sdBtnClicked {
     background: #F5F5F5;
     color: #fa0050;
    	font-weight:  bold;
   }
-
+  .sdBtnConDiv{
+  	width: 660px;
+  	height: 1000px;
+  	background-color: lime;
+  	
+  }
+  .iaDiv1{
+	width: 640px;
+	height: auto;
+	margin: 15px auto 50px;
+}
+.d1{
+	width: 640px;
+	height: auto;
+	margin: 15px auto;
+	border-bottom: 1px solid #DCDCDC;
+	font-size: 19px;
+	font-weight: bold;
+}
+.d2{
+	width: 640px;
+	height: auto;
+	margin: 15px auto;
+	font-size: 16px;
+}
+.d1 > img{
+	width: 20px;
+	height: 20px;
+	margin-bottom: 3px;
+}
+.d2d1{
+	float: left;
+	width: 120px;
+	height: auto;
+	color: #A9A9A9;
+}
 </style>
 
 <script type="text/javascript">
@@ -228,23 +263,26 @@
 						</ul>
 					</div>
 				</div>
-				<div class="sdHeaderDiv3">
+				<div id="sdHeaderDiv3" class="sdBtn"  onclick="getInfo();">
 					<img src="../images/sdComment.PNG">
 					<div style="width:80px; height:45px; line-height:45px; float:left; margin-left: 4px; font-weight: bold;">사장님 알림</div>
-					<a href="#">
-						<div style="width:510px; height:45px; line-height:45px; display: inline-block; margin-left: 10px;text-overflow: ellipsis; white-space:nowrap; overflow: hidden;">
-							${vo.storeManageVO.storeComment}
-						</div>
-					</a>
+				
+					<div style="width:510px; height:45px; line-height:45px; display: inline-block; margin-left: 10px;text-overflow: ellipsis; white-space:nowrap; overflow: hidden;">
+						${vo.storeManageVO.storeComment}
+					</div>
+					
 				</div>
 			</div>
 			
 			
 			<div class="sdBottom">
 				<div class="sdBtnDiv">
-					<a style="color: black;" class="sdA"><div class="sdBtn">메뉴</div></a>
-					<a style="color: black;" class="sdA"><div class="sdBtn">리뷰</div></a>
-					<a style="color: black;" class="sdA"><div class="sdBtn">정보</div></a>
+					<a style="color: black;" class="sdA" id="menuBtn"><div class="sdBtn sdBtnCss">메뉴</div></a>
+					<a style="color: black;" class="sdA" id="rvBtn"><div class="sdBtn sdBtnCss">리뷰</div></a>
+					<a style="color: black;" class="sdA" id="infoBtn"><div class="sdBtn sdBtnCss" onclick="getInfo();">정보</div></a>
+				</div>
+				
+				<div id="sdBtnConDiv">
 				</div>
 			</div>
 		</div>
@@ -258,5 +296,47 @@
 	</div>
 
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		$('.sdBtn').each(function(index){
+			$(this).attr('menu-index', index);
+		}).click(function(){
+			var index = $(this).attr('menu-index');
+
+			if(index==0){
+				index=3;
+			}
+			$('.sdBtn[menu-index=' + index + ']').addClass('sdBtnClicked');
+			$('.sdBtn[menu-index!=' + index + ']').removeClass('sdBtnClicked');
+		});
+	
+		//메뉴
+		$("#menuBtn").click(function(){
+			$("#sdBtnConDiv").html("");
+		});
+
+		//리뷰
+		$("#rvBtn").click(function(){
+			
+			$("#sdBtnConDiv").html("");
+		});
+
+		//정보 -> 제어해야하기때문에 함수로
+		function getInfo(){
+			
+				$.ajax({
+						method:"GET",
+						url:"./getInfoAjax",
+						data:{num:${vo.storeManageVO.storeNum}},
+						success:function(data){
+							
+							$("#sdBtnConDiv").html(data);		
+						}
+					}		
+				);
+
+		}
+		
+	</script>
 </body>
 </html>

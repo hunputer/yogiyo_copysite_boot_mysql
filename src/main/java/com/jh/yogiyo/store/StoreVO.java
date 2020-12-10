@@ -9,7 +9,7 @@ public class StoreVO {
 	private long num;
 	private long categoryNum;
 	private String storeName;
-	private String storeNum;
+	private String storeNumber;
 	private String tel;
 	private String address;
 	private String zipCode;

@@ -26,4 +26,17 @@ public class StoreDetailController {
 		
 		return mv;
 	}
+	
+	@GetMapping("getInfoAjax")
+	public ModelAndView getInfoAjax(StoreVO storeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		System.out.println("------"+storeVO.getNum());
+		storeVO = storeDetailService.getStoreManage(storeVO);
+		
+		System.out.println("넘어가는 num"+storeVO.getStoreManageVO().getStoreNum());
+		mv.addObject("vo", storeVO);
+		mv.setViewName("storeDetail/infoAjax");
+		
+		return mv;
+	}
 }

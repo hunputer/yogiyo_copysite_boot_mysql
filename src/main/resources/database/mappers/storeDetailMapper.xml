@@ -13,7 +13,7 @@
 			<id column="num" property="num"/>
 			<result column="categoryNum" property="categoryNum"/>
 			<result column="storeName" property="storeName"/>
-			<result column="storeNum" property="storeNum"/>
+			<result column="storeNumber" property="storeNumber"/>
 			<result column="tel" property="tel" />
 			<result column="address" property="address" />
 			<result column="zipCode" property="zipCode" />
@@ -34,7 +34,7 @@
 	</resultMap>
 
 	<select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
-		select s.storeName, sm.*
+		select s.storeName, s.address, s.tel, s.storeNumber, sm.*
 		from store s
 		inner join storemanage sm on s.num = sm.storeNum
 		where s.num=#{num}
