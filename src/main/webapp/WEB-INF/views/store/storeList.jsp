@@ -61,7 +61,7 @@
 	
 	.search-div{
 			position : relative;
-		    padding-bottom: 0;
+		    padding-bottom: 10px;
     		margin: 0;
     		border-bottom: 1px solid #E5E5E5;
     		width: 100%;
@@ -141,8 +141,12 @@
 	    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
 	    box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
 	    background-color: #fff;
-	    width: 400px;
-	    margin: 10px auto;
+	    width: 250px;
+	    position : relative;
+	    left : 1050px;
+	    top : 5px;
+	    margin: 10px 0px;
+	    display: inline-block;
 	}
 	
 	.hotTitle{
@@ -151,17 +155,27 @@
 	}
 	
 	.search2{
-		width: 80%;
+		width: 100%;
 		padding: 6px 12px;
 	}
 	
 	.searchBnt2{
-		width: 17%;
+		width: 100%;
 		padding: 6px 12px;
 		background-color: #FF8A00;
 		color: #fff;
 		border: none;
 		height: 36px;
+	}
+	
+	.yogiyoFicture{
+		width : 800px;
+		height : 425.2px;
+		background-color: blue;
+		display: inline-block;
+		position : absolute;
+	    left : 200px;
+	    top : 15px;
 	}
 	
 </style>
@@ -238,16 +252,19 @@
 		    </ul>
 		  </div>
 		  <div class="search-div">
+		  	  <div class="yogiyoFicture">
+		  	  	<img alt="" src="${pageContext.request.contextPath}/images/yogiyo1.jpeg" width="800px" height="425.2px">
+		  	  </div>
 		  	  <div class="searchBox">
    				<div style="padding: 0px 20px; border-bottom: 1px solid #e8ebee;">
-   					<h3 class="hotTitle">인기검색어</h3>
+   					<h3 class="hotTitle" id="hotTitle">인기검색어</h3>
    				</div>
    				<div id="searchResult">
 	   				
    				</div>
    				<div style="padding: 0px 20px; margin-bottom: 5px;">
    					<form action="./storeList2" method="get">
-		   				<input type="text" class="search2" name="searchName" placeholder="찾고싶은 음식점을 검색하세요">
+		   				<input type="text" class="search2" name="searchName" placeholder="음식점을 검색하세요">
 		   				<input type="hidden" name="address" value="${param.address}">
 		   				<button class="searchBnt2">검색</button>
 	   				</form>
@@ -291,6 +308,8 @@
 				$("#searchResult").html(data);
 			})
 		}
+
+		
 	</script>
 </body>
 </html>
