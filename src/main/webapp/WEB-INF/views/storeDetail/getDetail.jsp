@@ -312,11 +312,6 @@
 	
 		//메뉴
 		$("#menuBtn").click(function(){
-			$("#sdBtnConDiv").html("");
-		});
-
-		//리뷰
-		$("#rvBtn").click(function(){
 			$.ajax({
 				method:"GET",
 				url:"./getMenuAjax",
@@ -324,8 +319,13 @@
 				success:function(data){
 					$("#sdBtnConDiv").html(data);	
 				}
-			}		
-		);
+			});		
+		});
+
+		//리뷰
+		$("#rvBtn").click(function(){
+			$("#sdBtnConDiv").html("");
+		
 			
 		});
 

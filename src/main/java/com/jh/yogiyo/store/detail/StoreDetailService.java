@@ -1,5 +1,7 @@
 package com.jh.yogiyo.store.detail;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,9 @@ public class StoreDetailService {
 	
 	public StoreVO getStoreManage(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getStoreManage(storeVO);
+	}
+	
+	public List<StoreMenuVO> getMenu(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getMenu(storeVO);
 	}
 }

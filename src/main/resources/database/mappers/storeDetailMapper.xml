@@ -40,5 +40,8 @@
 		where s.num=#{num}
 	</select>
 	
+	<select id="getMenu" parameterType="StoreVO" resultType="StoreMenuVO">
+		select * from storemenu where storeNum = #{num}
+	</select>
 	
 </mapper>
