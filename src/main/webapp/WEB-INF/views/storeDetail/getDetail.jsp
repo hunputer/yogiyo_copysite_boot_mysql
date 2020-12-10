@@ -317,8 +317,16 @@
 
 		//리뷰
 		$("#rvBtn").click(function(){
+			$.ajax({
+				method:"GET",
+				url:"./getMenuAjax",
+				data:{num:${vo.storeManageVO.storeNum}},
+				success:function(data){
+					$("#sdBtnConDiv").html(data);	
+				}
+			}		
+		);
 			
-			$("#sdBtnConDiv").html("");
 		});
 
 		//정보 -> 제어해야하기때문에 함수로

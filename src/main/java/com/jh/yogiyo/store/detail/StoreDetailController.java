@@ -39,4 +39,12 @@ public class StoreDetailController {
 		
 		return mv;
 	}
+	
+	@GetMapping("getMenuAjax")
+	public ModelAndView getMenuAjax(StoreVO storeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("storeDetail/menuAjax");
+		return mv;
+	}
 }
