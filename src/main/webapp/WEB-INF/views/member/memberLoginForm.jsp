@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="../js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+		Kakao.init('db16d3e876bdf25ace8482a5b3b5a6b3');
+		Kakao.isInitialized();
+	</script>
+
 <style type="text/css">
 	body{
 		background-color: #fafafa;
@@ -92,10 +100,41 @@
 	      	</ul>
 	      	<button type="submit" class="btn_login">로그인</button>
       	</form>
+      	<div style="width: 100%;max-width:800px; margin: 0 auto;">
+			  <a style="float: left;width: 50%" id="kakao-login-btn"></a>
+		</div>
       	<div class="signupbox">
     		<a href="./memberJoin"><img src="../images/signin_banner.png" class="signup-img"></a>
   		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		Kakao.Auth.createLoginButton({
+		    container: '#kakao-login-btn',
+		    success: function(authObj) {
+		      Kakao.API.request({
+		        url: '/v2/user/me',
+		        success: function(res) {
+		          const json = JSON.stringify(res);
+		          const obj = JSON.parse(json);
+		          $.post("./kakaoLogin",{id:obj.kakao_account.email, name:obj.properties.nickname},function(data){
+		        	 
+		          })
+		          location.href="./loginMsg"
+		        },
+		        fail: function(error) {
+		          alert(
+		            'login success, but failed to request user information: ' +
+		              JSON.stringify(error)
+		          )
+		        },
+		      })
+		    },
+		    fail: function(err) {
+		      alert('failed to login: ' + JSON.stringify(err))
+		    },
+		  })
+	</script>
 </body>
 </html>
