@@ -162,7 +162,7 @@
 	.searchBnt2{
 		width: 100%;
 		padding: 6px 12px;
-		background-color: #FF8A00;
+		background-color: #FA0050;
 		color: #fff;
 		border: none;
 		height: 36px;
