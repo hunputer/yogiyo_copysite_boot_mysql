@@ -142,9 +142,7 @@
 	    box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
 	    background-color: #fff;
 	    width: 400px;
-	    position : relative;
-	    left : 800px;
-	    margin: 10px 0px;
+	    margin: 10px auto;
 	}
 	
 	.hotTitle{
