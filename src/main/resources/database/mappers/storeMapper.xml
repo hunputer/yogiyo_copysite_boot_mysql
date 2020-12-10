@@ -16,12 +16,24 @@
 		</choose>
 	</select>
 	
+	<select id="getList2" parameterType="SearchVO" resultMap="getOneResult">
+		select S.*, SM.*
+		from store S left join storemanage SM
+		on S.num = SM.storeNum 
+		where S.address like '%${address}%'
+		<choose>
+			<when test="searchName != null">
+				and S.storeName like '%${searchName}%'
+			</when>
+		</choose>
+	</select>
+	
 	
 	<resultMap type="StoreVO" id="getOneResult">
          <id column="num" property="num"/>
          <result column="categoryNum" property="categoryNum"/>
          <result column="storeName" property="storeName"/>
-         <result column="storeNum" property="storeNum"/>
+         <result column="storeNumber" property="storeNumber"/>
          <result column="tel" property="tel" />
          <result column="address" property="address" />
          <result column="zipCode" property="zipCode" />

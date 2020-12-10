@@ -51,6 +51,7 @@
     .thumbnail img {
     	float: right;
 	}
+	
 }
 	
 </style>
@@ -156,6 +157,7 @@
    	</div>
    	</a>
    </div>
+   
 </div>
 
 <c:import url="./template/footer.jsp"></c:import>

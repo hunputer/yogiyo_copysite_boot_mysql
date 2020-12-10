@@ -31,7 +31,6 @@
     
     .category-menu ul {
 	    max-width: 1090px;
-	    min-width: 1000px;
 	    margin: 0 auto;
 	    border-top: 1px solid #d9d9d9;
 	    position: relative;
@@ -61,11 +60,11 @@
 	}
 	
 	.search-div{
+			position : relative;
 		    padding-bottom: 0;
     		margin: 0;
     		border-bottom: 1px solid #E5E5E5;
     		width: 100%;
-    		height: 60px;
 	}
 	
 	.ng-scope > p {
@@ -134,6 +133,37 @@
 	    font-size: 12px;
 	    color: gray;
 	    
+	}
+	
+	.searchBox{
+		border: 1px solid #e8ebee;
+	    border-radius: 6px;
+	    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
+	    box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
+	    background-color: #fff;
+	    width: 400px;
+	    position : relative;
+	    left : 800px;
+	    margin: 10px 0px;
+	}
+	
+	.hotTitle{
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
+	.search2{
+		width: 80%;
+		padding: 6px 12px;
+	}
+	
+	.searchBnt2{
+		width: 17%;
+		padding: 6px 12px;
+		background-color: #FF8A00;
+		color: #fff;
+		border: none;
+		height: 36px;
 	}
 	
 </style>
@@ -210,8 +240,22 @@
 		    </ul>
 		  </div>
 		  <div class="search-div">
-		  	  
-		  
+		  	  <div class="searchBox">
+   				<div style="padding: 0px 20px; border-bottom: 1px solid #e8ebee;">
+   					<h3 class="hotTitle">인기검색어</h3>
+   				</div>
+   				<div id="searchResult">
+	   				
+   				</div>
+   				<div style="padding: 0px 20px; margin-bottom: 5px;">
+   					<form action="./storeList2" method="get">
+		   				<input type="text" class="search2" name="searchName" placeholder="찾고싶은 음식점을 검색하세요">
+		   				<input type="hidden" name="address" value="${param.address}">
+		   				<button class="searchBnt2">검색</button>
+	   				</form>
+   				</div>
+   			  </div>
+   			  
 		  </div>
 	
 		  <div class="container">		  
@@ -234,10 +278,21 @@
 	      		  				${vo.storeManageVO.takeTime}분 예상
 	      		  		</div>
 	      		  	</div>
+	      		  	</div>
       		  	</c:forEach>
-      		  </div>
-      		  
 	      </div>
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		hit();
+	
+		setInterval(hit, 50000)
+		
+		function hit(){
+			$.get("./searchList" ,function(data) {
+				$("#searchResult").html(data);
+			})
+		}
+	</script>
 </body>
 </html>
