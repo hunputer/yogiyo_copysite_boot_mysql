@@ -134,8 +134,23 @@
 		});
 
 		$("#btn-logout").click(function(){
-			location.href="${pageContext.request.contextPath}/member/memberLogout"
+			unlinkApp();
+			setTimeout(function(){
+				location.href="${pageContext.request.contextPath}/member/memberLogout"
+			}, 1000);
 		});
+
+		function unlinkApp() {
+		    Kakao.API.request({
+		      url: '/v1/user/unlink',
+		      success: function(res) {
+		  
+		      },
+		      fail: function(err) {
+		        
+		      },
+		    })
+		  }
 	</script>
 	
 </body>

@@ -83,6 +83,32 @@
 	    max-width: 800px;
 	    cursor: pointer;
 	}
+	
+	#kakao-login-btn{
+		width: 100%;
+		height: 40px;
+	    border-radius: 0;
+	    background-color: #fff;
+	    border: 1px solid #e6e6e6;
+	    font-size: 15px;
+	    padding: 6px 12px;
+    	margin: 10px auto;
+    	text-align: center;
+    	cursor: pointer;
+    	
+	}
+	
+	.ico-kakao{
+		background: url(../images/ic_logo_kakao.png) no-repeat center;
+		background-size: 20px;
+	    margin-top: -1px;
+	    margin-right: 5px;
+	    margin-left: -5px;
+	    width: 28px;
+	    height: 28px;
+	    vertical-align: middle;
+	    display: inline-block;
+	}
 </style>
 </head>
 <body>
@@ -100,8 +126,9 @@
 	      	</ul>
 	      	<button type="submit" class="btn_login">로그인</button>
       	</form>
-      	<div style="width: 100%;max-width:800px; margin: 0 auto;">
-			  <a style="float: left;width: 50%" id="kakao-login-btn"></a>
+      	<div style="width: 100%;max-width:800px;" id="kakao-login-btn">
+      		  <span class="ico-kakao"></span>
+			  카카오 아이디로 로그인
 		</div>
       	<div class="signupbox">
     		<a href="./memberJoin"><img src="../images/signin_banner.png" class="signup-img"></a>
@@ -110,31 +137,37 @@
 	<c:import url="../template/footer.jsp"></c:import>
 	
 	<script type="text/javascript">
-		Kakao.Auth.createLoginButton({
-		    container: '#kakao-login-btn',
-		    success: function(authObj) {
-		      Kakao.API.request({
-		        url: '/v2/user/me',
-		        success: function(res) {
-		          const json = JSON.stringify(res);
-		          const obj = JSON.parse(json);
-		          $.post("./kakaoLogin",{id:obj.kakao_account.email, name:obj.properties.nickname},function(data){
-		        	 
-		          })
-		          location.href="./loginMsg"
-		        },
-		        fail: function(error) {
-		          alert(
-		            'login success, but failed to request user information: ' +
-		              JSON.stringify(error)
-		          )
-		        },
-		      })
-		    },
-		    fail: function(err) {
-		      alert('failed to login: ' + JSON.stringify(err))
-		    },
-		  })
+		$("#kakao-login-btn").click(function(){
+			loginWithKakao();
+		})
+		
+		function loginWithKakao() {
+			    Kakao.Auth.login({
+			      success: function(authObj) {
+
+			    	  Kakao.API.request({
+					        url: '/v2/user/me',
+					        success: function(res) {
+					          const json = JSON.stringify(res);
+					          const obj = JSON.parse(json);
+					          $.post("./kakaoLogin",{id:obj.kakao_account.email, name:obj.properties.nickname},function(data){
+						           
+					          })
+					          location.href="./loginMsg";
+					        },
+					        fail: function(error) {
+					          alert(
+					            'login success, but failed to request user information: ' +
+					              JSON.stringify(error)
+					          )
+					        },
+					      })
+			      },
+			      fail: function(err) {
+			        alert(JSON.stringify(err))
+			      },
+			    })
+			  }
 	</script>
 </body>
 </html>

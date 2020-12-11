@@ -111,6 +111,7 @@ public class MemberController {
 	@GetMapping("loginMsg")
 	public ModelAndView loginMsg(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		Thread.sleep(3000);
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		String msg =memberVO.getName()+"님 환영합니다!";
 		mv.addObject("msg", msg);
