@@ -28,6 +28,9 @@ public class StoreService {
 				result = searchMapper.setInsert(storePager);
 			}
 		}
+		if(storePager.getCurPage() != 1) {
+			Thread.sleep(500);
+		}
 		return storeMapper.getList(storePager);
 	} 
 	
