@@ -5,8 +5,11 @@
     
 <mapper namespace="com.jh.yogiyo.store.detail.StoreDetailMapper">
 	
-	<select id="getOne" parameterType="StoreVO" resultType="StoreVO">
-		select * from store where num = #{num}
+	<select id="getOne" parameterType="StoreVO" resultMap="getOneResult">
+		select s.*, st.fileName
+		from store s
+		left join storethumbfile st on s.num=st.storeNum
+		where num = #{num}
 	</select>
 	
 	<resultMap type="StoreVO" id="getOneResult">
@@ -19,8 +22,16 @@
 			<result column="zipCode" property="zipCode" />
 			<result column="id" property="id" />
 			<association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult"></association>
+			<association property="storeThumbFileVO" javaType="StoreThumbFileVO" resultMap="rmStoreThumbFile"></association>
 	</resultMap>
-
+	
+	<resultMap type="StoreThumbFileVO" id="rmStoreThumbFile">
+		<id column="num" property="num" />
+		<result column="storeNum" property="storeNum"/>
+		<result column="fileName" property="fileName"/>
+		<result column="oriName" property="oriName"/>
+	</resultMap>
+	
 	<resultMap type="StoreManageVO" id="getStoreManageResult">
 		<result column="storeNum" property="storeNum"/>
 		<result column="openTime" property="openTime"/>
@@ -34,7 +45,7 @@
 	</resultMap>
 	
 	<resultMap type="StoreMenuVO" id="rmStoreMenu">
-		<result column="num" property="num"/>
+		<id column="num" property="num"/>
 		<result column="menuCategory" property="menuCategory"/>
 		<result column="menuName" property="menuName"/>
 		<result column="menuPrice" property="menuPrice"/>
@@ -44,16 +55,17 @@
 	</resultMap>
 	
 	<resultMap type="StoreMenuFileVO" id="rmStoreMenuFile">
-		<result column="fileNum" property="fileNum"/>
+		<id column="fileNum" property="fileNum"/>
 		<result column="menuNum" property="menuNum"/>
 		<result column="oriName" property="oriName"/>
 		<result column="fileName" property="fileName"/>
 	</resultMap>
 
 	<select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
-		select s.storeName, s.address, s.tel, s.storeNumber, sm.*
+		select s.storeName, s.address, s.tel, s.storeNumber, sm.*, st.fileName
 		from store s
 		inner join storemanage sm on s.num = sm.storeNum
+        inner join storethumbfile st on s.num = st.storeNum
 		where s.num=#{num}
 	</select>
 	

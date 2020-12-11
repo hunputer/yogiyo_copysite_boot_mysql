@@ -32,7 +32,8 @@
 			<ul>
 				<c:forEach items="${list}" var="m">
 					<c:if test="${m.menuCategory eq cg}">
-						<li>
+							
+						<li class="modal--open">
 							<div class="liDiv">
 								<div class="divName">
 									${m.menuName}
@@ -53,6 +54,18 @@
 </c:forEach>	
 </div>
 
+
+<div class="modal">
+  <div class="screen">
+    <div class="layerpop">
+      <p class="layerpop__container">
+      레이어팝업입니다
+      </p>
+      <button type="button" value="close" class="btn modal--close">Close</button>
+    </div>
+  </div>
+</div>
+
 	<script>
 		var a = document.getElementsByClassName("maDiv2dd");
 		var b = document.getElementsByClassName("amd");
@@ -66,5 +79,40 @@
 					$(b[index]).html("∨");
 				}
 			});
+		});
+
+		function bgLayerOpen() {
+		    if(!$('.bgLayer').length) {
+		        $('<div class="bgLayer"></div>').appendTo($('body'));
+		    }
+		    var object = $(".bgLayer");
+		    var w = $(document).width()+12;
+		    var h = $(document).height();
+
+		    object.css({'width':w,'height':h}); 
+		    object.fadeIn(500);   //생성되는 시간 설정
+		}
+		
+		function bgLayerClear(){
+		    var object = $('.bgLayer');
+
+		if(object.length) {
+		    object.fadeOut(500, function() {
+		    object.remove();
+		});
+		    }
+		}
+
+		
+		$modal = $(".modal");
+
+		$(".modal--open").click(function() {
+			$modal.show();
+			bgLayerOpen();
+			return false;
+		});
+		$(".modal--close").click(function() {
+			$modal.hide();
+			bgLayerClear();
 		});
 	</script>

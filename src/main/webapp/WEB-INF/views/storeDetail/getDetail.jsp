@@ -7,10 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootstrap.jsp"></c:import>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+
 <style type="text/css">
 .sdContainer {
 	width: 1090px;
-	height: 3000px;
+	height: auto;
 	margin: 15px auto;
 }
 
@@ -55,87 +57,97 @@
 	width: 90px;
 }
 
-.sdDiv1{
-	width : 660px;
-	height: 2000px;
+.sdDiv1 {
+	width: 660px;
+	height: auto;
 	display: inline-block;
 }
-.sdBanner{
-	float : right;
+
+.sdBanner {
+	float: right;
 	width: 400px;
-	height: 2000px;
+	height: auto;
 	background-color: orange;
 	margin-left: 15px;
 }
 
-.sdBanner > #chase{
+.sdBanner>#chase {
 	width: 400px;
 	height: 300px;
 	background-color: fuchsia;
 }
-.sdHeader{
+
+.sdHeader {
 	width: 660px;
 	height: 200px;
 	border: 1px solid #DCDCDC;
 }
-.sdHeaderDiv1{
+
+.sdHeaderDiv1 {
 	width: 660px;
 	height: 45px;
 	font-size: 22px;
 	text-align: center;
 	line-height: 40px;
-
 }
-.sdHeaderDiv2{
+
+.sdHeaderDiv2 {
 	width: 660px;
 	height: 110px;
 	border-bottom: 1px solid #DCDCDC;
 	border-top: 1px solid #DCDCDC;
 }
-.sdHeaderDiv2 > img{
+
+.sdHeaderDiv2>img {
 	float: left;
 	width: 90px;
 	height: 90px;
 	margin-top: 10px;
 	margin-left: 10px;
+	border: 1px solid #DCDCDC;
 }
-#sdHeaderDiv3{
+
+#sdHeaderDiv3 {
 	width: 660px;
 	height: 45px;
-	cursor:pointer;
+	cursor: pointer;
 }
-#sdHeaderDiv3 > img{
+
+#sdHeaderDiv3>img {
 	float: left;
 	width: 30px;
 	height: 30px;
 	margin-top: 7px;
 	margin-left: 10px;
 }
-.sdHeaderDiv2Div{
+
+.sdHeaderDiv2Div {
 	width: 400px;
 	height: 90px;
 	display: inline-block;
 	margin-top: 10px;
 	margin-left: 10px;
-	
 }
-.sdHeaderDiv2Div > ul{
+
+.sdHeaderDiv2Div>ul {
 	list-style: none;
-	-webkit-padding-start : 0px;
+	-webkit-padding-start: 0px;
 	color: #A9A9A9;
 }
-.sdBottom{
+
+.sdBottom {
 	width: 660px;
 	height: 2000px;
 	margin-top: 15px;
 }
-.sdBtnDiv{
+
+.sdBtnDiv {
 	width: 660px;
 	height: 47px;
 }
 
-.sdBtnCss{
- 	float :left;
+.sdBtnCss {
+	float: left;
 	width: 220px;
 	height: 47px;
 	border: 1px solid #DCDCDC;
@@ -143,29 +155,32 @@
 	text-align: center;
 	line-height: 47px;
 	font-size: 17px;
-	 
 }
+
 .sdBtnCss:hover {
-    background: #F5F5F5;
-    color: #fa0050;
-  }
-  .sdA:active, .sdBtnClicked {
-    background: #F5F5F5;
-    color: #fa0050;
-   	font-weight:  bold;
-  }
-  .sdBtnConDiv{
-  	width: 660px;
-  	height: 1000px;
-  	background-color: lime;
-  	
-  }
-  .iaDiv1{
+	background: #F5F5F5;
+	color: #fa0050;
+}
+
+.sdA:active, .sdBtnClicked {
+	background: #F5F5F5;
+	color: #fa0050;
+	font-weight: bold;
+}
+
+.sdBtnConDiv {
+	width: 660px;
+	height: 1000px;
+	background-color: lime;
+}
+
+.iaDiv1 {
 	width: 640px;
 	height: auto;
 	margin: 15px auto 50px;
 }
-.d1{
+
+.d1 {
 	width: 640px;
 	height: auto;
 	margin: 15px auto;
@@ -173,74 +188,86 @@
 	font-size: 19px;
 	font-weight: bold;
 }
-.d2{
+
+.d2 {
 	width: 640px;
 	height: auto;
 	margin: 15px auto;
 	font-size: 16px;
 }
-.d1 > img{
+
+.d1>img {
 	width: 20px;
 	height: 20px;
 	margin-bottom: 3px;
 }
-.d2d1{
+
+.d2d1 {
 	float: left;
 	width: 120px;
 	height: auto;
 	color: #A9A9A9;
 }
-.maDiv{
+
+.maDiv {
 	width: 660px;
 	height: 215px;
 }
-.maDiv > ul{
-	white-space:nowrap; 
-    overflow-x: auto;
-    list-style:none;
-    text-align :center;
-    -webkit-padding-start : 15px;
+
+.maDiv>ul {
+	white-space: nowrap;
+	overflow-x: auto;
+	list-style: none;
+	text-align: center;
+	-webkit-padding-start: 15px;
 }
-.maDiv > ul > li{
-	width : 138px;
-	height : 164px;
-	margin-top : 15px;
-	display:inline-block;
+
+.maDiv>ul>li {
+	width: 138px;
+	height: 164px;
+	margin-top: 15px;
+	display: inline-block;
 	margin-right: 5px;
-	margin-bottom : 10px;
+	margin-bottom: 10px;
 	border: 1px solid #DCDCDC;
 }
-.maDiv > ul > li > img{
+
+.maDiv>ul>li>img {
 	width: 136px;
 	height: 98px;
 }
-.maDivdiv1{
+
+.maDivdiv1 {
 	height: 138px;
 	height: 33px;
 	text-align: center;
 	line-height: 33px;
 	font-size: 15px;
 	font-weight: bold;
-	text-overflow: ellipsis; 
-	white-space:nowrap; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	overflow: hidden;
 }
-.maDivdiv2{
+
+.maDivdiv2 {
 	height: 138px;
 	height: 33px;
 	text-align: center;
 	line-height: 33px;
 }
-.maDDD{
+
+.maDDD {
 	width: 660px;
 	height: auto;
 }
-.maDiv2{
+
+.maDiv2 {
 	width: 660px;
 	height: auto;
 	cursor: pointer;
 }
-.maDiv2d{
+
+.maDiv2d {
 	width: 660px;
 	height: 48px;
 	background-color: #F5F5F5;
@@ -249,56 +276,91 @@
 	line-height: 48px;
 	font-weight: bolder;
 }
-.amd{
+
+.amd {
 	float: right;
 	height: 40px;
 	width: 30px;
 	color: #A9A9A9;
 	font-size: 20px;
 }
-.maDiv2dd{
+
+.maDiv2dd {
 	width: 660px;
 	height: auto;
-	display : none;
+	display: none;
 }
-.maDiv2dd > ul{
-	list-style:none;
-    -webkit-padding-start : 0px;
+
+.maDiv2dd>ul {
+	list-style: none;
+	-webkit-padding-start: 0px;
 }
-.maDiv2dd > ul> li{
+
+.maDiv2dd>ul>li {
 	width: 660px;
 	height: 110px;
-	padding : 12px 10px 12px 15px;
+	padding: 12px 10px 12px 15px;
 	border-bottom: 1px solid #DCDCDC;
 }
-.liDiv{
+
+.liDiv {
 	width: 510px;
 	height: 90px;
 	float: left;
 }
-.divName{
+
+.divName {
 	width: 510px;
 	height: 26px;
 	font-size: 16px;
 	font-weight: bold;
 }
-.divDes{
+
+.divDes {
 	width: 510px;
 	height: 38px;
 	font-size: 13px;
 	color: #A9A9A9;
 }
-.divPrice{
+
+.divPrice {
 	width: 510px;
 	height: 24px;
 	font-size: 15x;
 }
-.maDiv2dd > ul> li > img{
+
+.maDiv2dd>ul>li>img {
 	height: 80px;
 	width: 112px;
-	margin-left : 10px;
+	margin-left: 10px;
 }
 
+.modal {
+	width: 30%;
+	height: 600px;
+	background-color: aqua;
+	border: 1px solid #DCDCDC;
+	margin-left: 35%; /* half of width */
+	margin-top: 8%; /* half of height */
+}
+
+.bgLayer {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: .5;
+	filter: alpha(opacity = 50);
+	z-index: 10;
+}
+.md1{
+	width: 100%;
+	height: 60px;
+	background-color: gray;
+}
 </style>
 
 <script type="text/javascript">
@@ -361,7 +423,14 @@
 					${vo.storeName}
 				</div>
 				<div class="sdHeaderDiv2">
-					<img src="#">
+					<c:choose>
+						<c:when test="${vo.storeThumbFileVO.fileName ne null}">
+							<img src="../upload/${vo.storeThumbFileVO.fileName}">
+						</c:when>
+						<c:otherwise>
+							<img>
+						</c:otherwise>
+					</c:choose>
 					<div class="sdHeaderDiv2Div">
 						<ul>
 							<li>별점</li>

@@ -10,5 +10,6 @@
 		<typeAlias type="com.jh.yogiyo.store.StoreManageVO" alias="StoreManageVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreMenuVO" alias="StoreMenuVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreMenuFileVO" alias="StoreMenuFileVO"/>
+		<typeAlias type="com.jh.yogiyo.store.detail.StoreThumbFileVO" alias="StoreThumbFileVO"/>
 	</typeAliases>
 </configuration>  

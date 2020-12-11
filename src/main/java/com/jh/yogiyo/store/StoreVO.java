@@ -1,6 +1,9 @@
 package com.jh.yogiyo.store;
 
+import java.sql.SQLTransactionRollbackException;
 import java.util.List;
+
+import com.jh.yogiyo.store.detail.StoreThumbFileVO;
 
 import lombok.Data;
 
@@ -14,5 +17,8 @@ public class StoreVO {
 	private String address;
 	private String zipCode;
 	private String id;
+	
 	private StoreManageVO storeManageVO;
+	private StoreThumbFileVO storeThumbFileVO;
+	
 }
