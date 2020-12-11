@@ -32,7 +32,7 @@
 
 <div class="iaDiv1">
 	<div class="d1">
-		<img src="../images/storeInfo.PNG"> 결제정보
+		<img src="../images/payInfo.PNG"> 결제정보
 	</div>
 	<div class="d2">
 		<div class="d2d1">
@@ -49,7 +49,7 @@
 
 <div class="iaDiv1">
 	<div class="d1">
-		<img src="../images/storeInfo.PNG"> 사업자정보
+		<img src="../images/ownInfo.PNG"> 사업자정보
 	</div>
 	<div class="d2">
 		<div class="d2d1">
@@ -64,6 +64,6 @@
 
 <div class="iaDiv1">
 	<div class="d1">
-		<img src="../images/storeInfo.PNG"> 원산지정보
+		<img src="../images/gredientInfo.PNG"> 원산지정보
 	</div>
 </div>

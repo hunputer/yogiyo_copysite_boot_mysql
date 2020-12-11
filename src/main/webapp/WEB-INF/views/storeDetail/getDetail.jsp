@@ -219,7 +219,7 @@
 	overflow-x: auto;
 	list-style: none;
 	text-align: center;
-	-webkit-padding-start: 15px;
+	-webkit-padding-start: 0px;
 }
 
 .maDiv>ul>li {
@@ -338,7 +338,7 @@
 .modal {
 	width: 30%;
 	height: 600px;
-	background-color: aqua;
+	background-color: white;
 	border: 1px solid #DCDCDC;
 	margin-left: 35%; /* half of width */
 	margin-top: 8%; /* half of height */
@@ -356,14 +356,43 @@
 	filter: alpha(opacity = 50);
 	z-index: 10;
 }
+.screen{
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	font-size: 20px;
+}
 .md1{
 	width: 100%;
+	height: 350px;
+	background-color: aqua;
+}
+
+.md1 > img{
+	width: 50%;
+	height: 200px;
+	margin: 0 auto;
+}
+.md1d{
+	width: 100px;
 	height: 60px;
-	background-color: gray;
+	background-color: orange;
+}
+.modal--close{
+	float: right;
+	width: 60px;
+	height: 60px;
+	text-align: center;
+	background-color: white;
+	font-size: 36px;
 }
 </style>
 
 <script type="text/javascript">
+	$(document).ready(function(){
+		$("#menuBtn").trigger("click");
+	});
+	
 	$(window).scroll(function(event) {
 		if (jQuery(window).scrollTop() > jQuery(".sdBanner").offset().top) {
 			jQuery("#chase").css("position", "fixed");
@@ -371,6 +400,7 @@
 			jQuery("#chase").css("position", "static");
 		}
 	});
+		
 </script>
 
 </head>
@@ -454,7 +484,7 @@
 			
 			<div class="sdBottom">
 				<div class="sdBtnDiv">
-					<a style="color: black;" class="sdA" id="menuBtn"><div class="sdBtn sdBtnCss">메뉴</div></a>
+					<a style="color: black;" class="sdA" id="menuBtn" onclick="getMenu();"><div class="sdBtn sdBtnCss">메뉴</div></a>
 					<a style="color: black;" class="sdA" id="rvBtn"><div class="sdBtn sdBtnCss">리뷰</div></a>
 					<a style="color: black;" class="sdA" id="infoBtn"><div class="sdBtn sdBtnCss" onclick="getInfo();">정보</div></a>
 				</div>
@@ -488,7 +518,7 @@
 		});
 	
 		//메뉴
-		$("#menuBtn").click(function(){
+		function getMenu(){
 			$.ajax({
 				method:"GET",
 				url:"./getMenuAjax",
@@ -496,9 +526,9 @@
 				success:function(data){
 					$("#sdBtnConDiv").html(data);	
 				}
-			});		
-		});
-
+			});	
+		}
+		
 		//리뷰
 		$("#rvBtn").click(function(){
 			$("#sdBtnConDiv").html("");

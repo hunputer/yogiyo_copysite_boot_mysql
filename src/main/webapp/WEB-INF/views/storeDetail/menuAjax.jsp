@@ -4,8 +4,8 @@
 
 <div class="maDiv">
 	<ul>
-	<c:forEach items="${list}" var="ar">
-		<li>
+	<c:forEach items="${list}" var="ar" varStatus="vs">
+		<li class="modal--open" title="modal${vs.count}">
 			<c:choose>
 				<c:when test="${ar.storeMenuFileVO.oriName ne null}">
 					<img src="../upload/${ar.storeMenuFileVO.oriName}">
@@ -17,7 +17,30 @@
 			<div class="maDivdiv1">${ar.menuName}</div>
 			<div class="maDivdiv2">${ar.menuPrice}원</div>
 		</li>
-	</c:forEach>
+
+			<!-- 클릭 시 나타나는 모달창 -->
+			<div class="modal" id="modal${vs.count}">
+				<div class="screen">
+					<button type="button" title="modal${vs.count}" value="close"
+						class="btn modal--close">Χ</button>
+					<div class="layerpop">
+						<p class="layerpop__container">메뉴상세</p>
+					</div>
+				</div>
+
+				<div class="md1">
+					<c:choose>
+						<c:when test="${ar.storeMenuFileVO.oriName ne null}">
+							<img src="../upload/${ar.storeMenuFileVO.oriName}">
+						</c:when>
+						<c:otherwise>
+							<img>
+						</c:otherwise>
+					</c:choose>
+					<div class="md1d">${ar.menuName}</div>
+				</div>
+			</div>
+		</c:forEach>
 	</ul>
 </div>
 
@@ -30,10 +53,10 @@
 		
 		<div class="maDiv2dd">
 			<ul>
-				<c:forEach items="${list}" var="m">
+				<c:forEach items="${list}" var="m" varStatus="vs">
 					<c:if test="${m.menuCategory eq cg}">
 							
-						<li class="modal--open">
+						<li class="modal--open" title="modal${cg}${vs.count}">
 							<div class="liDiv">
 								<div class="divName">
 									${m.menuName}
@@ -45,7 +68,32 @@
 								<img src="../upload/${m.storeMenuFileVO.oriName}">
 							</c:if>
 						</li>
+						
+						<!-- 클릭 시 나타나는 모달창 -->
+						<div class="modal" id="modal${cg}${vs.count}">
+							<div class="screen">
+								<button type="button" title="modal${cg}${vs.count}" value="close" class="btn modal--close">Χ</button>
+								<div class="layerpop">
+									<p class="layerpop__container">　　메뉴상세</p>
+								</div>
+							</div>
+
+							<div class="md1">
+								<c:choose>
+									<c:when test="${m.storeMenuFileVO.oriName ne null}">
+										<img src="../upload/${m.storeMenuFileVO.oriName}">
+									</c:when>
+									<c:otherwise>
+										<img>
+									</c:otherwise>
+								</c:choose>
+								<div class="md1d">
+									${m.menuName}
+								</div>	
+							</div>
+						</div>
 					</c:if>
+
 				</c:forEach>
 			</ul>
 		</div>
@@ -55,16 +103,7 @@
 </div>
 
 
-<div class="modal">
-  <div class="screen">
-    <div class="layerpop">
-      <p class="layerpop__container">
-      레이어팝업입니다
-      </p>
-      <button type="button" value="close" class="btn modal--close">Close</button>
-    </div>
-  </div>
-</div>
+
 
 	<script>
 		var a = document.getElementsByClassName("maDiv2dd");
@@ -103,15 +142,18 @@
 		    }
 		}
 
-		
 		$modal = $(".modal");
-
+		
 		$(".modal--open").click(function() {
+			var id = $(this).attr("title");
+			$modal = $("#"+id);
 			$modal.show();
 			bgLayerOpen();
 			return false;
 		});
 		$(".modal--close").click(function() {
+			var id = $(this).attr("title");
+			$modal = $("#"+id);
 			$modal.hide();
 			bgLayerClear();
 		});
