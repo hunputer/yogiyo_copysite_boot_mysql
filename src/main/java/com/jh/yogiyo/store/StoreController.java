@@ -19,20 +19,24 @@ public class StoreController {
 	private StoreService storeService;
 	
 	@GetMapping("storeList")
-	public ModelAndView getList(StoreVO storeVO) throws Exception{
+	public ModelAndView getList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<StoreVO> ar = storeService.getList(storeVO);
-		mv.addObject("list", ar);
 		mv.setViewName("store/storeList");
 		return mv;
 	}
 	
-	@GetMapping("storeList2")
-	public ModelAndView getList2(SearchVO searchVO) throws Exception {
+	@PostMapping("storeList")
+	public ModelAndView getList(StorePager storePager) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<StoreVO> ar = storeService.getList2(searchVO);
+		if(storePager.getCurPage() == 0) {
+			storePager.setCurPage(1);
+		}
+		System.out.println(storePager.getAddress());
+		System.out.println(storePager.getCategoryNum());
+		System.out.println(storePager.getCurPage());
+		List<StoreVO> ar = storeService.getList(storePager);
 		mv.addObject("list", ar);
-		mv.setViewName("store/storeList");
+		mv.setViewName("store/storePager");
 		return mv;
 	}
 	

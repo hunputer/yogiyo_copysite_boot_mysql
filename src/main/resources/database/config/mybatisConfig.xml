@@ -11,5 +11,6 @@
 		<typeAlias type="com.jh.yogiyo.store.search.SearchVO" alias="SearchVO"/>
 		<typeAlias type="java.lang.Long" alias="Long"/>
 		<typeAlias type="java.lang.Integer" alias="Integer"/>
+		<typeAlias type="com.jh.yogiyo.store.StorePager" alias="StorePager"/>
 	</typeAliases>
 </configuration>  

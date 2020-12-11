@@ -5,11 +5,11 @@
     
 <mapper namespace="com.jh.yogiyo.store.search.SearchMapper">
 	
-	<select id="getOne" parameterType="SearchVO" resultType="SearchVO">
+	<select id="getOne" parameterType="StorePager" resultType="SearchVO">
 		select * from search where searchName = #{searchName}
 	</select>
 	
-	<insert id="setInsert" parameterType="SearchVO">
+	<insert id="setInsert" parameterType="StorePager">
 		insert into search(searchName, hit, regDate) values (#{searchName}, 1, now());
 	</insert>
 	

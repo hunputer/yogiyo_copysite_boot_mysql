@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.store.StoreMapper">
-	<select id="getList" parameterType="StoreVO" resultMap="getOneResult">
+	<select id="getList" parameterType="StorePager" resultMap="getOneResult">
 		select S.*, SM.*
 		from store S left join storemanage SM
 		on S.num = SM.storeNum 
@@ -14,20 +14,13 @@
 				and S.categoryNum = #{categoryNum}
 			</when>
 		</choose>
-	</select>
-	
-	<select id="getList2" parameterType="SearchVO" resultMap="getOneResult">
-		select S.*, SM.*
-		from store S left join storemanage SM
-		on S.num = SM.storeNum 
-		where S.address like '%${address}%'
 		<choose>
 			<when test="searchName != null">
 				and S.storeName like '%${searchName}%'
 			</when>
 		</choose>
+		order by num asc limit #{startRow},20
 	</select>
-	
 	
 	<resultMap type="StoreVO" id="getOneResult">
          <id column="num" property="num"/>

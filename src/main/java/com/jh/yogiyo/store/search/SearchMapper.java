@@ -4,14 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.jh.yogiyo.store.StorePager;
 import com.jh.yogiyo.store.StoreVO;
 
 @Mapper
 public interface SearchMapper {
 	
-	public SearchVO getOne(SearchVO SearchVO) throws Exception;
+	public SearchVO getOne(StorePager storePager) throws Exception;
 	
-	public int setInsert(SearchVO SearchVO) throws Exception;
+	public int setInsert(StorePager storePager) throws Exception;
 	
 	public int setUpdate(SearchVO SearchVO) throws Exception;
 	

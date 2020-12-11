@@ -17,19 +17,18 @@ public class StoreService {
 	@Autowired
 	private SearchMapper searchMapper;
 	
-	public List<StoreVO> getList(StoreVO storeVO) throws Exception{
-		return storeMapper.getList(storeVO);
-	}
-	
-	public List<StoreVO> getList2(SearchVO searchVO) throws Exception{
-		SearchVO vo = searchMapper.getOne(searchVO);
-		int result = 0;
-		if(vo != null) {
-			result = searchMapper.setUpdate(vo);
-		}else {
-			result = searchMapper.setInsert(searchVO);
+	public List<StoreVO> getList(StorePager storePager) throws Exception{
+		storePager.makeRow();
+		if(storePager.getCurPage()==1 && !storePager.getSearchName().equals("") && storePager.getSearchName() != null) {
+			SearchVO vo = searchMapper.getOne(storePager);
+			int result = 0;
+			if(vo != null) {
+				result = searchMapper.setUpdate(vo);
+			}else {
+				result = searchMapper.setInsert(storePager);
+			}
 		}
-		return storeMapper.getList2(searchVO);
+		return storeMapper.getList(storePager);
 	} 
 	
 	public List<SearchVO> getSearch() throws Exception{

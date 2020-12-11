@@ -263,7 +263,7 @@
 	   				
    				</div>
    				<div style="padding: 0px 20px; margin-bottom: 5px;">
-   					<form action="./storeList2" method="get">
+   					<form action="./storeList" method="get">
 		   				<input type="text" class="search2" name="searchName" placeholder="음식점을 검색하세요">
 		   				<input type="hidden" name="address" value="${param.address}">
 		   				<button class="searchBnt2">검색</button>
@@ -277,29 +277,22 @@
 			  <div class="ng-scope">
         			<p>요기요 등록 음식점</p>
       		  </div>
-      		  <c:forEach items="${list}" var="vo">
-	      		  <div class="col-sm-6">
-	      		  	<div class="item">
-	      		  		<div class="logo1">
-	      		  			
-	      		  		</div>
-	      		  		<div class="restaurant-name">
-	      		  			${vo.storeName}
-	      		  		</div>
-	      		  		<div class="restaurant-info">
-	      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | ${vo.storeManageVO.minPrice}원 이상 배달
-	      		  		</div>
-	      		  		<div class="restaurant-time">
-	      		  				${vo.storeManageVO.takeTime}분 예상
-	      		  		</div>
-	      		  	</div>
-	      		  	</div>
-      		  	</c:forEach>
+      		  <div id="pagerResult">
+	      		 
+      		  </div>
 	      </div>
 	<c:import url="../template/footer.jsp"></c:import>
 	
 	<script type="text/javascript">
+		var curPage = 1;
+		var address = '${param.address}'
+		var categoryNum = '${param.categoryNum}'
+		var searchName = '${param.searchName}'
+		if(categoryNum == ''){
+			categoryNum = 0;
+		}
 		hit();
+		InitList();
 	
 		setInterval(hit, 50000)
 		
@@ -307,9 +300,31 @@
 			$.get("./searchList" ,function(data) {
 				$("#searchResult").html(data);
 			})
+		} 
+		 
+		function InitList(){  //페이지가 로드되면 데이터를 가져오고 page를 증가시킨다.
+		     getList(curPage);
+		     curPage++;
+		}; 
+		 
+		$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		     if($(window).scrollTop() >= $(document).height() - $(window).height()-10){
+		          getList(curPage);
+		          curPage++;   
+		     } 
+		});
+		 
+		function getList(curPage){
+			$.post("./storeList",{curPage : curPage, address : address, categoryNum : categoryNum, searchName : searchName},function(data){
+				if (curPage==1){  //페이지가 1이 아닐경우 데이터를 붙힌다.
+	                $("#pagerResult").html(data); 
+	            }else{
+	                $("#pagerResult").append(data);
+	            }
+	          }); 
 		}
-
 		
+
 	</script>
 </body>
 </html>
