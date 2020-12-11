@@ -48,7 +48,9 @@ public class StoreDetailController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<StoreMenuVO> ar = storeDetailService.getMenu(storeVO);
+		String[] cg = storeDetailService.getMenuCategory(storeVO);
 		
+		mv.addObject("cg",cg);
 		mv.addObject("list", ar);
 		mv.setViewName("storeDetail/menuAjax");
 		return mv;

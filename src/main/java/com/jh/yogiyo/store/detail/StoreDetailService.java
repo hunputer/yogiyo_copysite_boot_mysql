@@ -24,4 +24,8 @@ public class StoreDetailService {
 	public List<StoreMenuVO> getMenu(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getMenu(storeVO);
 	}
+	
+	public String[] getMenuCategory(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getMenuCategory(storeVO);
+	}
 }

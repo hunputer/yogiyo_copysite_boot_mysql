@@ -191,6 +191,86 @@
 	height: auto;
 	color: #A9A9A9;
 }
+.maDiv{
+	width: 660px;
+	height: 215px;
+}
+.maDiv > ul{
+	white-space:nowrap; 
+    overflow-x: auto;
+    list-style:none;
+    text-align :center;
+    -webkit-padding-start : 15px;
+}
+.maDiv > ul > li{
+	width : 138px;
+	height : 164px;
+	margin-top : 15px;
+	display:inline-block;
+	margin-right: 5px;
+	margin-bottom : 10px;
+	border: 1px solid #DCDCDC;
+}
+.maDiv > ul > li > img{
+	width: 136px;
+	height: 98px;
+}
+.maDivdiv1{
+	height: 138px;
+	height: 33px;
+	text-align: center;
+	line-height: 33px;
+	font-size: 15px;
+	font-weight: bold;
+	text-overflow: ellipsis; 
+	white-space:nowrap; 
+	overflow: hidden;
+}
+.maDivdiv2{
+	height: 138px;
+	height: 33px;
+	text-align: center;
+	line-height: 33px;
+}
+.maDDD{
+	width: 660px;
+	height: auto;
+}
+.maDiv2{
+	width: 660px;
+	height: auto;
+	cursor: pointer;
+}
+.maDiv2d{
+	width: 660px;
+	height: 48px;
+	background-color: #F5F5F5;
+	border: 1px solid #DCDCDC;
+	font-size: 15px;
+	line-height: 48px;
+	font-weight: bolder;
+}
+.amd{
+	float: right;
+	height: 40px;
+	width: 30px;
+	color: #A9A9A9;
+	font-size: 20px;
+}
+.maDiv2dd{
+	width: 660px;
+	height: auto;
+	display : none;
+}
+.maDiv2dd > ul{
+	list-style:none;
+    -webkit-padding-start : 0px;
+}
+.maDiv2dd > li{
+	width: 660px;
+	height: 110px;
+	border: 1px solid #DCDCDC;
+}
 </style>
 
 <script type="text/javascript">

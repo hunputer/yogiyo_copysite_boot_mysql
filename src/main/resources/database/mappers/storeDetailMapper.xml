@@ -44,4 +44,9 @@
 		select * from storemenu where storeNum = #{num}
 	</select>
 	
+	<select id="getMenuCategory" parameterType="StoreVO" resultType="java.lang.String">
+		select menuCategory from storemenu 
+		where storeNum = #{num}
+		group by menuCategory
+	</select>
 </mapper>
