@@ -32,6 +32,23 @@
 		<result column="isOpen" property="isOpen" />
 		<result column="storeComment" property="storeComment" />
 	</resultMap>
+	
+	<resultMap type="StoreMenuVO" id="rmStoreMenu">
+		<result column="num" property="num"/>
+		<result column="menuCategory" property="menuCategory"/>
+		<result column="menuName" property="menuName"/>
+		<result column="menuPrice" property="menuPrice"/>
+		<result column="isSell" property="isSell" />
+		<result column="description" property="description" />
+		<association property="storeMenuFileVO" javaType="StoreMenuFileVO" resultMap="rmStoreMenuFile"></association>
+	</resultMap>
+	
+	<resultMap type="StoreMenuFileVO" id="rmStoreMenuFile">
+		<result column="fileNum" property="fileNum"/>
+		<result column="menuNum" property="menuNum"/>
+		<result column="oriName" property="oriName"/>
+		<result column="fileName" property="fileName"/>
+	</resultMap>
 
 	<select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
 		select s.storeName, s.address, s.tel, s.storeNumber, sm.*
@@ -40,8 +57,11 @@
 		where s.num=#{num}
 	</select>
 	
-	<select id="getMenu" parameterType="StoreVO" resultType="StoreMenuVO">
-		select * from storemenu where storeNum = #{num}
+	<select id="getMenu" parameterType="StoreVO" resultMap="rmStoreMenu">
+		select sm.*, sf.oriName 
+		from storemenu sm 
+		left join storemenufile sf on sm.num = sf.menuNum 
+		where storeNum = #{num}
 	</select>
 	
 	<select id="getMenuCategory" parameterType="StoreVO" resultType="java.lang.String">

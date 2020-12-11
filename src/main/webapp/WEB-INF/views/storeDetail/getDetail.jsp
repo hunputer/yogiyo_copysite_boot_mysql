@@ -83,8 +83,7 @@
 	height: 45px;
 	font-size: 22px;
 	text-align: center;
-	font-weight: bold;
-	line-height: 45px;
+	line-height: 40px;
 
 }
 .sdHeaderDiv2{
@@ -266,11 +265,40 @@
 	list-style:none;
     -webkit-padding-start : 0px;
 }
-.maDiv2dd > li{
+.maDiv2dd > ul> li{
 	width: 660px;
 	height: 110px;
-	border: 1px solid #DCDCDC;
+	padding : 12px 10px 12px 15px;
+	border-bottom: 1px solid #DCDCDC;
 }
+.liDiv{
+	width: 510px;
+	height: 90px;
+	float: left;
+}
+.divName{
+	width: 510px;
+	height: 26px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.divDes{
+	width: 510px;
+	height: 38px;
+	font-size: 13px;
+	color: #A9A9A9;
+}
+.divPrice{
+	width: 510px;
+	height: 24px;
+	font-size: 15x;
+}
+.maDiv2dd > ul> li > img{
+	height: 80px;
+	width: 112px;
+	margin-left : 10px;
+}
+
 </style>
 
 <script type="text/javascript">

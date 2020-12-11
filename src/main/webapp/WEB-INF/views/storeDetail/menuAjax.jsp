@@ -6,7 +6,14 @@
 	<ul>
 	<c:forEach items="${list}" var="ar">
 		<li>
-			<img src="../images/sdComment.PNG">
+			<c:choose>
+				<c:when test="${ar.storeMenuFileVO.oriName ne null}">
+					<img src="../upload/${ar.storeMenuFileVO.oriName}">
+				</c:when>
+				<c:otherwise>
+					<img>
+				</c:otherwise>
+			</c:choose>
 			<div class="maDivdiv1">${ar.menuName}</div>
 			<div class="maDivdiv2">${ar.menuPrice}원</div>
 		</li>
@@ -24,7 +31,20 @@
 		<div class="maDiv2dd">
 			<ul>
 				<c:forEach items="${list}" var="m">
-					<li>${m.menuName}</li>
+					<c:if test="${m.menuCategory eq cg}">
+						<li>
+							<div class="liDiv">
+								<div class="divName">
+									${m.menuName}
+								</div>
+								<div class="divDes">${m.description}</div>
+								<div class="divPrice">${m.menuPrice}원</div>
+							</div>
+							<c:if test="${m.storeMenuFileVO.oriName ne null}">
+								<img src="../upload/${m.storeMenuFileVO.oriName}">
+							</c:if>
+						</li>
+					</c:if>
 				</c:forEach>
 			</ul>
 		</div>

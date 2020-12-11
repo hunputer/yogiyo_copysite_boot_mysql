@@ -11,4 +11,6 @@ public class StoreMenuVO {
 	private long menuPrice;
 	private int isSell;
 	private String description;
+	
+	private StoreMenuFileVO storeMenuFileVO;
 }
