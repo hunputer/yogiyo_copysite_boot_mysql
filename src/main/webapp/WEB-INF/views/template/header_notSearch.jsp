@@ -135,21 +135,14 @@
 
 		$("#btn-logout").click(function(){
 			unlinkApp();
-			setTimeout(function(){
-				location.href="${pageContext.request.contextPath}/member/memberLogout"
-			}, 1000);
 		});
 
 		function unlinkApp() {
-		    Kakao.API.request({
-		      url: '/v1/user/unlink',
-		      success: function(res) {
-		  
-		      },
-		      fail: function(err) {
-		        
-		      },
-		    })
+			Kakao.Auth.logout(function(data) {
+				setTimeout(function(){
+					location.href="${pageContext.request.contextPath}/member/memberLogout"
+				}, 1000);
+			});
 		  }
 	</script>
 	

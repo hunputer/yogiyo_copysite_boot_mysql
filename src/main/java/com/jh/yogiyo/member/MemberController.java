@@ -7,6 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.json.JSONParser;
@@ -54,7 +57,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberLogout")
-	public ModelAndView memberLogout(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView memberLogout(HttpServletRequest request, HttpServletResponse response,MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		session.invalidate();
 		String msg = "로그아웃 되었습니다";
