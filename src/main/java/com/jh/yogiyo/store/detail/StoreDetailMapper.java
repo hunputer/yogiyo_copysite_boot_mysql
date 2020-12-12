@@ -16,4 +16,6 @@ public interface StoreDetailMapper {
 	public List<StoreMenuVO> getMenu(StoreVO storeVO) throws Exception;
 	
 	public String[] getMenuCategory(StoreVO storeVO) throws Exception;
+	
+	public List<StoreReviewVO> getStarAvg(StoreVO storeVO) throws Exception;
 }

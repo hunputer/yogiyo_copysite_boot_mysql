@@ -28,4 +28,22 @@ public class StoreDetailService {
 	public String[] getMenuCategory(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getMenuCategory(storeVO);
 	}
+	
+	public double getStarAvg(StoreVO storeVO) throws Exception{
+		List<StoreReviewVO> ar = storeDetailMapper.getStarAvg(storeVO);
+		int sum = 0;
+		double avg = 0;
+		double n = ar.size();
+		
+		for(int i=0; i<ar.size(); i++){
+			StoreReviewVO vo = new StoreReviewVO();
+			sum += ar.get(i).getStarCount();
+		}
+		if(sum != 0) {
+			avg = sum/n;
+			avg = Double.parseDouble(String.format("%.1f", avg));
+		}
+		
+		return avg;
+	}
 }

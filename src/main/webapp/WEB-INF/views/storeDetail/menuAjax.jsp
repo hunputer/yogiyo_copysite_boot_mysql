@@ -24,7 +24,7 @@
 					<button type="button" title="modal${vs.count}" value="close"
 						class="btn modal--close">Χ</button>
 					<div class="layerpop">
-						<p class="layerpop__container">메뉴상세</p>
+						<p class="layerpop__container">　　메뉴상세</p>
 					</div>
 				</div>
 
@@ -68,31 +68,63 @@
 								<img src="../upload/${m.storeMenuFileVO.oriName}">
 							</c:if>
 						</li>
-						
-						<!-- 클릭 시 나타나는 모달창 -->
-						<div class="modal" id="modal${cg}${vs.count}">
-							<div class="screen">
-								<button type="button" title="modal${cg}${vs.count}" value="close" class="btn modal--close">Χ</button>
-								<div class="layerpop">
-									<p class="layerpop__container">　　메뉴상세</p>
+
+							<!-- 클릭 시 나타나는 모달창 -->
+							<div class="modal" id="modal${cg}${vs.count}">
+								<div class="screen">
+									<button type="button" title="modal${cg}${vs.count}" value="close" class="btn modal--close">Χ</button>
+									<div class="layerpop">
+										<p class="layerpop__container">메뉴상세</p>
+									</div>
+								</div>
+								<div class="modalCon">
+
+									<div class="md1">
+										<c:choose>
+											<c:when test="${m.storeMenuFileVO.oriName ne null}">
+												<img src="../upload/${m.storeMenuFileVO.oriName}">
+											</c:when>
+											<c:otherwise>
+												<img>
+											</c:otherwise>
+										</c:choose>
+										<div class="md1d">${m.menuName}</div>
+										<div class="md1d2">${m.description}</div>
+									</div>
+
+
+									<div id="divMd2">
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
+											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+									</div>
 								</div>
 							</div>
-
-							<div class="md1">
-								<c:choose>
-									<c:when test="${m.storeMenuFileVO.oriName ne null}">
-										<img src="../upload/${m.storeMenuFileVO.oriName}">
-									</c:when>
-									<c:otherwise>
-										<img>
-									</c:otherwise>
-								</c:choose>
-								<div class="md1d">
-									${m.menuName}
-								</div>	
-							</div>
-						</div>
-					</c:if>
+						</c:if>
 
 				</c:forEach>
 			</ul>
@@ -108,52 +140,57 @@
 	<script>
 		var a = document.getElementsByClassName("maDiv2dd");
 		var b = document.getElementsByClassName("amd");
-		$(".maDiv2d").each(function(index){
-			$(this).click(function(){
-				if($(a[index]).css("display")=="none"){
-					$(a[index]).css("display","block");
+		$(".maDiv2d").each(function(index) {
+			$(this).click(function() {
+				if ($(a[index]).css("display") == "none") {
+					$(a[index]).css("display", "block");
 					$(b[index]).html("∧");
-				}else{
-					$(a[index]).css("display","none");
+				} else {
+					$(a[index]).css("display", "none");
 					$(b[index]).html("∨");
 				}
 			});
 		});
 
 		function bgLayerOpen() {
-		    if(!$('.bgLayer').length) {
-		        $('<div class="bgLayer"></div>').appendTo($('body'));
-		    }
-		    var object = $(".bgLayer");
-		    var w = $(document).width()+12;
-		    var h = $(document).height();
+			if (!$('.bgLayer').length) {
+				$('<div class="bgLayer"></div>').appendTo($('body'));
+			}
+			var object = $(".bgLayer");
+			var w = $(document).width() + 12;
+			var h = $(document).height();
 
-		    object.css({'width':w,'height':h}); 
-		    object.fadeIn(500);   //생성되는 시간 설정
+			object.css({
+				'width' : w,
+				'height' : h
+			});
+			object.fadeIn(500); //생성되는 시간 설정
 		}
-		
-		function bgLayerClear(){
-		    var object = $('.bgLayer');
 
-		if(object.length) {
-		    object.fadeOut(500, function() {
-		    object.remove();
-		});
-		    }
+		function bgLayerClear() {
+			var object = $('.bgLayer');
+
+			if (object.length) {
+				object.fadeOut(500, function() {
+					object.remove();
+				});
+			}
 		}
 
 		$modal = $(".modal");
-		
+
 		$(".modal--open").click(function() {
 			var id = $(this).attr("title");
-			$modal = $("#"+id);
+			$modal = $("#" + id);
+			$('body').css("overflow", "hidden");
 			$modal.show();
 			bgLayerOpen();
 			return false;
 		});
 		$(".modal--close").click(function() {
 			var id = $(this).attr("title");
-			$modal = $("#"+id);
+			$modal = $("#" + id);
+			$('body').css("overflow", "scroll");
 			$modal.hide();
 			bgLayerClear();
 		});

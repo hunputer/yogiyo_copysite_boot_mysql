@@ -342,8 +342,18 @@
 	border: 1px solid #DCDCDC;
 	margin-left: 35%; /* half of width */
 	margin-top: 8%; /* half of height */
+	position: relative;
+	overflow: scroll;
+}
+.modalCon{
+	width: 100%;
+	height: auto;
 }
 
+#divMd2{
+	width: 100%;
+	height: auto; 
+}
 .bgLayer {
 	display: none;
 	position: absolute;
@@ -355,36 +365,78 @@
 	opacity: .5;
 	filter: alpha(opacity = 50);
 	z-index: 10;
+	overflow: none;
 }
-.screen{
+
+.screen {
 	height: 60px;
 	text-align: center;
 	line-height: 60px;
 	font-size: 20px;
 }
-.md1{
+
+.md1 {
 	width: 100%;
-	height: 350px;
-	background-color: aqua;
+	height: auto;
 }
 
-.md1 > img{
-	width: 50%;
-	height: 200px;
-	margin: 0 auto;
+.md1>img {
+	width: 30%;
+	height: 100px;
+	margin: 3% 35%;
 }
-.md1d{
-	width: 100px;
-	height: 60px;
-	background-color: orange;
+
+.md1d {
+	width: 100%;
+	height: auto;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 60px;
 }
-.modal--close{
+
+.modal--close {
 	float: right;
 	width: 60px;
 	height: 60px;
 	text-align: center;
 	background-color: white;
 	font-size: 36px;
+}
+
+.md1d2 {
+	width: 100%;
+	height: 40px;
+	font-size: 15px;
+	text-align: center;
+	color: #A9A9A9;
+}
+
+.md2 {
+	width: 100%;
+	height: 40px;
+	border-top: 1px solid #DCDCDC;
+}
+.raCon{
+	width: 660px;
+	height: auto;
+	background-color: aqua;
+}
+.radiv1{
+	width: 660px;
+	height: 100px;
+	border-bottom: 1px solid #DCDCDC;
+}
+.radiv2{
+	margin-top: 10px;
+	width: 660px;
+	height: 50px;
+	background-color: yellow;
+}
+.radiv3{
+	width: 660px;
+	height: 20px;
+	background-color: fuchsia;
 }
 </style>
 
@@ -463,7 +515,18 @@
 					</c:choose>
 					<div class="sdHeaderDiv2Div">
 						<ul>
-							<li>별점</li>
+							<li>별점 
+							<c:if test="${avg ne 0}">
+								<c:forEach begin="1" end="5" var="i">
+									<c:choose>
+										<c:when test="${avg ge i}">
+											<span style="color:orange;">★</span>
+										</c:when>
+										<c:otherwise><span style="color:#DCDCDC;">★</span></c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<span style="color: black;">  ${avg}</span></c:if>
+							</li>
 							<li>최소주문금액 <span style="color: black;">  ${vo.storeManageVO.minPrice}원</span></li>
 							<li>배달비 <span style="color: black;">  ${vo.storeManageVO.driveFee}원</span></li>
 							<li>배달소요시간 <span style="color: black;">  약 ${vo.storeManageVO.takeTime}분</span></li>
@@ -531,8 +594,14 @@
 		
 		//리뷰
 		$("#rvBtn").click(function(){
-			$("#sdBtnConDiv").html("");
-		
+			$.ajax({
+				method:"GET",
+				url:"./getReviewAjax",
+				data:{num:${vo.storeManageVO.storeNum}},
+				success:function(data){
+					$("#sdBtnConDiv").html(data);	
+				}
+			});	
 			
 		});
 

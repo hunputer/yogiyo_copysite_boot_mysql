@@ -22,8 +22,10 @@ public class StoreDetailController {
 	public ModelAndView getStoreDetail(StoreVO storeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
+		double avg = storeDetailService.getStarAvg(storeVO);
 		storeVO = storeDetailService.getStoreManage(storeVO);
 		
+		mv.addObject("avg", avg);
 		mv.addObject("vo", storeVO);
 		mv.setViewName("storeDetail/getDetail");
 		
@@ -53,6 +55,17 @@ public class StoreDetailController {
 		mv.addObject("cg",cg);
 		mv.addObject("list", ar);
 		mv.setViewName("storeDetail/menuAjax");
+		return mv;
+	}
+	
+	@GetMapping("getReviewAjax")
+	public ModelAndView getReviewAjax(StoreVO storeVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		double avg = storeDetailService.getStarAvg(storeVO);
+		
+		mv.addObject("avg", avg);
+		mv.setViewName("storeDetail/reviewAjax");
 		return mv;
 	}
 }

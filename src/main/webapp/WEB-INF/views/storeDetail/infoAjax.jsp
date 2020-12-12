@@ -20,10 +20,12 @@
 	<div class="d2">
 		<div class="d2d1">
 			<p>영업시간</p>
+			<p>배달가능지역</p>
 			<p>전화번호</p>
 			<p>주소</p>
 		</div>
 		<p>${vo.storeManageVO.openTime} ~ ${vo.storeManageVO.closeTime}</p>
+		<p>${vo.storeManageVO.deliveryArea}</p>
 		<p>${vo.tel}</p>
 		<p>${vo.address}</p>
 	</div>

@@ -42,6 +42,7 @@
 		<result column="takeTime" property="takeTime" />
 		<result column="isOpen" property="isOpen" />
 		<result column="storeComment" property="storeComment" />
+		<result column="deliveryArea" property="deliveryArea" />
 	</resultMap>
 	
 	<resultMap type="StoreMenuVO" id="rmStoreMenu">
@@ -80,5 +81,9 @@
 		select menuCategory from storemenu 
 		where storeNum = #{num}
 		group by menuCategory
+	</select>
+	
+	<select id="getStarAvg" parameterType="StoreVO" resultType="StoreReviewVO">
+		select * from storereview where storeNum=#{num} 
 	</select>
 </mapper>
