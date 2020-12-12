@@ -105,8 +105,6 @@
 				<li class="mb"><a href="#">마이페이지</a></li>
 				<li class="mb"><span class="footerBar">|</span></li>
 				<li class="mb"><a href="#">사장님페이지</a></li>
-				<li class="mb"><span class="footerBar">|</span></li>
-				<li class="mb"><a href="#">공지사항</a></li>
 			</ul>
 		</div>
 		<div class="company-wrap">
