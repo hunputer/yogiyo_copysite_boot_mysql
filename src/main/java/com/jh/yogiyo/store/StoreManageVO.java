@@ -13,4 +13,5 @@ public class StoreManageVO {
 	private int takeTime;
 	private int isOpen;
 	private String storeComment;
+	private String deliveryArea;
 }

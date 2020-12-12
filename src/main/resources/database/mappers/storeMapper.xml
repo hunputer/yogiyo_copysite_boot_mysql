@@ -8,7 +8,7 @@
 		select S.*, SM.*
 		from store S left join storemanage SM
 		on S.num = SM.storeNum 
-		where S.address like '%${address}%'
+		where SM.deliveryArea like '%${address}%'
 		<choose>
 			<when test="categoryNum != 0">
 				and S.categoryNum = #{categoryNum}
@@ -44,5 +44,6 @@
       <result column="takeTime" property="takeTime" />
       <result column="isOpen" property="isOpen" />
       <result column="storeComment" property="storeComment" />
+      <result column="deliveryArea" property="deliveryArea" />
    </resultMap>
 </mapper>
