@@ -53,7 +53,6 @@
 	
 	.panel-body2 {
     	padding: 15px;
-    	height: 130px;
     	background-color: #fff;
 	}
 	
@@ -200,6 +199,16 @@
 				</div>
 				<div class="panel-body2">
 					<textarea class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" rows="3" name="comment" maxlength="100" placeholder="코로나19 예방을 위해 비대면 배달 권장드립니다. 요기서 결제 선택 후, &quot;문 앞 배달&quot;을 요청사항에 남겨주세요."></textarea>
+				</div>
+			</div>
+			
+			<div class="panel-default">
+				<div class="panel-heading">
+                	<span class="menu-name pull-left">결제방식</span>
+				</div>
+				<div class="panel-body2" style="text-align: center">
+					<input type="radio" name="payMethod" value = "0">만나서결제
+					<input style="margin-left: 30px" type="radio" name="payMethod" value = "1">지금결제
 				</div>
 			</div>
 		</div>
