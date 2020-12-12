@@ -420,7 +420,6 @@
 .raCon{
 	width: 660px;
 	height: auto;
-	background-color: aqua;
 }
 .radiv1{
 	width: 660px;
@@ -428,15 +427,31 @@
 	border-bottom: 1px solid #DCDCDC;
 }
 .radiv2{
-	margin-top: 10px;
 	width: 660px;
-	height: 50px;
-	background-color: yellow;
+	height: 70px;
+	font-size: 45px;
+	line-height: 50px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 70px;
 }
 .radiv3{
 	width: 660px;
 	height: 20px;
-	background-color: fuchsia;
+	font-size : 15px;
+	text-align: center;
+}
+.radiv4{
+	width: 660px;
+	height: 500px;
+	margin-top: 10px;
+}
+.radiv5{
+	width: 660px;
+	height: 55px;
+	border-bottom: 1px solid #DCDCDC;
+	line-height: 55px;
+	color: #696969;
 }
 </style>
 
@@ -525,7 +540,8 @@
 										<c:otherwise><span style="color:#DCDCDC;">★</span></c:otherwise>
 									</c:choose>
 								</c:forEach>
-								<span style="color: black;">  ${avg}</span></c:if>
+								<span style="color: black;">  ${avg}</span>
+							</c:if>
 							</li>
 							<li>최소주문금액 <span style="color: black;">  ${vo.storeManageVO.minPrice}원</span></li>
 							<li>배달비 <span style="color: black;">  ${vo.storeManageVO.driveFee}원</span></li>

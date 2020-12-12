@@ -86,4 +86,8 @@
 	<select id="getStarAvg" parameterType="StoreVO" resultType="StoreReviewVO">
 		select * from storereview where storeNum=#{num} 
 	</select>
+	
+	<select id="getSumReview" parameterType="StoreVO" resultType="java.lang.Long">
+		select count(*) from storereview where storeNum=#{num}
+	</select>
 </mapper>

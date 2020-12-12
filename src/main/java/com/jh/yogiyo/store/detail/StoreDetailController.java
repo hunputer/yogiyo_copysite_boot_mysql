@@ -63,9 +63,12 @@ public class StoreDetailController {
 		ModelAndView mv = new ModelAndView();
 		
 		double avg = storeDetailService.getStarAvg(storeVO);
+		long sum = storeDetailService.getSumReview(storeVO);
 		
+		mv.addObject("sum", sum);
 		mv.addObject("avg", avg);
 		mv.setViewName("storeDetail/reviewAjax");
 		return mv;
 	}
+	
 }

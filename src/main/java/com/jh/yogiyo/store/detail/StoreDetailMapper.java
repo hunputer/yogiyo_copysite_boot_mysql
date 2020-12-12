@@ -18,4 +18,6 @@ public interface StoreDetailMapper {
 	public String[] getMenuCategory(StoreVO storeVO) throws Exception;
 	
 	public List<StoreReviewVO> getStarAvg(StoreVO storeVO) throws Exception;
+	
+	public Long getSumReview(StoreVO storeVO) throws Exception;
 }
