@@ -16,8 +16,44 @@
 	
 	.container{
 		padding: 5px;
-    	max-width: 1090px;
+    	max-width: 800px;
     	margin: 0 auto;
+	}
+	
+	.profile{
+		margin: 20px auto;
+		border: 1px solid gray;
+		border-radius: 50%;
+		width: 170px;
+		height : 170px;
+	}
+	
+	.list-group-items {
+	    position: relative;
+	    display: inline-block;
+	    padding: 10px 15px;
+	    margin-bottom: -1px;
+	    background-color: #fff;
+	    border: 1px solid #ddd;
+	    width: 250px;
+	    margin: 0 auto;
+	}
+	
+	.idForm{
+		width : 100%;
+		border : none;
+	}
+	
+	.idBnt{
+		display: inline-block;
+	}
+	
+	.idBntk{
+		width : 60px;
+		height : 44px;
+		border: none;
+		background-color: #FA0050;
+		color : #fff;
 	}
 	
 }
@@ -27,7 +63,20 @@
 <body>
 <c:import url="../template/header_mypage.jsp"></c:import>
 <div class="container">
-   
+   <div class="profile">
+   	  <img alt="" src="${pageContext.request.contextPath}/images/m.top_icon01.png">
+   </div>
+   <div style="margin: 0 auto;width:350px;padding-left: 20px;">
+	   <div class="list-group-items">
+			<input type="text" id="id" name="id" class="idForm" value="${member.name}">
+	   </div>
+	   <div class="idBnt">
+	   		<button class="idBntk">변경</button>
+	   </div>
+   </div>
+   <div style="border-top : 1px solid #818181;margin-top: 20px;">
+   		
+   </div>
 </div>
 
 <c:import url="../template/footer.jsp"></c:import>
