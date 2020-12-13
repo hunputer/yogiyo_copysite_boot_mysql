@@ -116,7 +116,7 @@
 				
 				<div class="joinRow">
 					<div><label for="address">주소</label></div>
-					<div class="list-group-item"><input type="text" class="login" id="address" name="address" placeholder="주소를 입력하세요" readonly="readonly" onclick="execDaumPostcode()"></div>
+					<div style="margin-bottom: 5px;" class="list-group-item"><input type="text" class="login" id="address" name="address" placeholder="주소를 입력하세요" readonly="readonly" onclick="execDaumPostcode()"></div>
 					<div class="list-group-item"><input type="text" class="login" id="detailAddress" name="detailAddress" placeholder="상세주소를 입력하세요"></div>
 				</div>
 				

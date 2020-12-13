@@ -12,7 +12,6 @@
 <script type="text/javascript">
 	var path = '${path}';
 	alert("${msg}");
-
 	if(path != 'home'){
 		location.href="${path}";
 	}else{

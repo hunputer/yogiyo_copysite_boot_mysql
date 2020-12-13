@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script src="../js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+		Kakao.init('db16d3e876bdf25ace8482a5b3b5a6b3');
+		Kakao.isInitialized();
+	</script>
+
 <style type="text/css">
 	body{
 		background-color: #fafafa;
@@ -75,6 +83,32 @@
 	    max-width: 800px;
 	    cursor: pointer;
 	}
+	
+	#kakao-login-btn{
+		width: 100%;
+		height: 40px;
+	    border-radius: 0;
+	    background-color: #fff;
+	    border: 1px solid #e6e6e6;
+	    font-size: 15px;
+	    padding: 6px 12px;
+    	margin: 10px auto;
+    	text-align: center;
+    	cursor: pointer;
+    	
+	}
+	
+	.ico-kakao{
+		background: url(../images/ic_logo_kakao.png) no-repeat center;
+		background-size: 20px;
+	    margin-top: -1px;
+	    margin-right: 5px;
+	    margin-left: -5px;
+	    width: 28px;
+	    height: 28px;
+	    vertical-align: middle;
+	    display: inline-block;
+	}
 </style>
 </head>
 <body>
@@ -92,10 +126,48 @@
 	      	</ul>
 	      	<button type="submit" class="btn_login">로그인</button>
       	</form>
+      	<div style="width: 100%;max-width:800px;" id="kakao-login-btn">
+      		  <span class="ico-kakao"></span>
+			  카카오 아이디로 로그인
+		</div>
       	<div class="signupbox">
     		<a href="./memberJoin"><img src="../images/signin_banner.png" class="signup-img"></a>
   		</div>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		$("#kakao-login-btn").click(function(){
+			loginWithKakao();
+		})
+		
+		function loginWithKakao() {
+			    Kakao.Auth.login({
+			      success: function(authObj) {
+
+			    	  Kakao.API.request({
+					        url: '/v2/user/me',
+					        success: function(res) {
+					          const json = JSON.stringify(res);
+					          const obj = JSON.parse(json);
+					          $.post("./kakaoLogin",{id:obj.kakao_account.email, name:obj.properties.nickname},function(data){
+						           
+					          })
+					          location.href="./loginMsg";
+					        },
+					        fail: function(error) {
+					          alert(
+					            'login success, but failed to request user information: ' +
+					              JSON.stringify(error)
+					          )
+					        },
+					      })
+			      },
+			      fail: function(err) {
+			        alert(JSON.stringify(err))
+			      },
+			    })
+			  }
+	</script>
 </body>
 </html>

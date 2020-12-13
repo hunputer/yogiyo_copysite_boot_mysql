@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jh.yogiyo.store.search.SearchVO;
+
 @Controller
 @RequestMapping("/store/**")
 public class StoreController {
@@ -17,12 +19,33 @@ public class StoreController {
 	private StoreService storeService;
 	
 	@GetMapping("storeList")
-	public ModelAndView getList(StoreVO storeVO) throws Exception{
+	public ModelAndView getList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<StoreVO> ar = storeService.getList(storeVO);
-		mv.addObject("list", ar);
 		mv.setViewName("store/storeList");
 		return mv;
 	}
-	 
+	
+	@PostMapping("storeList")
+	public ModelAndView getList(StorePager storePager) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		if(storePager.getCurPage() == 0) {
+			storePager.setCurPage(1);
+		}
+		System.out.println(storePager.getAddress());
+		System.out.println(storePager.getCategoryNum());
+		System.out.println(storePager.getCurPage());
+		List<StoreVO> ar = storeService.getList(storePager);
+		mv.addObject("list", ar);
+		mv.setViewName("store/storePager");
+		return mv;
+	}
+	
+	@GetMapping("searchList")
+	public ModelAndView searchList() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<SearchVO> ar = storeService.getSearch();
+		mv.addObject("list", ar);
+		mv.setViewName("store/searchList");
+		return mv;
+	}
 }

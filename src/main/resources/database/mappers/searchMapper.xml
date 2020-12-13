@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.jh.yogiyo.store.search.SearchMapper">
+	
+	<select id="getOne" parameterType="StorePager" resultType="SearchVO">
+		select * from search where searchName = #{searchName}
+	</select>
+	
+	<insert id="setInsert" parameterType="StorePager">
+		insert into search(searchName, hit, regDate) values (#{searchName}, 1, now());
+	</insert>
+	
+	<update id="setUpdate" parameterType="SearchVO">
+		update search set hit=hit+1 where num = #{num} 
+	</update>
+	
+	<select id="getList" resultType="SearchVO">
+		select * from search 
+		order by hit desc limit 0,10
+	</select>
+	
+	<select id="getCount" resultType="Integer">
+		select count(num) from search 
+		order by hit desc limit 0,10
+	</select>
+	
+</mapper>

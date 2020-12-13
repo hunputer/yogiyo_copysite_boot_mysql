@@ -31,7 +31,6 @@
     
     .category-menu ul {
 	    max-width: 1090px;
-	    min-width: 1000px;
 	    margin: 0 auto;
 	    border-top: 1px solid #d9d9d9;
 	    position: relative;
@@ -61,11 +60,11 @@
 	}
 	
 	.search-div{
-		    padding-bottom: 0;
+			position : relative;
+		    padding-bottom: 10px;
     		margin: 0;
     		border-bottom: 1px solid #E5E5E5;
     		width: 100%;
-    		height: 60px;
 	}
 	
 	.ng-scope > p {
@@ -134,6 +133,49 @@
 	    font-size: 12px;
 	    color: gray;
 	    
+	}
+	
+	.searchBox{
+		border: 1px solid #e8ebee;
+	    border-radius: 6px;
+	    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
+	    box-shadow: 0 1px 1px 0 rgba(0,0,0,.03);
+	    background-color: #fff;
+	    width: 250px;
+	    position : relative;
+	    left : 1050px;
+	    top : 5px;
+	    margin: 10px 0px;
+	    display: inline-block;
+	}
+	
+	.hotTitle{
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
+	.search2{
+		width: 100%;
+		padding: 6px 12px;
+	}
+	
+	.searchBnt2{
+		width: 100%;
+		padding: 6px 12px;
+		background-color: #FA0050;
+		color: #fff;
+		border: none;
+		height: 36px;
+	}
+	
+	.yogiyoFicture{
+		width : 800px;
+		height : 425.2px;
+		background-color: blue;
+		display: inline-block;
+		position : absolute;
+	    left : 200px;
+	    top : 15px;
 	}
 	
 </style>
@@ -210,34 +252,79 @@
 		    </ul>
 		  </div>
 		  <div class="search-div">
-		  	  
-		  
+		  	  <div class="yogiyoFicture">
+		  	  	<img alt="" src="${pageContext.request.contextPath}/images/yogiyo1.jpeg" width="800px" height="425.2px">
+		  	  </div>
+		  	  <div class="searchBox">
+   				<div style="padding: 0px 20px; border-bottom: 1px solid #e8ebee;">
+   					<h3 class="hotTitle" id="hotTitle">인기검색어</h3>
+   				</div>
+   				<div id="searchResult">
+	   				
+   				</div>
+   				<div style="padding: 0px 20px; margin-bottom: 5px;">
+   					<form action="./storeList" method="get">
+		   				<input type="text" class="search2" name="searchName" placeholder="음식점을 검색하세요">
+		   				<input type="hidden" name="address" value="${param.address}">
+		   				<button class="searchBnt2">검색</button>
+	   				</form>
+   				</div>
+   			  </div>
+   			  
 		  </div>
 	
 		  <div class="container">		  
 			  <div class="ng-scope">
         			<p>요기요 등록 음식점</p>
       		  </div>
-      		  <c:forEach items="${list}" var="vo">
-	      		  <div class="col-sm-6">
-	      		  	<div class="item">
-	      		  		<div class="logo1">
-	      		  			
-	      		  		</div>
-	      		  		<div class="restaurant-name">
-	      		  			${vo.storeName}
-	      		  		</div>
-	      		  		<div class="restaurant-info">
-	      		  			<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | ${vo.storeManageVO.minPrice}원 이상 배달
-	      		  		</div>
-	      		  		<div class="restaurant-time">
-	      		  				${vo.storeManageVO.takeTime}분 예상
-	      		  		</div>
-	      		  	</div>
-      		  	</c:forEach>
+      		  <div id="pagerResult">
+	      		 
       		  </div>
-      		  
 	      </div>
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		var curPage = 1;
+		var address = '${param.address}'
+		var categoryNum = '${param.categoryNum}'
+		var searchName = '${param.searchName}'
+		if(categoryNum == ''){
+			categoryNum = 0;
+		}
+		hit();
+		InitList();
+	
+		setInterval(hit, 50000)
+		
+		function hit(){
+			$.get("./searchList" ,function(data) {
+				$("#searchResult").html(data);
+			})
+		} 
+		 
+		function InitList(){  //페이지가 로드되면 데이터를 가져오고 page를 증가시킨다.
+		     getList(curPage);
+		     curPage++;
+		}; 
+		 
+		$(window).scroll(function(){   //스크롤이 최하단 으로 내려가면 리스트를 조회하고 page를 증가시킨다.
+		     if($(window).scrollTop() >= $(document).height() - $(window).height()-10){
+		          getList(curPage);
+		          curPage++;   
+		     } 
+		});
+		 
+		function getList(curPage){
+			$.post("./storeList",{curPage : curPage, address : address, categoryNum : categoryNum, searchName : searchName},function(data){
+				if (curPage==1){  //페이지가 1이 아닐경우 데이터를 붙힌다.
+	                $("#pagerResult").html(data); 
+	            }else{
+	                $("#pagerResult").append(data);
+	            }
+	          }); 
+		}
+		
+
+	</script>
 </body>
 </html>

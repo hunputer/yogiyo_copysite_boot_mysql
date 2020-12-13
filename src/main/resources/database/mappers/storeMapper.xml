@@ -4,24 +4,29 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.store.StoreMapper">
-	<select id="getList" parameterType="StoreVO" resultMap="getOneResult">
+	<select id="getList" parameterType="StorePager" resultMap="getOneResult">
 		select S.*, SM.*
 		from store S left join storemanage SM
 		on S.num = SM.storeNum 
-		where S.address like '%${address}%'
+		where SM.deliveryArea like '%${address}%'
 		<choose>
 			<when test="categoryNum != 0">
 				and S.categoryNum = #{categoryNum}
 			</when>
 		</choose>
+		<choose>
+			<when test="searchName != null">
+				and S.storeName like '%${searchName}%'
+			</when>
+		</choose>
+		order by num asc limit #{startRow},20
 	</select>
-	
 	
 	<resultMap type="StoreVO" id="getOneResult">
          <id column="num" property="num"/>
          <result column="categoryNum" property="categoryNum"/>
          <result column="storeName" property="storeName"/>
-         <result column="storeNum" property="storeNum"/>
+         <result column="storeNumber" property="storeNumber"/>
          <result column="tel" property="tel" />
          <result column="address" property="address" />
          <result column="zipCode" property="zipCode" />
@@ -39,5 +44,6 @@
       <result column="takeTime" property="takeTime" />
       <result column="isOpen" property="isOpen" />
       <result column="storeComment" property="storeComment" />
+      <result column="deliveryArea" property="deliveryArea" />
    </resultMap>
 </mapper>

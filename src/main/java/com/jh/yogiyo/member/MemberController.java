@@ -1,7 +1,18 @@
 package com.jh.yogiyo.member;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+
 
 @Controller
 @RequestMapping("/member/**")
@@ -32,7 +44,7 @@ public class MemberController {
 		String msg = "";
 		String path = "";
 		if(member != null) {
-			msg = "로그인 되었습니다";
+			msg = member.getName()+"님 환영합니다!";
 			path = "../";
 		}else{
 			msg = "아이디 또는 비밀번호가 일치하지 않습니다";
@@ -45,7 +57,7 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberLogout")
-	public ModelAndView memberLogout(MemberVO memberVO, HttpSession session) throws Exception{
+	public ModelAndView memberLogout(HttpServletRequest request, HttpServletResponse response,MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		session.invalidate();
 		String msg = "로그아웃 되었습니다";
@@ -89,6 +101,26 @@ public class MemberController {
 		}
 		mv.addObject("msg", msg);
 		mv.setViewName("member/memberIdCheck");
+		return mv;
+	}
+	
+	@PostMapping("kakaoLogin")
+	public ModelAndView kakaoLogin(MemberVO memberVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		session.setAttribute("member", memberVO);
+		return mv;
+	}
+	
+	@GetMapping("loginMsg")
+	public ModelAndView loginMsg(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		Thread.sleep(3000);
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		String msg =memberVO.getName()+"님 환영합니다!";
+		mv.addObject("msg", msg);
+		mv.addObject("path","../");
+		mv.setViewName("common/result");
+		
 		return mv;
 	}
 }

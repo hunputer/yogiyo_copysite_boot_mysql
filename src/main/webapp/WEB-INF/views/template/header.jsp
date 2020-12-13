@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/kakao.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script type="text/javascript">
+		Kakao.init('db16d3e876bdf25ace8482a5b3b5a6b3');
+		Kakao.isInitialized();
+	</script>
 <style type="text/css">
 	html, body {
     	min-width: 320px;
@@ -135,8 +141,16 @@
 		});
 
 		$("#btn-logout").click(function(){
-			location.href="${pageContext.request.contextPath}/member/memberLogout"
+			unlinkApp();
 		});
+
+		function unlinkApp() {
+			Kakao.Auth.logout(function(data) {
+				setTimeout(function(){
+					location.href="${pageContext.request.contextPath}/member/memberLogout"
+				}, 1000);
+			});
+		  }
 	</script>
 	
 </body>
