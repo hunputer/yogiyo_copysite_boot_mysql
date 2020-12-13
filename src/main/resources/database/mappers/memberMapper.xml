@@ -5,7 +5,7 @@
     
 <mapper namespace="com.jh.yogiyo.member.MemberMapper">
 	<insert id="setInsert" parameterType="MemberVO">
-		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{zipCode}, #{memberCode})
+		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{zipCode}, #{memberCode},0,'요기프렌드')
 	</insert>
 	
 	<select id="getOne" parameterType="MemberVO" resultType="MemberVO">

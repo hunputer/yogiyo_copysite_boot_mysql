@@ -175,7 +175,7 @@
 		
 		<div id="category" class="category-menu clearfix collapse in" aria-expanded="true">
 		    <ul>
-		    	<a href="#">
+		    	<a href="${pageContext.request.contextPath}/mypage">
 			    	<li>
 			      		<span class="category-name ng-binding">내정보</span>
 			      	</li>
@@ -193,7 +193,7 @@
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/mypage/mypagePoint">
 			    	<li>
 			      		<span class="category-name ng-binding">포인트</span>
 			      	</li>

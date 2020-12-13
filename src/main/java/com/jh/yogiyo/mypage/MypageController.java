@@ -38,4 +38,11 @@ public class MypageController {
 		mv.setViewName("common/result");
 		return mv;
 	}
+	
+	@GetMapping("mypagePoint")
+	public ModelAndView mypagePoint() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mypage/mypagePoint");
+		return mv;
+	}
 }
