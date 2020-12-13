@@ -54,79 +54,84 @@
 		<div class="maDiv2dd">
 			<ul>
 				<c:forEach items="${list}" var="m" varStatus="vs">
-					<c:if test="${m.menuCategory eq cg}">
-							
-						<li class="modal--open" title="modal${cg}${vs.count}">
-							<div class="liDiv">
-								<div class="divName">
-									${m.menuName}
-								</div>
-								<div class="divDes">${m.description}</div>
-								<div class="divPrice">${m.menuPrice}원</div>
-							</div>
-							<c:if test="${m.storeMenuFileVO.oriName ne null}">
-								<img src="../upload/${m.storeMenuFileVO.oriName}">
-							</c:if>
-						</li>
+						<c:if test="${m.menuCategory eq cg}">
 
-							<!-- 클릭 시 나타나는 모달창 -->
+							<li class="modal--open" title="modal${cg}${vs.count}">
+								<div class="liDiv">
+									<div class="divName">${m.menuName}</div>
+									<div class="divDes">${m.description}</div>
+									<div class="divPrice">${m.menuPrice}원</div>
+								</div> <c:if test="${m.storeMenuFileVO.oriName ne null}">
+									<img src="../upload/${m.storeMenuFileVO.oriName}">
+								</c:if>
+							</li>
+
+
+							<!-- The Modal -->
 							<div class="modal" id="modal${cg}${vs.count}">
-								<div class="screen">
-									<button type="button" title="modal${cg}${vs.count}" value="close" class="btn modal--close">Χ</button>
-									<div class="layerpop">
-										<p class="layerpop__container">메뉴상세</p>
-									</div>
-								</div>
-								<div class="modalCon">
+								<div class="modal-dialog modal-dialog-scrollable">
+									<div class="modal-content">
 
-									<div class="md1">
-										<c:choose>
-											<c:when test="${m.storeMenuFileVO.oriName ne null}">
-												<img src="../upload/${m.storeMenuFileVO.oriName}">
-											</c:when>
-											<c:otherwise>
-												<img>
-											</c:otherwise>
-										</c:choose>
-										<div class="md1d">${m.menuName}</div>
-										<div class="md1d2">${m.description}</div>
-									</div>
+										<!-- Modal Header -->
+										<div class="modal-header">
+											<h1 class="modal-title">Modal Heading</h1>
+											<button type="button" class="close" data-dismiss="modal">×</button>
+										</div>
 
+										<!-- Modal body -->
+										<div class="modal-body">
+											<h3>Some text to enable scrolling..</h3>
+											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
+												amet, consectetur adipiscing elit, sed do eiusmod tempor
+												incididunt ut labore et dolore magna aliqua. Ut enim ad
+												minim veniam, quis nostrud exercitation ullamco laboris nisi
+												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+												reprehenderit in voluptate velit esse cillum dolore eu
+												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+												proident, sunt in culpa qui officia deserunt mollit anim id
+												est laborum consectetur adipiscing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim
+												ad minim veniam, quis nostrud exercitation ullamco laboris
+												nisi ut aliquip ex ea commodo consequat.</p>
+											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
+												amet, consectetur adipiscing elit, sed do eiusmod tempor
+												incididunt ut labore et dolore magna aliqua. Ut enim ad
+												minim veniam, quis nostrud exercitation ullamco laboris nisi
+												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+												reprehenderit in voluptate velit esse cillum dolore eu
+												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+												proident, sunt in culpa qui officia deserunt mollit anim id
+												est laborum consectetur adipiscing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim
+												ad minim veniam, quis nostrud exercitation ullamco laboris
+												nisi ut aliquip ex ea commodo consequat.</p>
 
-									<div id="divMd2">
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
-										<div class="md2">${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원
-											${m.menuPrice}원 ${m.menuPrice}원 ${m.menuPrice}원</div>
+											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
+												amet, consectetur adipiscing elit, sed do eiusmod tempor
+												incididunt ut labore et dolore magna aliqua. Ut enim ad
+												minim veniam, quis nostrud exercitation ullamco laboris nisi
+												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+												reprehenderit in voluptate velit esse cillum dolore eu
+												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+												proident, sunt in culpa qui officia deserunt mollit anim id
+												est laborum consectetur adipiscing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim
+												ad minim veniam, quis nostrud exercitation ullamco laboris
+												nisi ut aliquip ex ea commodo consequat.</p>
+										</div>
+
+										<!-- Modal footer -->
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Close</button>
+										</div>
+
 									</div>
 								</div>
 							</div>
 						</c:if>
 
-				</c:forEach>
+					</c:forEach>
 			</ul>
 		</div>
 		
@@ -182,16 +187,16 @@
 		$(".modal--open").click(function() {
 			var id = $(this).attr("title");
 			$modal = $("#" + id);
-			$('body').css("overflow", "hidden");
+			//$('body').css("overflow", "hidden");
 			$modal.show();
-			bgLayerOpen();
+			//bgLayerOpen();
 			return false;
 		});
 		$(".modal--close").click(function() {
 			var id = $(this).attr("title");
 			$modal = $("#" + id);
-			$('body').css("overflow", "scroll");
+			//$('body').css("overflow", "scroll");
 			$modal.hide();
-			bgLayerClear();
+			//bgLayerClear();
 		});
 	</script>

@@ -8,7 +8,10 @@
 <title>Insert title here</title>
 <c:import url="../template/bootstrap.jsp"></c:import>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style type="text/css">
 .sdContainer {
 	width: 1090px;
@@ -343,11 +346,12 @@
 	margin-left: 35%; /* half of width */
 	margin-top: 8%; /* half of height */
 	position: relative;
-	overflow: scroll;
+	overflow-y: auto;
 }
 .modalCon{
 	width: 100%;
-	height: auto;
+	height: 100%;
+	overflow-y: initial !important;
 }
 
 #divMd2{
