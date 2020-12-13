@@ -22,6 +22,21 @@
 	<div class="radiv4">
 		<div class="radiv5">
 			　리뷰 <span style="color:black;font-weight: bold;">${sum}</span>개
+			<div class="raCheckDiv">사진리뷰만 보기
+				<input type="checkbox" value="0">
+			</div>
 		</div>
+
+		<c:forEach items="${ar}" var="ar">
+			<div class="raRevDiv">
+				<div class="raRevDiv1">
+					<span>${ar.id}</span> <span>${ar.regDate}</span>
+				</div>
+				<div class="raRevDiv2">${ar.starCount}</div>
+				<div class="raRevDiv3"></div>
+				<div class="raRevDiv4"></div>
+				<div class="raRevDiv5">${ar.contents}</div>
+			</div>
+		</c:forEach>
 	</div>
 </div>

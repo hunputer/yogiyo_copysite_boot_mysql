@@ -453,6 +453,36 @@
 	line-height: 55px;
 	color: #696969;
 }
+
+.raCheckDiv{
+	width: 130px;
+	height: 55px;
+	float: right;
+	color: #696969;
+}
+.raRevDiv{
+	width: 660px;
+	height: 300px;
+	background-color: aqua;
+	border-bottom: 1px solid #DCDCDC;
+	
+}
+.raRevDiv1{
+	width: 660px;
+	height: 50px;
+}
+.raRevDiv2{
+	width: 660px;
+}
+.raRevDiv3{
+	width: 660px;
+}
+.raRevDiv4{
+	width: 660px;
+}
+.raRevDiv5{
+	width: 660px;
+}
 </style>
 
 <script type="text/javascript">
