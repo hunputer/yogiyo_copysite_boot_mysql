@@ -34,7 +34,7 @@
 				</div>
 				<div class="raRevDiv2">${ar.starCount}</div>
 				<div class="raRevDiv3"></div>
-				<div class="raRevDiv4"></div>
+				<div class="raRevDiv4">${ar.orderListVO.orderContents}</div>
 				<div class="raRevDiv5">${ar.contents}</div>
 			</div>
 		</c:forEach>

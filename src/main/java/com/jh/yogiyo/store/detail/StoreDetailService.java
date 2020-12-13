@@ -46,12 +46,11 @@ public class StoreDetailService {
 		
 		return avg;
 	}
-	
-	public List<StoreReviewVO> getReviewAll(StoreVO storeVO) throws Exception{
-		return storeDetailMapper.getStarAvg(storeVO);
-	}
-	
 	public Long getSumReview(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getSumReview(storeVO);
+	}
+	
+	public List<StoreReviewVO> getAllReview(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getAllReview(storeVO);
 	}
 }

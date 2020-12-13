@@ -90,4 +90,39 @@
 	<select id="getSumReview" parameterType="StoreVO" resultType="java.lang.Long">
 		select count(*) from storereview where storeNum=#{num}
 	</select>
+	
+	<resultMap type="StoreReviewVO" id="rmStoreReview">
+		<id column="num" property="num" />
+		<result column="storeNum" property="storeNum"/>
+		<result column="orderNum" property="orderNum"/>
+		<result column="id" property="id"/>
+		<result column="regDate" property="regDate"/>
+		<result column="starCount" property="starCount"/>
+		<association property="orderListVO" javaType="OrderListVO" resultMap="rmOrderList"></association>
+		<association property="reviewFileVO" javaType="ReviewFileVO" resultMap="rmReviewFile"></association>
+	</resultMap>
+	
+	<resultMap type="OrderListVO" id="rmOrderList">
+		<id column="num" property="num" />
+		<result column="storeNum" property="storeNum"/>
+		<result column="id" property="id"/>
+		<result column="totalPrice" property="totalPrice"/>
+		<result column="orderContents" property="orderContents"/>
+		<result column="address" property="address"/>
+	</resultMap>
+	
+	<resultMap type="ReviewFileVO" id="rmReviewFile">
+		<id column="num" property="num" />
+		<result column="reviewNum" property="reviewNum"/>
+		<result column="oriName" property="oriName"/>
+		<result column="fileName" property="fileName"/>
+	</resultMap>
+	
+	<select id="getAllReview" parameterType="StoreVO" resultMap="rmStoreReview">
+		select sv.*, ol.orderContents, rf.fileName
+		from storereview sv
+		inner join orderlist ol on sv.orderNum = ol.num
+		left join reviewfile rf on sv.num = rf.reviewNum
+		where sv.storeNum = #{num}
+	</select>
 </mapper>
