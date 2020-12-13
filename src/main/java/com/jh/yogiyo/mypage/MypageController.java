@@ -1,5 +1,7 @@
 package com.jh.yogiyo.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jh.yogiyo.check.OrderListVO;
+import com.jh.yogiyo.check.OrderService;
 import com.jh.yogiyo.member.MemberVO;
 
 @Controller
@@ -17,6 +21,9 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService mypageService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	@GetMapping("")
 	public ModelAndView mypage(HttpSession session) {
@@ -52,4 +59,15 @@ public class MypageController {
 		mv.setViewName("mypage/mypageLevel");
 		return mv;
 	}
+	
+	@GetMapping("mypageOrder")
+	public ModelAndView mypageOrder(HttpSession httpSession) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO member = (MemberVO)httpSession.getAttribute("member");
+		List<OrderListVO> ar = orderService.getList(member);
+		mv.addObject("list", ar);
+		mv.setViewName("mypage/mypageOrder");
+		return mv;
+	}
+	
 }

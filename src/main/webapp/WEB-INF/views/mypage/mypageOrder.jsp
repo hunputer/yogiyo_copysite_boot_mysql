@@ -19,21 +19,52 @@
     	max-width: 800px;
     	margin: 0 auto;
 	}
+	.orderList{
+		width: 500px;
+		height : 150px;
+		margin: 10px auto;
+		border: 1px solid #DCDCDC;
+		padding: 20px;
+	}
+	
+	.OstoreName{
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 5px;
+	}
+	
+	.OContents{
+		font-size: 12px;
+		color: gray;
+	}
+	
+	.reviewBnt, .storeBnt{
+		display : inline-block;
+		border: 1px solid #DCDCDC;
+		width : 100px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		margin-right: 10px;
+		cursor: pointer;
+		color: gray;
+	}
+	
 </style>
 </head>
 <body>
 	<c:import url="../template/header_mypage.jsp"></c:import>
 	<div class="container">
-	
-	<div style="width: 350px;margin: 20px auto">
-		<h1 style="font-size: 20px">${member.name}님의 보유 포인트는 ${member.point}P 입니다</h1>
-	</div>
-	
-	<div style="width: 200px;margin: 20px auto">
-		<h1 style="font-size: 12px;margin-bottom: 0px">1원 이상 1원 단위로 사용 가능</h1>
-		<h1 style="font-size: 12px;margin-top: 5px">최대 50만원까지 보유 가능</h1>
-	</div>
-	
+		<c:forEach items="${list}" var="vo">
+			<div class="orderList">
+				<h1 class="OstoreName">${vo.storeVO.storeName} <span style="font-size: 10px;color: gray">${vo.regDate}</span></h1>
+				<h1 class="OContents">${vo.orderContents} ${vo.totalPrice}원</h1>
+				<div style="margin-top: 20px">
+					<div class="reviewBnt">리뷰쓰기</div>
+					<div class="storeBnt">가게보기</div>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
 </body>

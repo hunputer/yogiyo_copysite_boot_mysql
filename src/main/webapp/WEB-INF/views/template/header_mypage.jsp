@@ -199,7 +199,7 @@
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/mypage/mypageOrder">
 			    	<li>
 			      		<span class="category-name ng-binding">주문내역</span>
 			      	</li>
