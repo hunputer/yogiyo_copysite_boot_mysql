@@ -8,6 +8,10 @@
 		<typeAlias type="com.jh.yogiyo.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.jh.yogiyo.store.StoreVO" alias="StoreVO"/>
 		<typeAlias type="com.jh.yogiyo.store.StoreManageVO" alias="StoreManageVO"/>
+		<typeAlias type="com.jh.yogiyo.store.search.SearchVO" alias="SearchVO"/>
+      	<typeAlias type="java.lang.Long" alias="Long"/>
+      	<typeAlias type="java.lang.Integer" alias="Integer"/>
+      	<typeAlias type="com.jh.yogiyo.store.StorePager" alias="StorePager"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreMenuVO" alias="StoreMenuVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreMenuFileVO" alias="StoreMenuFileVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreThumbFileVO" alias="StoreThumbFileVO"/>
