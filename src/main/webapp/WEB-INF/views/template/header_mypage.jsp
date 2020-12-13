@@ -181,7 +181,7 @@
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/mypage/mypageLevel">
 			    	<li>
 			      		<span class="category-name ng-binding">회원등급</span>
 			      	</li>

@@ -86,7 +86,7 @@
 	   		<button class="idBntk">변경</button>
 	   </div>
    </div>
-   <div style="border-top : 1px solid #818181;margin-top: 20px;">
+   <div style="border-top : 1px solid #DCDCDC;margin-top: 20px;">
    	  <div style="margin: 10px auto;width:450px;padding-left: 20px">
 	  		<div>
    	  			핸드폰

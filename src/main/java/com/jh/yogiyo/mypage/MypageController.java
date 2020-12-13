@@ -45,4 +45,11 @@ public class MypageController {
 		mv.setViewName("mypage/mypagePoint");
 		return mv;
 	}
+	
+	@GetMapping("mypageLevel")
+	public ModelAndView mypageLevel() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("mypage/mypageLevel");
+		return mv;
+	}
 }
