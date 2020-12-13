@@ -462,26 +462,44 @@
 }
 .raRevDiv{
 	width: 660px;
-	height: 300px;
-	background-color: aqua;
+	height: auto;
 	border-bottom: 1px solid #DCDCDC;
 	
 }
 .raRevDiv1{
 	width: 660px;
-	height: 50px;
+	height: 30px;
+	margin-top : 20px;
 }
 .raRevDiv2{
 	width: 660px;
+	height: 30px;
 }
 .raRevDiv3{
 	width: 660px;
+	height: auto;
 }
 .raRevDiv4{
 	width: 660px;
+	height: auto;
+	margin-top:10px;
+	color: #DEB887;
 }
 .raRevDiv5{
 	width: 660px;
+	height: auto;
+	margin-top : 10px;
+	color: #696969;
+	margin-bottom: 15px;
+}
+.raReplyDiv{
+	width: 600px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #FAF0E6;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	padding: 10px;
 }
 </style>
 

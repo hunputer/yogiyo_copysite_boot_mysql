@@ -16,7 +16,9 @@
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreMenuFileVO" alias="StoreMenuFileVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreThumbFileVO" alias="StoreThumbFileVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.StoreReviewVO" alias="StoreReviewVO"/>
-		<typeAlias type="com.jh.yogiyo.store.detail.StoreReviewVO" alias="ReviewFileVO"/>
+		<typeAlias type="com.jh.yogiyo.store.detail.ReviewFileVO" alias="ReviewFileVO"/>
 		<typeAlias type="com.jh.yogiyo.check.OrderListVO" alias="OrderListVO"/>
+		<typeAlias type="com.jh.yogiyo.store.detail.ReviewAplyVO" alias="ReviewAplyVO"/>
+		
 	</typeAliases>
 </configuration>  

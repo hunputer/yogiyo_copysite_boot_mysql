@@ -97,6 +97,7 @@
 		<result column="orderNum" property="orderNum"/>
 		<result column="id" property="id"/>
 		<result column="regDate" property="regDate"/>
+		<result column="contents" property="contents"/>
 		<result column="starCount" property="starCount"/>
 		<association property="orderListVO" javaType="OrderListVO" resultMap="rmOrderList"></association>
 		<association property="reviewFileVO" javaType="ReviewFileVO" resultMap="rmReviewFile"></association>
@@ -109,6 +110,7 @@
 		<result column="totalPrice" property="totalPrice"/>
 		<result column="orderContents" property="orderContents"/>
 		<result column="address" property="address"/>
+		<result column="regDate" property="regDate"/>
 	</resultMap>
 	
 	<resultMap type="ReviewFileVO" id="rmReviewFile">
@@ -124,5 +126,9 @@
 		inner join orderlist ol on sv.orderNum = ol.num
 		left join reviewfile rf on sv.num = rf.reviewNum
 		where sv.storeNum = #{num}
+	</select>
+	
+	<select id="getAply" parameterType="StoreVO" resultType="ReviewAplyVO">
+		select * from reviewaply where storeNum = #{num}
 	</select>
 </mapper>

@@ -51,6 +51,13 @@ public class StoreDetailService {
 	}
 	
 	public List<StoreReviewVO> getAllReview(StoreVO storeVO) throws Exception{
+		
+		List<StoreReviewVO> ar = storeDetailMapper.getAllReview(storeVO);
+		System.out.println(ar.get(0).getContents());
 		return storeDetailMapper.getAllReview(storeVO);
+	}
+	
+	public List<ReviewAplyVO> getAply(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getAply(storeVO);
 	}
 }

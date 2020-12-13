@@ -65,7 +65,9 @@ public class StoreDetailController {
 		double avg = storeDetailService.getStarAvg(storeVO);
 		long sum = storeDetailService.getSumReview(storeVO);
 		List<StoreReviewVO> ar = storeDetailService.getAllReview(storeVO);
+		List<ReviewAplyVO> arAply = storeDetailService.getAply(storeVO);
 		
+		mv.addObject("arAply", arAply);
 		mv.addObject("ar", ar);
 		mv.addObject("sum", sum);
 		mv.addObject("avg", avg);
