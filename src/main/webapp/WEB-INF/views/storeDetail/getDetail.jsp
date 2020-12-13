@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -401,7 +403,13 @@
 	border-top: 1px solid #DCDCDC;
 	
 }
-
+.md3{
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+	border-top: 1px solid #DCDCDC;
+	background-color: aqua;
+}
 .raCon{
 	width: 660px;
 	height: auto;

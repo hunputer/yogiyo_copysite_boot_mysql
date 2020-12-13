@@ -19,6 +19,6 @@
 		<typeAlias type="com.jh.yogiyo.store.detail.ReviewFileVO" alias="ReviewFileVO"/>
 		<typeAlias type="com.jh.yogiyo.check.OrderListVO" alias="OrderListVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.ReviewAplyVO" alias="ReviewAplyVO"/>
-		
+		<typeAlias type="com.jh.yogiyo.store.detail.ToppingVO" alias="ToppingVO"/>
 	</typeAliases>
 </configuration>  

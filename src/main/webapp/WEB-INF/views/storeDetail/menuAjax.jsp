@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="maDiv">
 	<ul>
@@ -77,8 +78,19 @@
 											<div style="width: 100px;height:40px;line-height:40px; float: right;font-size: 17px;font-weight: bold;">${m.menuPrice}원</div>
 										</div>
 								
-
-
+									
+										<div class="md3">
+											<c:forEach items="${arTop}" var="ar2">
+												<c:choose>
+													<c:when test="${ar2.menuNum eq m.num}">
+														${ar.toppingName}
+													</c:when>
+													<c:otherwise>${ar2.toppingName}</c:otherwise>
+												</c:choose>
+											</c:forEach>
+										</div>
+									
+									
 										</div>
 
 										<!-- Modal footer -->

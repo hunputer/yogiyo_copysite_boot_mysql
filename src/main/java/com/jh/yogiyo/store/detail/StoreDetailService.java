@@ -60,4 +60,8 @@ public class StoreDetailService {
 	public List<ReviewAplyVO> getAply(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getAply(storeVO);
 	}
+	
+	public List<ToppingVO> getTopping(StoreVO storeVO) throws Exception{
+		return storeDetailMapper.getTopping(storeVO);
+	}
 }

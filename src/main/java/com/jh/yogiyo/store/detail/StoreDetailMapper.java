@@ -24,4 +24,6 @@ public interface StoreDetailMapper {
 	public List<ReviewAplyVO> getAply(StoreVO storeVO) throws Exception;
 	
 	public List<StoreReviewVO> getAllReview(StoreVO storeVO) throws Exception;
+	
+	public List<ToppingVO> getTopping(StoreVO storeVO) throws Exception;
 }

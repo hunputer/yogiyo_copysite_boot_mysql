@@ -13,4 +13,5 @@ public class StoreMenuVO {
 	private String description;
 	
 	private StoreMenuFileVO storeMenuFileVO;
+	private ToppingVO toppingVO;
 }

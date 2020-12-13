@@ -131,4 +131,8 @@
 	<select id="getAply" parameterType="StoreVO" resultType="ReviewAplyVO">
 		select * from reviewaply where storeNum = #{num}
 	</select>
+	
+	<select id="getTopping" parameterType="StoreVO" resultType="ToppingVO">
+		select * from topping where storeNum =${num}
+	</select>
 </mapper>
