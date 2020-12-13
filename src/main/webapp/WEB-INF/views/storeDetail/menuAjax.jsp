@@ -18,28 +18,6 @@
 			<div class="maDivdiv2">${ar.menuPrice}원</div>
 		</li>
 
-			<!-- 클릭 시 나타나는 모달창 -->
-			<div class="modal" id="modal${vs.count}">
-				<div class="screen">
-					<button type="button" title="modal${vs.count}" value="close"
-						class="btn modal--close">Χ</button>
-					<div class="layerpop">
-						<p class="layerpop__container">　　메뉴상세</p>
-					</div>
-				</div>
-
-				<div class="md1">
-					<c:choose>
-						<c:when test="${ar.storeMenuFileVO.oriName ne null}">
-							<img src="../upload/${ar.storeMenuFileVO.oriName}">
-						</c:when>
-						<c:otherwise>
-							<img>
-						</c:otherwise>
-					</c:choose>
-					<div class="md1d">${ar.menuName}</div>
-				</div>
-			</div>
 		</c:forEach>
 	</ul>
 </div>
@@ -56,7 +34,7 @@
 				<c:forEach items="${list}" var="m" varStatus="vs">
 						<c:if test="${m.menuCategory eq cg}">
 
-							<li class="modal--open" title="modal${cg}${vs.count}">
+							<li title="modal${cg}${vs.count}"  data-toggle="modal" data-target="#modal${cg}${vs.count}">
 								<div class="liDiv">
 									<div class="divName">${m.menuName}</div>
 									<div class="divDes">${m.description}</div>
@@ -73,57 +51,40 @@
 									<div class="modal-content">
 
 										<!-- Modal Header -->
-										<div class="modal-header">
-											<h1 class="modal-title">Modal Heading</h1>
+										<div class="modal-header"">
+											<h4 class="modal-title">메뉴 상세</h4>
 											<button type="button" class="close" data-dismiss="modal">×</button>
 										</div>
 
 										<!-- Modal body -->
 										<div class="modal-body">
-											<h3>Some text to enable scrolling..</h3>
-											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
-												amet, consectetur adipiscing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-												reprehenderit in voluptate velit esse cillum dolore eu
-												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id
-												est laborum consectetur adipiscing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim
-												ad minim veniam, quis nostrud exercitation ullamco laboris
-												nisi ut aliquip ex ea commodo consequat.</p>
-											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
-												amet, consectetur adipiscing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-												reprehenderit in voluptate velit esse cillum dolore eu
-												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id
-												est laborum consectetur adipiscing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim
-												ad minim veniam, quis nostrud exercitation ullamco laboris
-												nisi ut aliquip ex ea commodo consequat.</p>
+											<div class="md1">
+												<c:choose>
+													<c:when test="${m.storeMenuFileVO.oriName ne null}">
+														<img src="../upload/${m.storeMenuFileVO.oriName}">
+													</c:when>
+													<c:otherwise>
+														<img>
+													</c:otherwise>
+												</c:choose>
+												<div class="md1d">${m.menuName}</div>
+												<div class="md1d2">${m.description}</div>
+											</div>
+											
+											
+										<div class="md2">
+											<div style="width: 100px;height:40px;line-height:40px; float:left;font-size: 17px;font-weight: bold;">가격</div>	
+											<div style="width: 100px;height:40px;line-height:40px; float: right;font-size: 17px;font-weight: bold;">${m.menuPrice}원</div>
+										</div>
+								
 
-											<p>Some text to enable scrolling.. Lorem ipsum dolor sit
-												amet, consectetur adipiscing elit, sed do eiusmod tempor
-												incididunt ut labore et dolore magna aliqua. Ut enim ad
-												minim veniam, quis nostrud exercitation ullamco laboris nisi
-												ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-												reprehenderit in voluptate velit esse cillum dolore eu
-												fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-												proident, sunt in culpa qui officia deserunt mollit anim id
-												est laborum consectetur adipiscing elit, sed do eiusmod
-												tempor incididunt ut labore et dolore magna aliqua. Ut enim
-												ad minim veniam, quis nostrud exercitation ullamco laboris
-												nisi ut aliquip ex ea commodo consequat.</p>
+
 										</div>
 
 										<!-- Modal footer -->
 										<div class="modal-footer">
-											<button type="button" class="btn btn-danger"
-												data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">주문하기</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">주문표에 추가</button>
 										</div>
 
 									</div>
@@ -189,7 +150,7 @@
 			$modal = $("#" + id);
 			//$('body').css("overflow", "hidden");
 			$modal.show();
-			//bgLayerOpen();
+			bgLayerOpen();
 			return false;
 		});
 		$(".modal--close").click(function() {
@@ -197,6 +158,6 @@
 			$modal = $("#" + id);
 			//$('body').css("overflow", "scroll");
 			$modal.hide();
-			//bgLayerClear();
+			bgLayerClear();
 		});
 	</script>

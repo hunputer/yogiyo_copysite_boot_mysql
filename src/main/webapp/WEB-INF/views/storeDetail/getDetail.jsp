@@ -337,27 +337,6 @@
 	width: 112px;
 	margin-left: 10px;
 }
-
-.modal {
-	width: 30%;
-	height: 600px;
-	background-color: white;
-	border: 1px solid #DCDCDC;
-	margin-left: 35%; /* half of width */
-	margin-top: 8%; /* half of height */
-	position: relative;
-	overflow-y: auto;
-}
-.modalCon{
-	width: 100%;
-	height: 100%;
-	overflow-y: initial !important;
-}
-
-#divMd2{
-	width: 100%;
-	height: auto; 
-}
 .bgLayer {
 	display: none;
 	position: absolute;
@@ -420,7 +399,9 @@
 	width: 100%;
 	height: 40px;
 	border-top: 1px solid #DCDCDC;
+	
 }
+
 .raCon{
 	width: 660px;
 	height: auto;
