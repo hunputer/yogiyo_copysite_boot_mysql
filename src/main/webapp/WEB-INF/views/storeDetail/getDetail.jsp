@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -8,7 +10,10 @@
 <title>Insert title here</title>
 <c:import url="../template/bootstrap.jsp"></c:import>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style type="text/css">
 .sdContainer {
 	width: 1090px;
@@ -334,26 +339,6 @@
 	width: 112px;
 	margin-left: 10px;
 }
-
-.modal {
-	width: 30%;
-	height: 600px;
-	background-color: white;
-	border: 1px solid #DCDCDC;
-	margin-left: 35%; /* half of width */
-	margin-top: 8%; /* half of height */
-	position: relative;
-	overflow: scroll;
-}
-.modalCon{
-	width: 100%;
-	height: auto;
-}
-
-#divMd2{
-	width: 100%;
-	height: auto; 
-}
 .bgLayer {
 	display: none;
 	position: absolute;
@@ -416,6 +401,14 @@
 	width: 100%;
 	height: 40px;
 	border-top: 1px solid #DCDCDC;
+	
+}
+.md3{
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+	border-top: 1px solid #DCDCDC;
+	background-color: aqua;
 }
 .raCon{
 	width: 660px;
@@ -462,26 +455,44 @@
 }
 .raRevDiv{
 	width: 660px;
-	height: 300px;
-	background-color: aqua;
+	height: auto;
 	border-bottom: 1px solid #DCDCDC;
 	
 }
 .raRevDiv1{
 	width: 660px;
-	height: 50px;
+	height: 30px;
+	margin-top : 20px;
 }
 .raRevDiv2{
 	width: 660px;
+	height: 30px;
 }
 .raRevDiv3{
 	width: 660px;
+	height: auto;
 }
 .raRevDiv4{
 	width: 660px;
+	height: auto;
+	margin-top:10px;
+	color: #DEB887;
 }
 .raRevDiv5{
 	width: 660px;
+	height: auto;
+	margin-top : 10px;
+	color: #696969;
+	margin-bottom: 15px;
+}
+.raReplyDiv{
+	width: 600px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #FAF0E6;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	padding: 10px;
 }
 </style>
 

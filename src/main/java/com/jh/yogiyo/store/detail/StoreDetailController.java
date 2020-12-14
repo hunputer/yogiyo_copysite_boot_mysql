@@ -50,7 +50,11 @@ public class StoreDetailController {
 		
 		List<StoreMenuVO> ar = storeDetailService.getMenu(storeVO);
 		String[] cg = storeDetailService.getMenuCategory(storeVO);
+		List<ToppingVO> arTopping = storeDetailService.getTopping(storeVO);
+		System.out.println(arTopping.get(0).getToppingName());
+		System.out.println(arTopping.size());
 		
+		mv.addObject("arTopping", arTopping);
 		mv.addObject("cg",cg);
 		mv.addObject("list", ar);
 		mv.setViewName("storeDetail/menuAjax");
@@ -64,7 +68,9 @@ public class StoreDetailController {
 		double avg = storeDetailService.getStarAvg(storeVO);
 		long sum = storeDetailService.getSumReview(storeVO);
 		List<StoreReviewVO> ar = storeDetailService.getAllReview(storeVO);
+		List<ReviewAplyVO> arAply = storeDetailService.getAply(storeVO);
 		
+		mv.addObject("arAply", arAply);
 		mv.addObject("ar", ar);
 		mv.addObject("sum", sum);
 		mv.addObject("avg", avg);

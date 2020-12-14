@@ -19,7 +19,7 @@ public class StoreDetailService {
 	
 	@Autowired
 	private FilePathGenerator filePathGenerator;
-	
+
 	@Autowired
 	private FileManager fileManager;
 	
@@ -61,31 +61,36 @@ public class StoreDetailService {
 	}
 	
 	public List<StoreReviewVO> getAllReview(StoreVO storeVO) throws Exception{
+		
+		List<StoreReviewVO> ar = storeDetailMapper.getAllReview(storeVO);
+		System.out.println(ar.get(0).getContents());
 		return storeDetailMapper.getAllReview(storeVO);
 	}
 	
 	public List<ReviewAplyVO> getAply(StoreVO storeVO) throws Exception{
-	      return storeDetailMapper.getAply(storeVO);
+		return storeDetailMapper.getAply(storeVO);
 	}
-	   
+	
 	public List<ToppingVO> getTopping(StoreVO storeVO) throws Exception{
-	     return storeDetailMapper.getTopping(storeVO);
+		return storeDetailMapper.getTopping(storeVO);
 	}
 	
 	public int setReviewInsert(StoreReviewVO storeReviewVO, MultipartFile file) throws Exception {
-		File f = filePathGenerator.getUseResourceLoader("upload/review");
-		int result = storeDetailMapper.setReviewInsert(storeReviewVO);
-		
-		if(file.getSize() != 0) {
-			String fileName = fileManager.saveFileCopy(file, f);
-			
-			ReviewFileVO fileVO = new ReviewFileVO();
-			fileVO.setFileName(fileName);
-			fileVO.setOriName(file.getOriginalFilename());
-			fileVO.setReviewNum(storeReviewVO.getNum());
-			
-			result = storeDetailMapper.setReviewFileInsert(fileVO);
-		}
-		return result;
-	}
+	      File f = filePathGenerator.getUseResourceLoader("upload/review");
+	      int result = storeDetailMapper.setReviewInsert(storeReviewVO);
+	      
+	      if(file.getSize() != 0) {
+	         String fileName = fileManager.saveFileCopy(file, f);
+	         
+	         ReviewFileVO fileVO = new ReviewFileVO();
+	         fileVO.setFileName(fileName);
+	         fileVO.setOriName(file.getOriginalFilename());
+	         fileVO.setReviewNum(storeReviewVO.getNum());
+	         
+	         result = storeDetailMapper.setReviewFileInsert(fileVO);
+	      }
+	      return result;
+	   }
+	
+	
 }

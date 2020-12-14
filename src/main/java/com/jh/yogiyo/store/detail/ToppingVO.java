@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class ToppingVO {
-   private long num;
-   private long storeNum;
-   private long menuNum;
-   private String toppingName;
-   private long toppingPrice;
+
+	private long num;
+	private long storeNum;
+	private long menuNum;
+	private String toppingName;
+	private long toppingPrice;
 }
