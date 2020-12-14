@@ -17,6 +17,7 @@ public class StoreVO {
 	private String address;
 	private String zipCode;
 	private String id;
+	private double starAvg;
 	
 	private StoreManageVO storeManageVO;
 	private StoreThumbFileVO storeThumbFileVO;

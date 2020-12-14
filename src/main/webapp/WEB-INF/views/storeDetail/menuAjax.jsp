@@ -78,9 +78,9 @@
 											<div style="width: 100px;height:40px;line-height:40px; float: right;font-size: 17px;font-weight: bold;">${m.menuPrice}원</div>
 										</div>
 								
-									<c:if test="${!empty arTop}">
+									<c:if test="${!empty arTopping}">
 										<div class="md3">
-											<c:forEach items="${arTop}" var="ar2">
+											<c:forEach items="${arTopping}" var="ar2">
 												<c:choose>
 													<c:when test="${ar2.menuNum eq m.num}">
 														${ar2.toppingName}

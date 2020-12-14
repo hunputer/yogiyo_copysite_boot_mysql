@@ -11,7 +11,7 @@
       ${vo.storeName}
 	</div>
 	<div class="restaurant-info">
-		<span class="restaurant-star">★ 4.3</span> | 리뷰 618 | ${vo.storeManageVO.minPrice}원 이상 배달
+		<span class="restaurant-star">★ ${vo.starAvg}</span> | 리뷰 618 | ${vo.storeManageVO.minPrice}원 이상 배달
 	</div>
 	<div class="restaurant-time">
 		${vo.storeManageVO.takeTime}분 예상

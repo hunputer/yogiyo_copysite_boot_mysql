@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jh.yogiyo.store.detail.StoreDetailService;
 import com.jh.yogiyo.store.search.SearchVO;
 
 @Controller
@@ -17,6 +18,9 @@ public class StoreController {
 	
 	@Autowired
 	private StoreService storeService;
+	
+	@Autowired
+	private StoreDetailService storeDetailService; 
 	
 	@GetMapping("storeList")
 	public ModelAndView getList() throws Exception{
@@ -35,6 +39,10 @@ public class StoreController {
 		System.out.println(storePager.getCategoryNum());
 		System.out.println(storePager.getCurPage());
 		List<StoreVO> ar = storeService.getList(storePager);
+		for(StoreVO vo : ar) {
+			double avg = storeDetailService.getStarAvg(vo);
+			vo.setStarAvg(avg);
+		}
 		mv.addObject("list", ar);
 		mv.setViewName("store/storePager");
 		return mv;
