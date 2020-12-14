@@ -64,6 +64,14 @@ public class StoreDetailService {
 		return storeDetailMapper.getAllReview(storeVO);
 	}
 	
+	public List<ReviewAplyVO> getAply(StoreVO storeVO) throws Exception{
+	      return storeDetailMapper.getAply(storeVO);
+	}
+	   
+	public List<ToppingVO> getTopping(StoreVO storeVO) throws Exception{
+	     return storeDetailMapper.getTopping(storeVO);
+	}
+	
 	public int setReviewInsert(StoreReviewVO storeReviewVO, MultipartFile file) throws Exception {
 		File f = filePathGenerator.getUseResourceLoader("upload/review");
 		int result = storeDetailMapper.setReviewInsert(storeReviewVO);
