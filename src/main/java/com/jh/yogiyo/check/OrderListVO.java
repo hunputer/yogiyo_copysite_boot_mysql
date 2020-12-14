@@ -2,6 +2,8 @@ package com.jh.yogiyo.check;
 
 import java.sql.Date;
 
+import com.jh.yogiyo.store.StoreVO;
+
 import lombok.Data;
 
 @Data
@@ -14,4 +16,6 @@ public class OrderListVO {
 	private String orderContents;
 	private String address;
 	private Date regDate;
+	private StoreVO storeVO;
+	
 }

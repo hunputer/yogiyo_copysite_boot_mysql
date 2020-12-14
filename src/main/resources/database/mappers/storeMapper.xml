@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.store.StoreMapper">
-	<select id="getList" parameterType="StorePager" resultMap="getOneResult">
+	<select id="getList" parameterType="StorePager" resultMap="getStoredResult">
 		select S.*, SM.*
 		from store S left join storemanage SM
 		on S.num = SM.storeNum 
@@ -22,7 +22,7 @@
 		order by num asc limit #{startRow},20
 	</select>
 	
-	<resultMap type="StoreVO" id="getOneResult">
+	<resultMap type="StoreVO" id="getStoredResult">
          <id column="num" property="num"/>
          <result column="categoryNum" property="categoryNum"/>
          <result column="storeName" property="storeName"/>
@@ -31,10 +31,10 @@
          <result column="address" property="address" />
          <result column="zipCode" property="zipCode" />
          <result column="id" property="id" />
-         <association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult"></association>
+         <association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult2"></association>
    </resultMap>
    
-   <resultMap type="StoreManageVO" id="getStoreManageResult">
+   <resultMap type="StoreManageVO" id="getStoreManageResult2">
       <result column="storeNum" property="storeNum"/>
       <result column="openTime" property="openTime"/>
       <result column="closeTime" property="closeTime"/>

@@ -62,9 +62,15 @@
 	    text-align: center;
 	    font-size: 18px;
 	    background-color: #fa0050;
-	    border : 1px solid #ea7266;
+	    border : 1px solid #fff;
 	    float: right;
 	    color: white;
+	    border-radius: 5px;
+	}
+	
+	.mypageImg{
+		float : right;
+		 margin: 25px 0 7px 10px;
 	}
 	
 	.searchForm{
@@ -114,13 +120,14 @@
 			<div class="nav-top">
 				<div class="nav-mid">
 					<a href="${pageContext.request.contextPath}/"><h1 class="logo"></h1></a>
-					<input type="button" style="background-color: #ff8a00;" class="btn-cart" value="주문표">
+					<input type="button" style="background-color: #fff; color: #fa0050" class="btn-cart" value="주문표">
 					<c:if test="${member == null}">
 						<input type="button" id="btn-login" class="bnt-login" value="로그인">
 					</c:if>
 					
 					<c:if test="${member != null}">
 						<input type="button" id="btn-logout" class="bnt-login" value="로그아웃">
+						<a href="${pageContext.request.contextPath}/mypage"><img class="mypageImg" alt="" src="${pageContext.request.contextPath}/images/m.top_icon01.png" width="30px" height="30px"></a>
 					</c:if>
 					
 				</div>

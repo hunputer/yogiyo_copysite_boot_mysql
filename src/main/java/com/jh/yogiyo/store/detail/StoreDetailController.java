@@ -21,10 +21,9 @@ public class StoreDetailController {
 	@GetMapping("getDetail")
 	public ModelAndView getStoreDetail(StoreVO storeVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(storeVO.getNum());
 		double avg = storeDetailService.getStarAvg(storeVO);
 		storeVO = storeDetailService.getStoreManage(storeVO);
-		
 		mv.addObject("avg", avg);
 		mv.addObject("vo", storeVO);
 		mv.setViewName("storeDetail/getDetail");

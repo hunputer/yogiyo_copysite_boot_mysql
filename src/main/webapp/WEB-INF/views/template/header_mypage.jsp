@@ -112,6 +112,45 @@
     	border-bottom-left-radius: 0;
 	}
 	
+	.category-menu {
+    	background-color: #fff;
+    	position: relative;
+	    border-left: none;
+	    margin-top: 0;
+	    margin-right: 0;
+	    box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.25);
+    }
+    
+    .category-menu ul {
+	    max-width: 1090px;
+	    margin: 0 auto;
+	    border-top: 1px solid #d9d9d9;
+	    position: relative;
+	    padding-left: 0;
+	}
+	
+	.category-menu ul a{
+		color: black;
+	}
+	
+	.category-menu li:hover, .category-menu li:focus, .category-menu li.active {
+	    background-image: none;
+	    background-color: #333;
+	    color: #fff;
+	}
+	
+	.category-menu li {
+	    float: left;
+	    font-size: 13px;
+	    text-align: center;
+	    list-style: none;
+	    border-right: 0;
+	    border-bottom: 0;
+	    padding: 20px 0;
+	    background: url(../images/sprite-icon.png) no-repeat -999px 20px;
+	    width: 90px;
+	}
+	
 </style>
 </head>
 <body>
@@ -131,15 +170,50 @@
 					</c:if>
 				</div>
 			</div>
-			<div id="searchForm" class="searchForm">
-				<div style="text-align: center; height : 40px;">
-				<form action="${pageContext.request.contextPath}/store/storeList" method="get">
-					<input style="margin-right: 0px" id="search" name="address" type="text" value="${param.address}" placeholder="건물명, 도로명, 지번으로 검색하세요.">
-					<input type="submit" id="searchBtn" value="검색">
-				</form>	
-				</div>
-			</div>
 		</div>
+		
+		
+		<div id="category" class="category-menu clearfix collapse in" aria-expanded="true">
+		    <ul>
+		    	<a href="${pageContext.request.contextPath}/mypage">
+			    	<li>
+			      		<span class="category-name ng-binding">내정보</span>
+			      	</li>
+		      	</a>
+		      	
+		      	<a href="${pageContext.request.contextPath}/mypage/mypageLevel">
+			    	<li>
+			      		<span class="category-name ng-binding">회원등급</span>
+			      	</li>
+		      	</a>
+		      	
+		      	<a href="#">
+			    	<li>
+			      		<span class="category-name ng-binding">쿠폰함</span>
+			      	</li>
+		      	</a>
+		      	
+		      	<a href="${pageContext.request.contextPath}/mypage/mypagePoint">
+			    	<li>
+			      		<span class="category-name ng-binding">포인트</span>
+			      	</li>
+		      	</a>
+		      	
+		      	<a href="${pageContext.request.contextPath}/mypage/mypageOrder">
+			    	<li>
+			      		<span class="category-name ng-binding">주문내역</span>
+			      	</li>
+		      	</a>
+		      	
+		      	<a href="${pageContext.request.contextPath}/mypage/getReviewList">
+			    	<li>
+			      		<span class="category-name ng-binding">리뷰관리</span>
+			      	</li>
+		      	</a>
+		      	
+		    </ul>
+		  </div>
+		
 	</header>
 	
 	<script type="text/javascript">

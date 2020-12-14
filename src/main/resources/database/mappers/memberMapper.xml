@@ -5,7 +5,7 @@
     
 <mapper namespace="com.jh.yogiyo.member.MemberMapper">
 	<insert id="setInsert" parameterType="MemberVO">
-		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{zipCode}, #{memberCode})
+		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{address}, #{zipCode}, #{memberCode},0,'요기프렌드')
 	</insert>
 	
 	<select id="getOne" parameterType="MemberVO" resultType="MemberVO">
@@ -15,4 +15,51 @@
 	<select id="getIdCheck" parameterType="MemberVO" resultType="MemberVO">
 		select * from member where id=#{id}
 	</select>
+	
+	<update id="setUpdate" parameterType="MemberVO">
+		update member set name=#{name}, phone=#{phone}, address=#{address} where id=#{id}
+	</update>
+	
+	<select id="getReviewList" parameterType="MemberVO" resultMap="getReviewsResult">
+		select S.*,RF.fileName, OL.orderContents, RA.replyContents, RA.regDate
+		from storereview S left join reviewfile RF
+		on S.num = RF.reviewNum
+		left join orderList OL 
+		on S.orderNum = OL.num
+		left join reviewaply RA
+		on S.num = RA.reviewNum
+		where S.id = #{id}
+		order by S.num desc
+	</select>
+	
+	<resultMap type="StoreReviewVO" id="getReviewsResult">
+         <id column="num" property="num"/>
+         <result column="storeNum" property="storeNum"/>
+         <result column="orderNum" property="orderNum"/>
+         <result column="id" property="id" />
+         <result column="regDate" property="regDate" />
+         <result column="contents" property="contents" />
+         <result column="starCount" property="starCount" />
+         <association property="reviewFileVO" javaType="ReviewFileVO" resultMap="getReviewFileResult2"></association>
+         <association property="orderListVO" javaType="OrderListVO" resultMap="getOrderListResult2"></association>
+         <association property="reviewAplyVO" javaType="ReviewAplyVO" resultMap="getReviewAplyResult2"></association>
+   </resultMap>
+   
+   <resultMap type="ReviewFileVO" id="getReviewFileResult2">
+      <result column="fileName" property="fileName"/>
+   </resultMap>
+   
+   <resultMap type="OrderListVO" id="getOrderListResult2">
+      <result column="orderContents" property="orderContents"/>
+   </resultMap>
+   
+   <resultMap type="ReviewAplyVO" id="getReviewAplyResult2">
+      <result column="replyContents" property="replyContents"/>
+      <result column="regDate" property="regDate"/>
+   </resultMap>
+   
+   <delete id="setReviewDelete" parameterType="StoreReviewVO">
+   		delete from storereview where num = #{num}
+   </delete>
+   
 </mapper>

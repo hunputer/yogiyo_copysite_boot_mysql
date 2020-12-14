@@ -19,4 +19,5 @@ public class StoreReviewVO {
 	
 	private ReviewFileVO reviewFileVO;
 	private OrderListVO orderListVO;
+	private ReviewAplyVO reviewAplyVO;
 }

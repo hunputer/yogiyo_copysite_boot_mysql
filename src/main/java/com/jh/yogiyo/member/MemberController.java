@@ -29,6 +29,7 @@ public class MemberController {
 	@Autowired
 	public MemberService memberService;
 	
+	
 	@GetMapping("memberLogin")
 	public ModelAndView memberLogin() throws Exception{
 		ModelAndView mv = new ModelAndView();
