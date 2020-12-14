@@ -109,4 +109,15 @@ public class MypageController {
 		return mv;
 	}
 	
+	@GetMapping("setReviewDelete")
+	public ModelAndView setReviewDelete(StoreReviewVO storeReviewVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = mypageService.setReviewDelete(storeReviewVO);
+		String msg = "리뷰가 삭제되었습니다";
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./getReviewList");
+		mv.setViewName("common/result");
+		return mv;
+	}
+	
 }

@@ -19,4 +19,6 @@ public interface MemberMapper {
 	public int setUpdate(MemberVO memberVO) throws Exception;
 	
 	public List<StoreReviewVO> getReviewList(MemberVO memberVO) throws Exception;
+	
+	public int setReviewDelete(StoreReviewVO storeReviewVO) throws Exception; 
 }

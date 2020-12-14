@@ -61,7 +61,7 @@
 				<h1 class="OContents">${vo.orderContents} ${vo.totalPrice}원</h1>
 				<div style="margin-top: 20px">
 					<div class="reviewBnt" title="${vo.num}">리뷰쓰기</div>
-					<div class="storeBnt">가게보기</div>
+					<div class="storeBnt" title="${vo.storeVO.num}">가게보기</div>
 				</div>
 			</div>
 		</c:forEach>
@@ -73,6 +73,11 @@
 			var option = "width = 576, height = 500, top = 100, left = 200, location = no";
 			var num = $(this).attr("title");
 			window.open("./setReviewInsert?num="+num,"insert",option);
+		});
+
+		$(".storeBnt").click(function(){
+			var num = $(this).attr("title");
+			location.href = "../storeDetail/getDetail?num="+num;
 		});
 	</script>
 	

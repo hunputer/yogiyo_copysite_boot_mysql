@@ -11,6 +11,6 @@ public class ReviewAplyVO {
    private long storeNum;
    private long reviewNum;
    private String id;
-   private String contents;
+   private String replyContents;
    private Date regDate;
 }

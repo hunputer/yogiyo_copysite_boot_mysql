@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:forEach items="${list}" var="vo">
-  <div class="col-sm-6">
+  <div class="col-sm-6" title="${vo.num}">
  	<div class="item">
 		<div class="logo1">		
 		</div>

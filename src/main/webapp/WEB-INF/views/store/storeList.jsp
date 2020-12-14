@@ -323,6 +323,11 @@
 	            }
 	          }); 
 		}
+
+		$("#pagerResult").on("click",".col-sm-6",function(){
+			var num = $(this).attr("title");
+			location.href = "../storeDetail/getDetail?num="+num;
+		});
 		
 
 	</script>

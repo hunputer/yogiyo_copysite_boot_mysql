@@ -29,5 +29,9 @@ public class MypageService {
 		return memberMapper.getReviewList(memberVO);
 	}
 	
+	public int setReviewDelete(StoreReviewVO storeReviewVO) throws Exception{
+		return memberMapper.setReviewDelete(storeReviewVO);
+	}
+	
 	
 }

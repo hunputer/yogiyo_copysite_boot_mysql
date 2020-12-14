@@ -69,6 +69,7 @@
             <div class="raRevDiv1">
                <span style="font-size: 17px;font-weight: bold;">${ar.id}님</span> 
                <span style="color: #A9A9A9; font-size: 13px;">　${ar.regDate}</span>
+               <a href="./setReviewDelete?num=${ar.num}"><span style="font-size: 13px;">리뷰삭제</span></a>
             </div>
             <div class="raRevDiv2">
                <c:forEach begin="1" end="5" var="i">
@@ -93,16 +94,14 @@
             <div class="raRevDiv4">${ar.orderListVO.orderContents}</div>
             <div class="raRevDiv5">${ar.contents}</div>
             
-            <c:forEach items="${arAply}" var="arAply">
-               <c:if test="${arAply.reviewNum eq ar.num}">
-                  <div class="raReplyDiv">
-                     <span style="color: gray; font-weight: bold;"> └</span> <span
-                        style="font-size: 18px; font-weight: bold;">사장님</span> <span
-                        style="color: #DCDCDC">${arAply.regDate}</span>
-                     <div style="margin-top: 10px;">${arAply.contents}</div>
-                  </div>
-               </c:if>
-            </c:forEach>
+            <c:if test="${ar.reviewAplyVO.replyContents ne null}">
+                <div class="raReplyDiv">
+                   <span style="color: gray; font-weight: bold;"> └</span> <span
+                      style="font-size: 18px; font-weight: bold;">사장님</span> <span
+                      style="color: #DCDCDC">${ar.reviewAplyVO.regDate}</span>
+                   <div style="margin-top: 10px;">${ar.reviewAplyVO.replyContents}</div>
+                </div>
+            </c:if>
          </div>
       </c:forEach>
 	

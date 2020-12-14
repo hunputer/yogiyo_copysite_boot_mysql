@@ -21,9 +21,13 @@
 	</update>
 	
 	<select id="getReviewList" parameterType="MemberVO" resultMap="getReviewsResult">
-		select S.*,RF.fileName
+		select S.*,RF.fileName, OL.orderContents, RA.replyContents, RA.regDate
 		from storereview S left join reviewfile RF
 		on S.num = RF.reviewNum
+		left join orderList OL 
+		on S.orderNum = OL.num
+		left join reviewaply RA
+		on S.num = RA.reviewNum
 		where S.id = #{id}
 		order by S.num desc
 	</select>
@@ -37,9 +41,25 @@
          <result column="contents" property="contents" />
          <result column="starCount" property="starCount" />
          <association property="reviewFileVO" javaType="ReviewFileVO" resultMap="getReviewFileResult2"></association>
+         <association property="orderListVO" javaType="OrderListVO" resultMap="getOrderListResult2"></association>
+         <association property="reviewAplyVO" javaType="ReviewAplyVO" resultMap="getReviewAplyResult2"></association>
    </resultMap>
    
    <resultMap type="ReviewFileVO" id="getReviewFileResult2">
       <result column="fileName" property="fileName"/>
    </resultMap>
+   
+   <resultMap type="OrderListVO" id="getOrderListResult2">
+      <result column="orderContents" property="orderContents"/>
+   </resultMap>
+   
+   <resultMap type="ReviewAplyVO" id="getReviewAplyResult2">
+      <result column="replyContents" property="replyContents"/>
+      <result column="regDate" property="regDate"/>
+   </resultMap>
+   
+   <delete id="setReviewDelete" parameterType="StoreReviewVO">
+   		delete from storereview where num = #{num}
+   </delete>
+   
 </mapper>
