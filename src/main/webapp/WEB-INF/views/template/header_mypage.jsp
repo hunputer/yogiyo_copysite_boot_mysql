@@ -205,7 +205,7 @@
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/mypage/getReviewList">
 			    	<li>
 			      		<span class="category-name ng-binding">리뷰관리</span>
 			      	</li>

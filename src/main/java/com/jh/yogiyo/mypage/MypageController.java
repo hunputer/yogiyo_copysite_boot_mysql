@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.yogiyo.check.OrderListVO;
 import com.jh.yogiyo.check.OrderService;
+import com.jh.yogiyo.member.MemberMapper;
 import com.jh.yogiyo.member.MemberVO;
 import com.jh.yogiyo.store.StoreService;
 import com.jh.yogiyo.store.detail.ReviewFileVO;
@@ -94,6 +96,16 @@ public class MypageController {
 		String msg = "리뷰 입력이 완료되었습니다";
 		mv.addObject("msg", msg);
 		mv.setViewName("mypage/mypageClose");
+		return mv;
+	}
+	
+	@GetMapping("getReviewList")
+	public ModelAndView getReviewList(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		List<StoreReviewVO> ar = mypageService.getReviewList(member);
+		mv.addObject("list", ar);
+		mv.setViewName("mypage/mypageReviewList");
 		return mv;
 	}
 	
