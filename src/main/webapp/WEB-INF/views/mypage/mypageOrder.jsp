@@ -60,12 +60,21 @@
 				<h1 class="OstoreName">${vo.storeVO.storeName} <span style="font-size: 10px;color: gray">${vo.regDate}</span></h1>
 				<h1 class="OContents">${vo.orderContents} ${vo.totalPrice}원</h1>
 				<div style="margin-top: 20px">
-					<div class="reviewBnt">리뷰쓰기</div>
+					<div class="reviewBnt" title="${vo.num}">리뷰쓰기</div>
 					<div class="storeBnt">가게보기</div>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>
+	
+	<script type="text/javascript">
+		$(".reviewBnt").click(function(){
+			var option = "width = 576, height = 500, top = 100, left = 200, location = no";
+			var num = $(this).attr("title");
+			window.open("./setReviewInsert?num="+num,"insert",option);
+		});
+	</script>
+	
 </body>
 </html>

@@ -10,4 +10,6 @@ import com.jh.yogiyo.member.MemberVO;
 public interface OrderMapper {
 	
 	public List<OrderListVO> getList(MemberVO memberVO) throws Exception;
+	
+	public OrderListVO getOne(OrderListVO orderListVO) throws Exception;
 }

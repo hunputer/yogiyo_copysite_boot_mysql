@@ -21,4 +21,6 @@ public class MypageService {
 		member.setPhone(memberVO.getPhone());
 		return memberMapper.setUpdate(member);
 	}
+	
+	
 }

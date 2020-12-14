@@ -125,4 +125,13 @@
 		left join reviewfile rf on sv.num = rf.reviewNum
 		where sv.storeNum = #{num}
 	</select>
+	
+	<insert id="setReviewInsert" parameterType="StoreVO" useGeneratedKeys="true" keyProperty="num">
+		insert into storereview values (#{num}, #{storeNum}, #{orderNum}, #{id}, now(), #{contents}, #{starCount})
+	</insert>
+	
+	<insert id="setReviewFileInsert" parameterType="StoreVO">
+		insert into reviewfile values (null, #{reviewNum}, #{oriName}, #{fileName})
+	</insert>
+	
 </mapper>

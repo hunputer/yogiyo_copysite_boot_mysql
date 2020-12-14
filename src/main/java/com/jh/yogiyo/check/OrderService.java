@@ -15,4 +15,8 @@ public class OrderService {
 	public List<OrderListVO> getList(MemberVO memberVO) throws Exception{
 		return orderMapper.getList(memberVO);
 	}
+	
+	public OrderListVO getOne(OrderListVO orderListVO) throws Exception{
+		return orderMapper.getOne(orderListVO);	
+	}
 }

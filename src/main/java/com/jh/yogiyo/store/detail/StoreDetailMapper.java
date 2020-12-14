@@ -22,4 +22,8 @@ public interface StoreDetailMapper {
 	public Long getSumReview(StoreVO storeVO) throws Exception;
 	
 	public List<StoreReviewVO> getAllReview(StoreVO storeVO) throws Exception;
+	
+	public int setReviewFileInsert(ReviewFileVO fileVO) throws Exception;
+	
+	public int setReviewInsert(StoreReviewVO storeReviewVO) throws Exception;
 }

@@ -4,6 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.check.OrderMapper">
+
+	<select id="getOne" parameterType="OrderListVO" resultType="OrderListVO">
+		select * from orderlist
+		where num = #{num}
+	</select>
 	
 	<select id="getList" parameterType="MemberVO" resultMap="getOneResult2">
 		select O.*, S.*
