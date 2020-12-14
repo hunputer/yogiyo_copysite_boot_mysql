@@ -47,8 +47,8 @@
 				</div>
 				<div class="raRevDiv3">
 					<c:choose>
-						<c:when test="${ar.reviewFileVO.oriName ne null}">
-							<img src="../upload/${ar.reviewFileVO.oriName}">
+						<c:when test="${ar.reviewFileVO.fileName ne null}">
+							<img src="../upload/review/${ar.reviewFileVO.fileName}">
 						</c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
@@ -62,7 +62,7 @@
 							<span style="color: gray; font-weight: bold;"> └</span> <span
 								style="font-size: 18px; font-weight: bold;">사장님</span> <span
 								style="color: #DCDCDC">${arAply.regDate}</span>
-							<div style="margin-top: 10px;">${arAply.contents}</div>
+							<div style="margin-top: 10px;">${arAply.replyContents}</div>
 						</div>
 					</c:if>
 				</c:forEach>

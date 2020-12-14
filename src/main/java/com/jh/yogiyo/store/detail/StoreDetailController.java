@@ -53,8 +53,9 @@ public class StoreDetailController {
 		String[] cg = storeDetailService.getMenuCategory(storeVO);
 		List<ToppingVO> arTopping = storeDetailService.getTopping(storeVO);
 		System.out.println(arTopping.get(0).getToppingName());
+		System.out.println(arTopping.size());
 		
-		mv.addObject("arTop", arTopping);
+		mv.addObject("arTopping", arTopping);
 		mv.addObject("cg",cg);
 		mv.addObject("list", ar);
 		mv.setViewName("storeDetail/menuAjax");
