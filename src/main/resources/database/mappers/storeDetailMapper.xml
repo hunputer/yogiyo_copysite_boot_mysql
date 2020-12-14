@@ -4,127 +4,137 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.store.detail.StoreDetailMapper">
-	
-	<select id="getOne" parameterType="StoreVO" resultMap="getOneResult">
-		select s.*, st.fileName
-		from store s
-		left join storethumbfile st on s.num=st.storeNum
-		where num = #{num}
-	</select>
-	
-	<resultMap type="StoreVO" id="getOneResult">
-			<id column="num" property="num"/>
-			<result column="categoryNum" property="categoryNum"/>
-			<result column="storeName" property="storeName"/>
-			<result column="storeNumber" property="storeNumber"/>
-			<result column="tel" property="tel" />
-			<result column="address" property="address" />
-			<result column="zipCode" property="zipCode" />
-			<result column="id" property="id" />
-			<association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult"></association>
-			<association property="storeThumbFileVO" javaType="StoreThumbFileVO" resultMap="rmStoreThumbFile"></association>
-	</resultMap>
-	
-	<resultMap type="StoreThumbFileVO" id="rmStoreThumbFile">
-		<id column="num" property="num" />
-		<result column="storeNum" property="storeNum"/>
-		<result column="fileName" property="fileName"/>
-		<result column="oriName" property="oriName"/>
-	</resultMap>
-	
-	<resultMap type="StoreManageVO" id="getStoreManageResult">
-		<result column="storeNum" property="storeNum"/>
-		<result column="openTime" property="openTime"/>
-		<result column="closeTime" property="closeTime"/>
-		<result column="holiday" property="holiday"/>
-		<result column="minPrice" property="minPrice" />
-		<result column="driveFee" property="driveFee" />
-		<result column="takeTime" property="takeTime" />
-		<result column="isOpen" property="isOpen" />
-		<result column="storeComment" property="storeComment" />
-		<result column="deliveryArea" property="deliveryArea" />
-	</resultMap>
-	
-	<resultMap type="StoreMenuVO" id="rmStoreMenu">
-		<id column="num" property="num"/>
-		<result column="menuCategory" property="menuCategory"/>
-		<result column="menuName" property="menuName"/>
-		<result column="menuPrice" property="menuPrice"/>
-		<result column="isSell" property="isSell" />
-		<result column="description" property="description" />
-		<association property="storeMenuFileVO" javaType="StoreMenuFileVO" resultMap="rmStoreMenuFile"></association>
-	</resultMap>
-	
-	<resultMap type="StoreMenuFileVO" id="rmStoreMenuFile">
-		<id column="fileNum" property="fileNum"/>
-		<result column="menuNum" property="menuNum"/>
-		<result column="oriName" property="oriName"/>
-		<result column="fileName" property="fileName"/>
-	</resultMap>
+   
+   <select id="getOne" parameterType="StoreVO" resultMap="getOneResult">
+      select s.*, st.fileName
+      from store s
+      left join storethumbfile st on s.num=st.storeNum
+      where num = #{num}
+   </select>
+   
+   <resultMap type="StoreVO" id="getOneResult">
+         <id column="num" property="num"/>
+         <result column="categoryNum" property="categoryNum"/>
+         <result column="storeName" property="storeName"/>
+         <result column="storeNumber" property="storeNumber"/>
+         <result column="tel" property="tel" />
+         <result column="address" property="address" />
+         <result column="zipCode" property="zipCode" />
+         <result column="id" property="id" />
+         <association property="storeManageVO" javaType="StoreManageVO" resultMap="getStoreManageResult"></association>
+         <association property="storeThumbFileVO" javaType="StoreThumbFileVO" resultMap="rmStoreThumbFile"></association>
+   </resultMap>
+   
+   <resultMap type="StoreThumbFileVO" id="rmStoreThumbFile">
+      <id column="num" property="num" />
+      <result column="storeNum" property="storeNum"/>
+      <result column="fileName" property="fileName"/>
+      <result column="oriName" property="oriName"/>
+   </resultMap>
+   
+   <resultMap type="StoreManageVO" id="getStoreManageResult">
+      <result column="storeNum" property="storeNum"/>
+      <result column="openTime" property="openTime"/>
+      <result column="closeTime" property="closeTime"/>
+      <result column="holiday" property="holiday"/>
+      <result column="minPrice" property="minPrice" />
+      <result column="driveFee" property="driveFee" />
+      <result column="takeTime" property="takeTime" />
+      <result column="isOpen" property="isOpen" />
+      <result column="storeComment" property="storeComment" />
+      <result column="deliveryArea" property="deliveryArea" />
+   </resultMap>
+   
+   <resultMap type="StoreMenuVO" id="rmStoreMenu">
+      <id column="num" property="num"/>
+      <result column="menuCategory" property="menuCategory"/>
+      <result column="menuName" property="menuName"/>
+      <result column="menuPrice" property="menuPrice"/>
+      <result column="isSell" property="isSell" />
+      <result column="description" property="description" />
+      <association property="storeMenuFileVO" javaType="StoreMenuFileVO" resultMap="rmStoreMenuFile"></association>
+   </resultMap>
+   
+   <resultMap type="StoreMenuFileVO" id="rmStoreMenuFile">
+      <id column="fileNum" property="fileNum"/>
+      <result column="menuNum" property="menuNum"/>
+      <result column="oriName" property="oriName"/>
+      <result column="fileName" property="fileName"/>
+   </resultMap>
 
-	<select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
-		select s.storeName, s.address, s.tel, s.storeNumber, sm.*, st.fileName
-		from store s
-		inner join storemanage sm on s.num = sm.storeNum
+   <select id="getStoreManage" parameterType="StoreVO" resultMap="getOneResult">
+      select s.storeName, s.address, s.tel, s.storeNumber, sm.*, st.fileName
+      from store s
+      inner join storemanage sm on s.num = sm.storeNum
         inner join storethumbfile st on s.num = st.storeNum
-		where s.num=#{num}
-	</select>
-	
-	<select id="getMenu" parameterType="StoreVO" resultMap="rmStoreMenu">
-		select sm.*, sf.oriName 
-		from storemenu sm 
-		left join storemenufile sf on sm.num = sf.menuNum 
-		where storeNum = #{num}
-	</select>
-	
-	<select id="getMenuCategory" parameterType="StoreVO" resultType="java.lang.String">
-		select menuCategory from storemenu 
-		where storeNum = #{num}
-		group by menuCategory
-	</select>
-	
-	<select id="getStarAvg" parameterType="StoreVO" resultType="StoreReviewVO">
-		select * from storereview where storeNum=#{num} 
-	</select>
-	
-	<select id="getSumReview" parameterType="StoreVO" resultType="java.lang.Long">
-		select count(*) from storereview where storeNum=#{num}
-	</select>
-	
-	<resultMap type="StoreReviewVO" id="rmStoreReview">
-		<id column="num" property="num" />
-		<result column="storeNum" property="storeNum"/>
-		<result column="orderNum" property="orderNum"/>
-		<result column="id" property="id"/>
-		<result column="regDate" property="regDate"/>
-		<result column="starCount" property="starCount"/>
-		<association property="orderListVO" javaType="OrderListVO" resultMap="rmOrderList"></association>
-		<association property="reviewFileVO" javaType="ReviewFileVO" resultMap="rmReviewFile"></association>
-	</resultMap>
-	
-	<resultMap type="OrderListVO" id="rmOrderList">
-		<id column="num" property="num" />
-		<result column="storeNum" property="storeNum"/>
-		<result column="id" property="id"/>
-		<result column="totalPrice" property="totalPrice"/>
-		<result column="orderContents" property="orderContents"/>
-		<result column="address" property="address"/>
-	</resultMap>
-	
-	<resultMap type="ReviewFileVO" id="rmReviewFile">
-		<id column="num" property="num" />
-		<result column="reviewNum" property="reviewNum"/>
-		<result column="oriName" property="oriName"/>
-		<result column="fileName" property="fileName"/>
-	</resultMap>
-	
-	<select id="getAllReview" parameterType="StoreVO" resultMap="rmStoreReview">
-		select sv.*, ol.orderContents, rf.fileName
-		from storereview sv
-		inner join orderlist ol on sv.orderNum = ol.num
-		left join reviewfile rf on sv.num = rf.reviewNum
-		where sv.storeNum = #{num}
-	</select>
+      where s.num=#{num}
+   </select>
+   
+   <select id="getMenu" parameterType="StoreVO" resultMap="rmStoreMenu">
+      select sm.*, sf.oriName 
+      from storemenu sm 
+      left join storemenufile sf on sm.num = sf.menuNum 
+      where storeNum = #{num}
+   </select>
+   
+   <select id="getMenuCategory" parameterType="StoreVO" resultType="java.lang.String">
+      select menuCategory from storemenu 
+      where storeNum = #{num}
+      group by menuCategory
+   </select>
+   
+   <select id="getStarAvg" parameterType="StoreVO" resultType="StoreReviewVO">
+      select * from storereview where storeNum=#{num} 
+   </select>
+   
+   <select id="getSumReview" parameterType="StoreVO" resultType="java.lang.Long">
+      select count(*) from storereview where storeNum=#{num}
+   </select>
+   
+   <resultMap type="StoreReviewVO" id="rmStoreReview">
+      <id column="num" property="num" />
+      <result column="storeNum" property="storeNum"/>
+      <result column="orderNum" property="orderNum"/>
+      <result column="id" property="id"/>
+      <result column="regDate" property="regDate"/>
+      <result column="contents" property="contents"/>
+      <result column="starCount" property="starCount"/>
+      <association property="orderListVO" javaType="OrderListVO" resultMap="rmOrderList"></association>
+      <association property="reviewFileVO" javaType="ReviewFileVO" resultMap="rmReviewFile"></association>
+   </resultMap>
+   
+   <resultMap type="OrderListVO" id="rmOrderList">
+      <id column="num" property="num" />
+      <result column="storeNum" property="storeNum"/>
+      <result column="id" property="id"/>
+      <result column="totalPrice" property="totalPrice"/>
+      <result column="orderContents" property="orderContents"/>
+      <result column="address" property="address"/>
+      <result column="regDate" property="regDate"/>
+   </resultMap>
+   
+   <resultMap type="ReviewFileVO" id="rmReviewFile">
+      <id column="num" property="num" />
+      <result column="reviewNum" property="reviewNum"/>
+      <result column="oriName" property="oriName"/>
+      <result column="fileName" property="fileName"/>
+   </resultMap>
+   
+   <select id="getAllReview" parameterType="StoreVO" resultMap="rmStoreReview">
+      select sv.*, ol.orderContents, rf.fileName
+      from storereview sv
+      inner join orderlist ol on sv.orderNum = ol.num
+      left join reviewfile rf on sv.num = rf.reviewNum
+      where sv.storeNum = #{num}
+   </select>
+   
+   <select id="getAply" parameterType="StoreVO" resultType="ReviewAplyVO">
+      select * from reviewaply where storeNum = #{num}
+   </select>
+   
+   <select id="getTopping" parameterType="StoreVO" resultType="ToppingVO">
+      select * from topping where storeNum =${num}
+   </select>
 	
 	<insert id="setReviewInsert" parameterType="StoreVO" useGeneratedKeys="true" keyProperty="num">
 		insert into storereview values (#{num}, #{storeNum}, #{orderNum}, #{id}, now(), #{contents}, #{starCount})
