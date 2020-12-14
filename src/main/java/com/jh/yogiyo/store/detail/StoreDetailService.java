@@ -1,17 +1,27 @@
 package com.jh.yogiyo.store.detail;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jh.yogiyo.store.StoreVO;
+import com.jh.yogiyo.util.FileManager;
+import com.jh.yogiyo.util.FilePathGenerator;
 
 @Service
 public class StoreDetailService {
 
 	@Autowired
 	private StoreDetailMapper storeDetailMapper;
+	
+	@Autowired
+	private FilePathGenerator filePathGenerator;
+
+	@Autowired
+	private FileManager fileManager;
 	
 	public StoreVO getOne(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getOne(storeVO);
@@ -64,4 +74,23 @@ public class StoreDetailService {
 	public List<ToppingVO> getTopping(StoreVO storeVO) throws Exception{
 		return storeDetailMapper.getTopping(storeVO);
 	}
+	
+	public int setReviewInsert(StoreReviewVO storeReviewVO, MultipartFile file) throws Exception {
+	      File f = filePathGenerator.getUseResourceLoader("upload/review");
+	      int result = storeDetailMapper.setReviewInsert(storeReviewVO);
+	      
+	      if(file.getSize() != 0) {
+	         String fileName = fileManager.saveFileCopy(file, f);
+	         
+	         ReviewFileVO fileVO = new ReviewFileVO();
+	         fileVO.setFileName(fileName);
+	         fileVO.setOriName(file.getOriginalFilename());
+	         fileVO.setReviewNum(storeReviewVO.getNum());
+	         
+	         result = storeDetailMapper.setReviewFileInsert(fileVO);
+	      }
+	      return result;
+	   }
+	
+	
 }
