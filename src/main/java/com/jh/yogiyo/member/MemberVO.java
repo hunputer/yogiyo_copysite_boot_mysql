@@ -11,6 +11,6 @@ public class MemberVO {
 	public String address;
 	public String zipCode;
 	public String memberCode;
-	public int point;
+	public long point;
 	public String memberLevel;
 }

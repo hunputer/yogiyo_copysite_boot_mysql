@@ -33,5 +33,9 @@ public class MypageService {
 		return memberMapper.setReviewDelete(storeReviewVO);
 	}
 	
+	public List<CouponVO> getCouponList(MemberVO memberVO) throws Exception{
+		return memberMapper.getCouponList(memberVO);
+	}
+	
 	
 }

@@ -20,4 +20,8 @@ public class MemberService {
 	public MemberVO getIdCheck(MemberVO memberVO) throws Exception{
 		return memberMapper.getIdCheck(memberVO);
 	}
+	
+	public int setJoinCoupon(MemberVO memberVO) throws Exception{
+		return memberMapper.setJoinCoupon(memberVO);
+	}
 }

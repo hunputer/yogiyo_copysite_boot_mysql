@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.jh.yogiyo.mypage.CouponVO;
 import com.jh.yogiyo.store.detail.StoreReviewVO;
 
 @Mapper
@@ -20,5 +21,9 @@ public interface MemberMapper {
 	
 	public List<StoreReviewVO> getReviewList(MemberVO memberVO) throws Exception;
 	
-	public int setReviewDelete(StoreReviewVO storeReviewVO) throws Exception; 
+	public int setReviewDelete(StoreReviewVO storeReviewVO) throws Exception;
+	
+	public List<CouponVO> getCouponList(MemberVO memberVO) throws Exception;
+	
+	public int setJoinCoupon(MemberVO memberVO) throws Exception;
 }

@@ -166,6 +166,7 @@
 <body>
 	<c:import url="../template/header_notSearch.jsp"></c:import>
 	<div class="container">	
+		<form action="./checkOut" method="post">
 		<div class="col-sm-8">
 			<div class="sub-title">
 				<span>결제하기</span>
@@ -188,7 +189,7 @@
 						휴대전화번호
 					</div>
 					<div class="col-sm-9">
-	                  	<input type="text" class="form-control detailaddress" placeholder="(필수)휴대전화 번호 입력" name="phone">
+	                  	<input type="text" class="form-control detailaddress" placeholder="(필수)휴대전화 번호 입력" name="phone" value="${member.phone}">
 	                </div>
 				</div>
 			</div>
@@ -198,7 +199,7 @@
                 	<span class="menu-name pull-left">주문시 요청사항</span>
 				</div>
 				<div class="panel-body2">
-					<textarea class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" rows="3" name="comment" maxlength="100" placeholder="코로나19 예방을 위해 비대면 배달 권장드립니다. 요기서 결제 선택 후, &quot;문 앞 배달&quot;을 요청사항에 남겨주세요."></textarea>
+					<textarea name="comments" class="form-control ng-pristine ng-untouched ng-valid ng-valid-maxlength" rows="3" maxlength="100" placeholder="코로나19 예방을 위해 비대면 배달 권장드립니다. 요기서 결제 선택 후, &quot;문 앞 배달&quot;을 요청사항에 남겨주세요."></textarea>
 				</div>
 			</div>
 			
@@ -219,15 +220,18 @@
 					<div class="panel-heading">
 	                	<span class="menu-name pull-left">주문내역</span>
 					</div>
-					<div class="restaurant_name">롯데리아-숙대입구역점</div>
+					<div class="restaurant_name">돈암동찌개</div>
+					<input type="hidden" name="restaurant_name" value="2">
 					
 					<ul style="padding-left: 15px;padding-right: 15px;" class="item-list">
 						<li class="listgroupitem1">
                 			<div class="order-item clearfix">
 	                  			<div class="order-name">
-		                    		<span class="ng-binding">치킨풀팩-콘샐러드: 데리야끼소스, 데리야끼소스</span>
+		                    		<span class="ng-binding">치킨풀팩-콘샐러드: 데리야끼소스</span>
+		                    		<input type="hidden" name="productName" value="치킨풀팩-콘샐러드: 데리야끼소스">
 		                    			x
 		                    		<span class="ng-binding">1</span>개
+		                    		<input type="hidden" name="productCount" value="1">
 	                  			</div>
 	                  			 <div class="order-price">19,900원</div>
 		                	</div>
@@ -239,6 +243,8 @@
 		                    		<span class="ng-binding">총 결제 금액</span>
 	                  			</div>
 	                  			<div style="color: #fa0050;font-size: 14px;font-weight: bold" class="order-price">72000원</div>
+	                  			<input type="hidden" name="totalPrice" value="0">
+	                
 		                </div>
 					</div>
 					
@@ -248,7 +254,7 @@
 			</div>
 		</div>
 		
-		
+		</form>
 		
 	</div>
 	<c:import url="../template/footer.jsp"></c:import>

@@ -16,6 +16,9 @@ public class OrderListVO {
 	private String orderContents;
 	private String address;
 	private Date regDate;
+	private String phone;
+	private String comment;
+	private int tradeMethod;
 	private StoreVO storeVO;
 	
 }

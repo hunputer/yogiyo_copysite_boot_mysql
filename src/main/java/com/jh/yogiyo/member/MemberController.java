@@ -82,6 +82,7 @@ public class MemberController {
 		String address = memberVO.getAddress() + " " + detailAddress;
 		memberVO.setAddress(address);
 		int result = memberService.setInsert(memberVO);
+		result = memberService.setJoinCoupon(memberVO);
 		String msg = "";
 		if(result == 1) {
 			msg = "회원가입이 완료되었습니다.";

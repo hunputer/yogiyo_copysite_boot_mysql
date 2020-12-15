@@ -187,7 +187,7 @@
 			      	</li>
 		      	</a>
 		      	
-		      	<a href="#">
+		      	<a href="${pageContext.request.contextPath}/mypage/getCouponList">
 			    	<li>
 			      		<span class="category-name ng-binding">쿠폰함</span>
 			      	</li>

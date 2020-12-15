@@ -120,4 +120,14 @@ public class MypageController {
 		return mv;
 	}
 	
+	@GetMapping("getCouponList")
+	public ModelAndView getCouponList(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		List<CouponVO> ar = mypageService.getCouponList(member);
+		mv.addObject("list", ar);
+		mv.setViewName("mypage/mypageCoupon");
+		return mv;
+	}
+	
 }
