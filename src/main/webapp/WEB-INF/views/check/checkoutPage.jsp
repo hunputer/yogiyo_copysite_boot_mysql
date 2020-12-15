@@ -208,8 +208,8 @@
                 	<span class="menu-name pull-left">결제방식</span>
 				</div>
 				<div class="panel-body2" style="text-align: center">
-					<input type="radio" name="payMethod" value = "0">만나서결제
-					<input style="margin-left: 30px" type="radio" name="payMethod" value = "1">지금결제
+					<input type="radio" name="tradeMethod" value = "0">만나서결제
+					<input style="margin-left: 30px" type="radio" name="tradeMethod" value = "1">지금결제
 				</div>
 			</div>
 		</div>
@@ -220,30 +220,31 @@
 					<div class="panel-heading">
 	                	<span class="menu-name pull-left">주문내역</span>
 					</div>
-					<div class="restaurant_name">돈암동찌개</div>
-					<input type="hidden" name="restaurant_name" value="2">
+					<div class="restaurant_name">${list[0].storeVO.storeName}</div>
+					<input type="hidden" name="storeNum" value="${list[0].storeVO.num}">
 					
 					<ul style="padding-left: 15px;padding-right: 15px;" class="item-list">
+					<c:forEach items="${list}" var="vo">
 						<li class="listgroupitem1">
                 			<div class="order-item clearfix">
 	                  			<div class="order-name">
-		                    		<span class="ng-binding">치킨풀팩-콘샐러드: 데리야끼소스</span>
-		                    		<input type="hidden" name="productName" value="치킨풀팩-콘샐러드: 데리야끼소스">
+		                    		<span class="ng-binding">${vo.menuName}</span>
 		                    			x
-		                    		<span class="ng-binding">1</span>개
-		                    		<input type="hidden" name="productCount" value="1">
+		                    		<span class="ng-binding">${vo.count}</span>개
 	                  			</div>
-	                  			 <div class="order-price">19,900원</div>
+	                  			 <div class="order-price">${vo.price}원</div>
 		                	</div>
 		              	</li>
+		            </c:forEach>
 					</ul>
 					<div class="total-order-price">
 						<div class="order-item clearfix">
 	                  			<div style="color: #fa0050; font-size: 14px; font-weight: bold" class="order-name">
 		                    		<span class="ng-binding">총 결제 금액</span>
 	                  			</div>
-	                  			<div style="color: #fa0050;font-size: 14px;font-weight: bold" class="order-price">72000원</div>
-	                  			<input type="hidden" name="totalPrice" value="0">
+	                  			<div style="color: #fa0050;font-size: 14px;font-weight: bold" class="order-price">${totalPrice}원</div>
+	                  			<input type="hidden" name="totalPrice" value="${totalPrice}">
+	                  			<input type="hidden" name="orderContents" value="${orderContents}">
 	                
 		                </div>
 					</div>

@@ -29,6 +29,23 @@
          <association property="storeVO" javaType="StoreVO" resultMap="getStoreResult"></association>
    </resultMap>
    
+   <select id="getList2" parameterType="MemberVO" resultMap="getOneResult3">
+   		select C.*, S.*
+   		from cart C left join store S
+   		on C.storeNum = S.num
+   		where C.id = #{id}
+   </select>
+   
+   <resultMap type="CartVO" id="getOneResult3">
+         <id column="cartNum" property="cartNum"/>
+         <result column="storeNum" property="storeNum"/>
+         <result column="id" property="id"/>
+         <result column="menuName" property="menuName"/>
+         <result column="count" property="count"/>
+         <result column="price" property="price"/>
+         <association property="storeVO" javaType="StoreVO" resultMap="getStoreResult"></association>
+   </resultMap>
+   
    <resultMap type="StoreVO" id="getStoreResult">
       <id column="num" property="num"/>
 	  <result column="categoryNum" property="categoryNum"/>
@@ -38,5 +55,9 @@
 	  <result column="address" property="address" />
 	  <result column="zipCode" property="zipCode" />
    </resultMap>
+   
+   <insert id="insertOrderList" parameterType="OrderListVO">
+   		insert into orderlist values (null, #{storeNum}, #{id}, #{totalPrice}, #{orderContents}, #{address}, now(), #{phone}, #{comment}, #{tradeMethod})
+   </insert>
 	
 </mapper>

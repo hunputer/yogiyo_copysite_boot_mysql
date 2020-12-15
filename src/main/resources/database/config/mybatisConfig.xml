@@ -21,5 +21,6 @@
 		<typeAlias type="com.jh.yogiyo.store.detail.ReviewAplyVO" alias="ReviewAplyVO"/>
 		<typeAlias type="com.jh.yogiyo.store.detail.ToppingVO" alias="ToppingVO"/>
 		<typeAlias type="com.jh.yogiyo.mypage.CouponVO" alias="CouponVO"/>
+		<typeAlias type="com.jh.yogiyo.store.CartVO" alias="CartVO"/>
 	</typeAliases>
 </configuration>  
