@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jh.yogiyo.member.MemberService;
 import com.jh.yogiyo.member.MemberVO;
 import com.jh.yogiyo.store.CartVO;
 
@@ -20,6 +21,9 @@ public class CheckController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("checkoutPage")
 	public ModelAndView checkoutPage(HttpSession session) throws Exception{
@@ -55,9 +59,19 @@ public class CheckController {
 	}
 	
 	@PostMapping("insertOrderList")
-	public ModelAndView insertOrderList(OrderListVO orderListVO) throws Exception{
+	public ModelAndView insertOrderList(OrderListVO orderListVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = orderService.insertOrderList(orderListVO);
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(orderListVO.getId());
+		memberVO.setPoint(orderListVO.getTotalPrice()/1000*5);
+		result = orderService.setPoint(memberVO);
+		
+		long point = orderService.getPoint(memberVO);
+		memberVO = (MemberVO)session.getAttribute("member");
+		memberVO.setPoint(point);
+		session.setAttribute("member", memberVO);
+		
 		return mv;
 	}
 }

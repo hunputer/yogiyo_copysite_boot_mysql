@@ -25,7 +25,7 @@
 	<c:import url="../template/header_mypage.jsp"></c:import>
 	<div class="container">
 	
-	<div style="width: 350px;margin: 20px auto">
+	<div style="width: 400px;margin: 20px auto">
 		<h1 style="font-size: 20px">${member.name}님의 보유 포인트는 ${member.point}P 입니다</h1>
 	</div>
 	

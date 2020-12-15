@@ -59,5 +59,13 @@
    <insert id="insertOrderList" parameterType="OrderListVO">
    		insert into orderlist values (null, #{storeNum}, #{id}, #{totalPrice}, #{orderContents}, #{address}, now(), #{phone}, #{comment}, #{tradeMethod})
    </insert>
+   
+   <update id="setPoint" parameterType="MemberVO">
+   		update member set point = point + #{point} where id=#{id}
+   </update>
+   
+   <select id="getPoint" parameterType="MemberVO" resultType="java.lang.Integer">
+   		select point from member where id = #{id}
+   </select>
 	
 </mapper>

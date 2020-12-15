@@ -28,4 +28,12 @@ public class OrderService {
 	public int insertOrderList(OrderListVO orderListVO) throws Exception{
 		return orderMapper.insertOrderList(orderListVO);
 	}
+	
+	public int setPoint(MemberVO memberVO) throws Exception{
+		return orderMapper.setPoint(memberVO);
+	}
+	
+	public int getPoint(MemberVO memberVO) throws Exception{
+		return orderMapper.getPoint(memberVO);
+	}
 }

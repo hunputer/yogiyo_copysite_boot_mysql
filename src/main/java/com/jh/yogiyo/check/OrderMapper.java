@@ -17,4 +17,8 @@ public interface OrderMapper {
 	public List<CartVO> getList2(MemberVO memberVO) throws Exception;
 	
 	public int insertOrderList(OrderListVO orderListVO) throws Exception;
+	
+	public int setPoint(MemberVO memberVO) throws Exception;
+	
+	public int getPoint(MemberVO memberVO) throws Exception;
 }
