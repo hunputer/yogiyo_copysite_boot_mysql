@@ -75,28 +75,28 @@ public class CheckController {
 		return mv;
 	}
 	
-	@PostMapping("insertOrderList")
+	@PostMapping("insertOrderList")//결제가 완료될경우 ajax를 통해 넘어옴
 	public ModelAndView insertOrderList(OrderListVO orderListVO, HttpSession session, long usepoint, long couponNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = orderService.insertOrderList(orderListVO);
 		
 		CouponVO couponVO = new CouponVO();
 		couponVO.setCouponNum(couponNum);
-		result = orderService.setUseCoupon(couponVO);
+		result = orderService.setUseCoupon(couponVO);//사용된 쿠폰을 사용된 것으로 처리함
 		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId(orderListVO.getId());
 		memberVO.setPoint(usepoint);
-		result = orderService.setUsePoint(memberVO);
+		result = orderService.setUsePoint(memberVO);//결제한 아이디에서 사용point만큼 차감함
 		
 		
-		memberVO.setPoint(orderListVO.getTotalPrice()/1000*5);
+		memberVO.setPoint(orderListVO.getTotalPrice()/1000*5);//결제 가격에서 0.5%만큼 적립함
 		result = orderService.setPoint(memberVO);
 		
 		
 		long point = orderService.getPoint(memberVO);
 		memberVO = (MemberVO)session.getAttribute("member");
-		memberVO.setPoint(point);
+		memberVO.setPoint(point);//session에 point를 반영함
 		session.setAttribute("member", memberVO);
 		
 		return mv;
