@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jh.yogiyo.member.MemberService;
 import com.jh.yogiyo.member.MemberVO;
+import com.jh.yogiyo.mypage.CouponVO;
 import com.jh.yogiyo.store.CartVO;
 
 @Controller
@@ -39,33 +40,55 @@ public class CheckController {
 			orderContents += vo.getCount()+"개";
 			orderContents += ", ";
 		}
+		List<CouponVO> couponAr = orderService.getCouponList(member);
 		mv.addObject("list", ar);
 		mv.addObject("totalPrice", totalPrice);
 		mv.addObject("orderContents", orderContents);
+		mv.addObject("couponList", couponAr);
 		mv.setViewName("check/checkoutPage");
 		System.out.println("CheckoutPage");
 		return mv;
 	}
 	
 	@PostMapping("checkOut")
-	public ModelAndView checkOut(OrderListVO orderListVO, String detailAddress) throws Exception{
+	public ModelAndView checkOut(OrderListVO orderListVO, String detailAddress, long usepoint, long couponNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String address = orderListVO.getAddress();
 		address = address + " " + detailAddress;
 		orderListVO.setAddress(address);
+		CouponVO couponVO = new CouponVO();
+		couponVO.setCouponNum(couponNum);
+		couponVO = orderService.getCoupon(couponVO);
+		long totalPrice = orderListVO.getTotalPrice() - usepoint - couponVO.getPrice();
+		System.out.println(totalPrice);
+		
+		orderListVO.setTotalPrice(totalPrice);
+		
+		mv.addObject("usepoint", usepoint);
+		mv.addObject("couponNum", couponNum);
 		mv.addObject("dto", orderListVO);
 		mv.setViewName("check/checkOut");
 		return mv;
 	}
 	
 	@PostMapping("insertOrderList")
-	public ModelAndView insertOrderList(OrderListVO orderListVO, HttpSession session) throws Exception{
+	public ModelAndView insertOrderList(OrderListVO orderListVO, HttpSession session, long usepoint, long couponNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = orderService.insertOrderList(orderListVO);
+		
+		CouponVO couponVO = new CouponVO();
+		couponVO.setCouponNum(couponNum);
+		result = orderService.setUseCoupon(couponVO);
+		
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId(orderListVO.getId());
+		memberVO.setPoint(usepoint);
+		result = orderService.setUsePoint(memberVO);
+		
+		
 		memberVO.setPoint(orderListVO.getTotalPrice()/1000*5);
 		result = orderService.setPoint(memberVO);
+		
 		
 		long point = orderService.getPoint(memberVO);
 		memberVO = (MemberVO)session.getAttribute("member");

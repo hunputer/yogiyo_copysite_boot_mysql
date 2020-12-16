@@ -212,6 +212,31 @@
 					<input style="margin-left: 30px" type="radio" name="tradeMethod" value = "1">지금결제
 				</div>
 			</div>
+			
+			<div class="panel-default">
+				<div class="panel-heading">
+                	<span class="menu-name pull-left">포인트 및 쿠폰</span>
+				</div>
+				<div class="panel-body2">
+					<div style="margin-bottom: 20px;">
+						<div class="control-label" style="padding-top: 2px;margin-bottom: 0px;margin-right: 10px">
+							포인트  
+						</div>
+						<input id="usepoint" type="text" name="usepoint" style="width:200px;">P (잔여 포인트 : ${member.point}P)
+					</div>
+					<div>
+						<div class="control-label" style="padding-top: 2px;margin-bottom: 0px;margin-right: 10px">
+							쿠폰   
+						</div>
+						<select name="couponNum">
+							<option value="">
+							<c:forEach items="${couponList}" var="vo" >
+							 	<option value="${vo.couponNum}">${vo.name}</option>	
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<div class="col-sm-4">
@@ -309,6 +334,10 @@
 	            }
 	        }).open();
 	    }
+	</script>
+	
+	<script type="text/javascript">
+		
 	</script>
 </body>
 </html>

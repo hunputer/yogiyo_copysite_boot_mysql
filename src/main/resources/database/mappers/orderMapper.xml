@@ -67,5 +67,17 @@
    <select id="getPoint" parameterType="MemberVO" resultType="java.lang.Integer">
    		select point from member where id = #{id}
    </select>
+   
+   <select id="getCoupon" parameterType="CouponVO" resultType="CouponVO">
+   		select * from coupon where couponNum = #{couponNum}
+   </select>
+   
+   <update id="setUsePoint" parameterType="CouponVO">
+   		update member set point = point - #{point} where id=#{id}
+   </update>
+   
+   <update id="setUseCoupon" parameterType="CouponVO">
+   		update coupon set isUse = 1 where couponNum = #{couponNum}
+   </update>
 	
 </mapper>

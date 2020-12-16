@@ -21,6 +21,8 @@ var address = '${dto.address}';
 var phone = '${dto.phone}';
 var comment = '${dto.comment}';
 var tradeMethod = '${dto.tradeMethod}';
+var usepoint = '${usepoint}';
+var couponNum = '${couponNum}';
 
 
 IMP.init('imp85483548');
@@ -38,7 +40,7 @@ IMP.request_pay({
     buyer_postcode : '123-456'
 }, function(rsp) {
     if ( rsp.success ) {
-    	$.post("./insertOrderList", {storeNum : storeNum, id : id, totalPrice : totalPrice, orderContents : orderContents, address : address, phone : phone, comment : comment, tradeMethod : tradeMethod}, function(data){
+    	$.post("./insertOrderList", {storeNum : storeNum, id : id, totalPrice : totalPrice, orderContents : orderContents, address : address, phone : phone, comment : comment, tradeMethod : tradeMethod, usepoint : usepoint, couponNum : couponNum}, function(data){
     		setTimeout(function(){}, 1000);
         })
         

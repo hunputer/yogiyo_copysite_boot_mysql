@@ -7,7 +7,7 @@ public class CouponVO {
 	private long couponNum;
 	private String id;
 	private String name;
-	private String price;
+	private long price;
 	private String isUse;
 	private String fileName;
 }
