@@ -44,12 +44,12 @@ public class Pager {
 	}
 	
 	public void makeRow() {
-		startRow = ((this.getCurPage()-1) * perPage);
+		startRow = ((this.getCurPage()-1) * perPage);//현재 페이지 처음 시작 번호
 	}
 	
 	public void makePage(long totalCount) {
 		//전체 페이지의 갯수
-		long totalPage = totalCount / this.getPerPage();
+		long totalPage = totalCount / this.getPerPage(); //페이지 전체 수
 		if(totalCount % this.getPerPage() != 0) {
 			totalPage++;
 		}

@@ -54,24 +54,24 @@ public class CheckController {
 	public ModelAndView checkOut(OrderListVO orderListVO, String detailAddress, long usepoint, long couponNum) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String address = orderListVO.getAddress();
-		address = address + " " + detailAddress;
+		address = address + " " + detailAddress; //상세 주소와 주소 합쳐서 다시 입력
 		orderListVO.setAddress(address);
+		
 		CouponVO couponVO = new CouponVO();
 		couponVO.setCouponNum(couponNum);
-		couponVO = orderService.getCoupon(couponVO);
+		couponVO = orderService.getCoupon(couponVO); // 사용할 쿠폰을 가져옴
 		if(couponVO == null) {
 			couponVO = new CouponVO();
 			couponVO.setPrice(0);
 		}
-		long totalPrice = orderListVO.getTotalPrice() - usepoint - couponVO.getPrice();
-		System.out.println(totalPrice);
+		long totalPrice = orderListVO.getTotalPrice() - usepoint - couponVO.getPrice(); // 총 가격에서 사용point와 쿠폰가격을 마이너스
 		
 		orderListVO.setTotalPrice(totalPrice);
 		
 		mv.addObject("usepoint", usepoint);
 		mv.addObject("couponNum", couponNum);
 		mv.addObject("dto", orderListVO);
-		mv.setViewName("check/checkOut");
+		mv.setViewName("check/checkOut");//아임포트 결제 페이지로 이동
 		return mv;
 	}
 	

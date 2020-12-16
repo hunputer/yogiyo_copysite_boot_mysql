@@ -96,7 +96,7 @@ public class MemberController {
 	@PostMapping("memberIdCheck")
 	public ModelAndView memberIdCheck(MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MemberVO member = memberService.getIdCheck(memberVO);
+		MemberVO member = memberService.getIdCheck(memberVO);//아이디가 존재하는지 확인하는 메서드
 		String msg = "중복된 아이디입니다";
 		if(member == null) {
 			msg = "사용가능한 아이디입니다";
@@ -109,14 +109,14 @@ public class MemberController {
 	@PostMapping("kakaoLogin")
 	public ModelAndView kakaoLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		session.setAttribute("member", memberVO);
+		session.setAttribute("member", memberVO); //ajax로 보낸 파라미터를 세션에 추가
 		return mv;
 	}
 	
 	@GetMapping("loginMsg")
 	public ModelAndView loginMsg(HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		Thread.sleep(3000);
+		Thread.sleep(3000);//kakao 로그인후 session에 입력될때 까지 대기
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		String msg =memberVO.getName()+"님 환영합니다!";
 		mv.addObject("msg", msg);
