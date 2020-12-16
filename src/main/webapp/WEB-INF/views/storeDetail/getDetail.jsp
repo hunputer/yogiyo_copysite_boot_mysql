@@ -3,7 +3,7 @@
 	
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!DOCTYPE html>`
 <html>
 <head>
 <meta charset="UTF-8">
@@ -713,7 +713,7 @@
 							<div class="panel-heading">
 								<span class="menu-name pull-left">주문내역</span>
 							</div>
-							<div class="restaurant_name">돈암동찌개</div>
+							<div class="restaurant_name"></div>
 							<input type="hidden" name="restaurant_name" value="2">
 
 							<ul style="padding-left: 15px; padding-right: 15px;"
@@ -721,12 +721,11 @@
 								<li class="listgroupitem1">
 									<div class="order-item clearfix">
 										<div class="order-name">
-											<span class="ng-binding">치킨풀팩-콘샐러드: 데리야끼소스</span> <input
-												type="hidden" name="productName" value="치킨풀팩-콘샐러드: 데리야끼소스">
-											x <span class="ng-binding">1</span>개 <input type="hidden"
-												name="productCount" value="1">
+											<span class="ng-binding"></span> <input
+												type="hidden" name="productName" value=""><span class="ng-binding"></span>
+												<input type="hidden" name="productCount" value="">
 										</div>
-										<div class="order-price">19,900원</div>
+										<div class="order-price"></div>
 									</div>
 								</li>
 							</ul>
@@ -734,10 +733,10 @@
 								<div class="order-item clearfix">
 									<div style="color: #fa0050; font-size: 14px; font-weight: bold"
 										class="order-name">
-										<span class="ng-binding">총 결제 금액</span>
+										<span class="ng-binding"></span>
 									</div>
 									<div style="color: #fa0050; font-size: 14px; font-weight: bold"
-										class="order-price">72000원</div>
+										class="order-price"></div>
 									<input type="hidden" name="totalPrice" value="0">
 
 								</div>

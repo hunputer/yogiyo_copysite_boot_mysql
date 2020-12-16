@@ -87,8 +87,7 @@
 													<c:when test="${ar2.menuNum eq m.num}">
 														<div class="md3d1">
 															<div style="width:200px;height:30px;float:left;font-size: 17px;">
-																<input type="checkbox" name="topping${ar2.num}" title="${ar2.toppingPrice}" class="toppingCheck">
-																${ar2.toppingName}
+																<input type="checkbox" name="topping${ar2.num}" title="${ar2.toppingPrice}" class="toppingCheck" value="${ar2.toppingName}">${ar2.toppingName}
 															</div>
 															
 															<div style="width:80px;height:30px;font-size: 17px;margin-left:380px;">
@@ -126,7 +125,7 @@
 										<!-- Modal footer -->
 										<div class="modal-footer">
 											<button type="button" class="btn btn-danger" data-dismiss="modal">주문하기</button>
-											<button type="button" class="btn btn-danger" data-dismiss="modal">주문표에 추가</button>
+											<button type="button" class="btn btn-danger addCart" data-dismiss="modal">주문표에 추가</button>
 										</div>
 
 									</div>
@@ -207,6 +206,7 @@
 		var price = $(".divPrice").attr('title')*1;
 		var curPrice = $(".divPrice").attr('title')*1;
 		var k = '';
+		var addTopping = [];
 		$(".modalli").click(function(){
 			k = $(this).val();
 		})
@@ -217,10 +217,14 @@
 
 				if($(this).prop('checked')){
 					curPrice+=p*1;
+					alert($(this).val());
+					addTopping.push($(this).val());
 					$("#pDiv"+k).html(curPrice+'원');
 				}else{
 					curPrice-=p*1;
-
+					alert($(this).val());
+					addTopping.splice(addTopping.indexOf($(this).val()),1);
+					
 					$("#pDiv"+k).html(curPrice+'원');
 				}
 			});
