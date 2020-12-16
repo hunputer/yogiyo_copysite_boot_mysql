@@ -3,7 +3,7 @@
 	
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!DOCTYPE html>`
 <html>
 <head>
 <meta charset="UTF-8">
@@ -72,14 +72,11 @@
 	float: right;
 	width: 400px;
 	height: auto;
-	background-color: orange;
-	margin-left: 15px;
 }
 
 .sdBanner>#chase {
 	width: 400px;
-	height: 300px;
-	background-color: fuchsia;
+	height: auto;
 }
 
 .sdHeader {
@@ -406,9 +403,24 @@
 .md3{
 	width: 100%;
 	height: auto;
-	margin-top: 10px;
 	border-top: 1px solid #DCDCDC;
-	background-color: aqua;
+}
+
+.md3d1{
+	width: 100%;
+	height: 30px;
+	margin-top: 6px;
+}
+
+.md4{
+	width: 100%;
+	height: auto;
+	border-top: 1px solid #DCDCDC;
+}
+.md5{
+	width: 100%;
+	height: auto;
+	border-top: 1px solid #DCDCDC;
 }
 .raCon{
 	width: 660px;
@@ -494,6 +506,84 @@
 	margin-bottom: 15px;
 	padding: 10px;
 }
+
+   .col-sm-41{
+        width: 100%;
+        height: auto;
+    }
+   
+   .restaurant_name{
+      position: relative;
+      display: block;
+       padding: 10px 15px;
+       background-color: #fff;
+       margin-bottom: 1px;
+   }
+   
+   .item-list{
+       border-radius: 0;
+       margin-bottom: 0;
+       background-color: #fff8eb;
+       padding-top: 10px;
+      
+   }
+     .panel-heading {
+       padding: 10px 15px;
+       border-color: #ddd;
+       color: #333;
+       background-color: #e6e6e6;
+       border-radius: 0;
+       height: 39px;
+       text-align: left;
+    }
+    .panel-default {
+       border-color: #ddd;
+       background-color: #fff;
+       border: 1px solid transparent;
+   }
+   
+   .listgroupitem1 {
+       background-color: #fff8eb;
+       padding-top: 0;
+       padding-bottom: 0;
+       border: none;
+        list-style: none;
+   }
+   
+   .order-price{
+      display:inline-block;
+      width: 25%;
+      text-align: right;
+      height: 30px;
+      
+   }
+   
+   .order-name{
+      display:inline-block;
+      width: 70%;
+   }
+   
+   .total-order-price {
+       padding: 15px;
+       border-top: 1px dotted #d9d9d9;
+       padding-top: 10px;
+       background-color: #fff8eb;
+   }
+   
+   .btn-ygy1 {
+       margin-top: 16px;
+       color: #fff;
+       background-color: #fa0050;
+       border-color: #fa0050;
+       border-radius: 0;
+       min-width: 100px;
+       display: block;
+          width: 100%;
+          padding: 10px 16px;
+       font-size: 18px;
+       line-height: 1.3333333;
+       border: none;
+   }
 </style>
 
 <script type="text/javascript">
@@ -616,7 +706,48 @@
 	
 		<div class="sdBanner">
 			<div id="chase" style="top:0px;">
-				...
+
+				<div class="col-sm-41">
+					<div class="order-list">
+						<div class="panel-default">
+							<div class="panel-heading">
+								<span class="menu-name pull-left">주문내역</span>
+							</div>
+							<div class="restaurant_name"></div>
+							<input type="hidden" name="restaurant_name" value="2">
+
+							<ul style="padding-left: 15px; padding-right: 15px;"
+								class="item-list">
+								<li class="listgroupitem1">
+									<div class="order-item clearfix">
+										<div class="order-name">
+											<span class="ng-binding"></span> <input
+												type="hidden" name="productName" value=""><span class="ng-binding"></span>
+												<input type="hidden" name="productCount" value="">
+										</div>
+										<div class="order-price"></div>
+									</div>
+								</li>
+							</ul>
+							<div class="total-order-price">
+								<div class="order-item clearfix">
+									<div style="color: #fa0050; font-size: 14px; font-weight: bold"
+										class="order-name">
+										<span class="ng-binding"></span>
+									</div>
+									<div style="color: #fa0050; font-size: 14px; font-weight: bold"
+										class="order-price"></div>
+									<input type="hidden" name="totalPrice" value="0">
+
+								</div>
+							</div>
+
+						</div>
+
+						<button class="btn-ygy1">결제하기</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	

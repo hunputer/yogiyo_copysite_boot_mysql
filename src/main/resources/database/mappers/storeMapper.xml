@@ -4,6 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
 <mapper namespace="com.jh.yogiyo.store.StoreMapper">
+<<<<<<< HEAD
    <select id="getList" parameterType="StorePager" resultMap="getStoredResult">
       select S.*, SM.*,st.fileName,st.oriName
       from store S left join storemanage SM
@@ -25,6 +26,29 @@
    </select>
    
    <resultMap type="StoreVO" id="getStoredResult">
+=======
+	<select id="getList" parameterType="StorePager" resultMap="getStoredResult">
+		select S.*, SM.*,st.fileName,st.oriName
+		from store S left join storemanage SM
+		on S.num = SM.storeNum 
+		left join storethumbfile st
+		on S.num = st.storeNum
+		where SM.deliveryArea like '%${address}%'
+		<choose>
+			<when test="categoryNum != 0">
+				and S.categoryNum = #{categoryNum}
+			</when>
+		</choose>
+		<choose>
+			<when test="searchName != null">
+				and S.storeName like '%${searchName}%'
+			</when>
+		</choose>
+		order by num asc limit #{startRow},20
+	</select>
+	
+	<resultMap type="StoreVO" id="getStoredResult">
+>>>>>>> main
          <id column="num" property="num"/>
          <result column="categoryNum" property="categoryNum"/>
          <result column="storeName" property="storeName"/>
@@ -38,11 +62,19 @@
    </resultMap>
    
    <resultMap type="StoreThumbFileVO" id="rmStoreThumbFile">
+<<<<<<< HEAD
       <id column="num" property="num" />
       <result column="storeNum" property="storeNum"/>
       <result column="fileName" property="fileName"/>
       <result column="oriName" property="oriName"/>
    </resultMap>
+=======
+		<id column="num" property="num" />
+		<result column="storeNum" property="storeNum"/>
+		<result column="fileName" property="fileName"/>
+		<result column="oriName" property="oriName"/>
+	</resultMap>
+>>>>>>> main
 
    <resultMap type="StoreManageVO" id="getStoreManageResult2">
       <result column="storeNum" property="storeNum"/>

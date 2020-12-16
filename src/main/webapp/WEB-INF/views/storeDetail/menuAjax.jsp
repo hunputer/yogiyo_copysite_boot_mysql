@@ -17,6 +17,7 @@
 			</c:choose>
 			<div class="maDivdiv1">${ar.menuName}</div>
 			<div class="maDivdiv2">${ar.menuPrice}원</div>
+
 		</li>
 
 		</c:forEach>
@@ -35,11 +36,11 @@
 				<c:forEach items="${list}" var="m" varStatus="vs">
 						<c:if test="${m.menuCategory eq cg}">
 
-							<li title="modal${cg}${vs.count}"  data-toggle="modal" data-target="#modal${cg}${vs.count}">
+							<li class="modalli" title="modal${cg}${vs.count}" value="${vs.count}"  data-toggle="modal" data-target="#modal${cg}${vs.count}">
 								<div class="liDiv">
 									<div class="divName">${m.menuName}</div>
 									<div class="divDes">${m.description}</div>
-									<div class="divPrice">${m.menuPrice}원</div>
+									<div class="divPrice" title="${m.menuPrice}">${m.menuPrice}원</div>
 								</div> <c:if test="${m.storeMenuFileVO.oriName ne null}">
 									<img src="../upload/${m.storeMenuFileVO.oriName}">
 								</c:if>
@@ -75,15 +76,30 @@
 											
 										<div class="md2">
 											<div style="width: 100px;height:40px;line-height:40px; float:left;font-size: 17px;font-weight: bold;">가격</div>	
-											<div style="width: 100px;height:40px;line-height:40px; float: right;font-size: 17px;font-weight: bold;">${m.menuPrice}원</div>
+											<div style="width: 80px;height:40px;line-height:40px; float: right;font-size: 17px;font-weight: bold;">${m.menuPrice}원</div>
 										</div>
 								
+<<<<<<< HEAD
 									<c:if test="${!empty arTopping}">
 										<div class="md3">
+=======
+									<c:if test="${not empty arTopping}">
+										<div class="md3">
+											<div style="font-weight: bold; font-size: 17px;margin-bottom: 10px;margin-top: 10px;">토핑/사이드메뉴 추가</div>
+>>>>>>> main
 											<c:forEach items="${arTopping}" var="ar2">
 												<c:choose>
 													<c:when test="${ar2.menuNum eq m.num}">
-														${ar2.toppingName}
+														<div class="md3d1">
+															<div style="width:200px;height:30px;float:left;font-size: 17px;">
+																<input type="checkbox" name="topping${ar2.num}" title="${ar2.toppingPrice}" class="toppingCheck" value="${ar2.toppingName}">${ar2.toppingName}
+															</div>
+															
+															<div style="width:80px;height:30px;font-size: 17px;margin-left:380px;">
+																+ ${ar2.toppingPrice}원
+															</div>
+														</div>
+														
 													</c:when>
 													<c:otherwise></c:otherwise>
 												</c:choose>
@@ -91,12 +107,30 @@
 										</div>
 									</c:if>
 									
+								<div>	
+									<div class="md4">
+										<div style="font-weight: bold;width:130px;bold; font-size: 17px;margin-bottom: 10px;margin-top: 10px;float:left;">수량 선택</div>
+										<div style="width:100px;margin:10px 5px 10px 340px;">
+											<input type="button" class="plusBtn" title="${vs.count}" value="+" style="width:25px;background-color: white;border: 1px solid #DCDCDC;text-align:center;">
+											<input type="text" id="qBox${vs.count}" value="1" style="width:34px;background-color: white;border: 1px solid #DCDCDC;text-align:center;">
+											<input type="button" class="minusBtn" title="${vs.count}" value="-" style="width:25px;background-color: white;border: 1px solid #DCDCDC;text-align:center;">
 										</div>
+									</div>
+									
+									<div class="md5">
+										<div style="font-weight: bold;width:130px;bold; font-size: 17px;margin-bottom: 10px;margin-top: 10px;float:left;">합계 금액</div>
+										<div id ="pDiv${vs.count}" title="${m.menuPrice}" style="width:110px;margin:10px 5px 10px 330px;font-size: 24px;color: #fa0050;font-weight: bold;">
+											${m.menuPrice}원
+										</div>
+									</div>	
+								</div>								
+								
+								</div>
 
 										<!-- Modal footer -->
 										<div class="modal-footer">
 											<button type="button" class="btn btn-danger" data-dismiss="modal">주문하기</button>
-											<button type="button" class="btn btn-danger" data-dismiss="modal">주문표에 추가</button>
+											<button type="button" class="btn btn-danger addCart" data-dismiss="modal">주문표에 추가</button>
 										</div>
 
 									</div>
@@ -172,4 +206,61 @@
 			$modal.hide();
 			bgLayerClear();
 		});
+
+		//모달창 수량 계산
+		var price = $(".divPrice").attr('title')*1;
+		var curPrice = $(".divPrice").attr('title')*1;
+		var k = '';
+		var addTopping = [];
+		$(".modalli").click(function(){
+			k = $(this).val();
+		})
+			
+		$(".toppingCheck").each(function(index){
+			$(this).click(function(){
+				var p = $(this).attr('title');
+
+				if($(this).prop('checked')){
+					curPrice+=p*1;
+					alert($(this).val());
+					addTopping.push($(this).val());
+					$("#pDiv"+k).html(curPrice+'원');
+				}else{
+					curPrice-=p*1;
+					alert($(this).val());
+					addTopping.splice(addTopping.indexOf($(this).val()),1);
+					
+					$("#pDiv"+k).html(curPrice+'원');
+				}
+			});
+		});
+
+		
+		$(".plusBtn").click(function(){
+			var a = $(this).attr('title');
+			var n = $("#qBox"+a).val();
+			n++;
+			curPrice+=price;
+				
+			$("#pDiv"+a).html(curPrice+'원');
+			$("#qBox"+a).val(n);
+		});
+
+
+		$(".minusBtn").click(function(){
+			var a = $(this).attr('title');
+			var n = $("#qBox"+a).val();
+			if(n==1){
+				$("#qBox"+a).val(n);
+			}else{
+				n--;
+				curPrice-=price;
+
+				$("#pDiv"+a).html(curPrice+'원');
+				$("#qBox"+a).val(n);
+			}
+			
+		});
+
+		
 	</script>

@@ -5,7 +5,8 @@
 <c:forEach items="${list}" var="vo">
   <div class="col-sm-6" title="${vo.num}">
  	<div class="item">
-		<div class="logo1">		
+		<div class="logo1">
+			<img  style="width: 70px;height: 70px;" src="../upload/${vo.storeThumbFileVO.fileName}">		
 		</div>
 	<div class="restaurant-name">
       ${vo.storeName}
