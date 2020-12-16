@@ -27,38 +27,50 @@ var couponNum = '${couponNum}';
 
 IMP.init('imp85483548');
 
-IMP.request_pay({
-    pg : 'inicis', // version 1.1.0부터 지원.
-    pay_method : 'card',
-    merchant_uid : 'merchant_' + new Date().getTime(),
-    name : '별도 지정 안함',
-    amount : '100', //판매 가격
-    buyer_email :'impor@im.com' ,
-    buyer_name : '${dto.id}',
-    buyer_tel : '010-1234-5678',
-    buyer_addr : '서울특별시 강남구 삼성동',
-    buyer_postcode : '123-456'
-}, function(rsp) {
-    if ( rsp.success ) {
-    	$.post("./insertOrderList", {storeNum : storeNum, id : id, totalPrice : totalPrice, orderContents : orderContents, address : address, phone : phone, comment : comment, tradeMethod : tradeMethod, usepoint : usepoint, couponNum : couponNum}, function(data){
-    		setTimeout(function(){}, 1000);
-        })
-        
-        var msg = '결제가 완료되었습니다.';
-       
-       alert(msg);
-       
-       location.href="${pageContext.request.contextPath}/mypage/mypageOrder";
-       
-    } else {
-        var msg = '결제에 실패하였습니다.';
-        msg += '에러내용 : ' + rsp.error_msg;
-        alert(msg);
-        //location.href="./setOrderList_card?order_num="+num;
-    }
-  
+if(tradeMethod == 1){
+	IMP.request_pay({
+	    pg : 'inicis', // version 1.1.0부터 지원.
+	    pay_method : 'card',
+	    merchant_uid : 'merchant_' + new Date().getTime(),
+	    name : '별도 지정 안함',
+	    amount : '100', //판매 가격
+	    buyer_email :'impor@im.com' ,
+	    buyer_name : '${dto.id}',
+	    buyer_tel : '010-1234-5678',
+	    buyer_addr : '서울특별시 강남구 삼성동',
+	    buyer_postcode : '123-456'
+	}, function(rsp) {
+	    if ( rsp.success ) {
+	    	$.post("./insertOrderList", {storeNum : storeNum, id : id, totalPrice : totalPrice, orderContents : orderContents, address : address, phone : phone, comment : comment, tradeMethod : tradeMethod, usepoint : usepoint, couponNum : couponNum}, function(data){
+	    		setTimeout(function(){}, 1000);
+	        })
+	        
+	        var msg = '결제가 완료되었습니다.';
+	       
+	       alert(msg);
+	       
+	       location.href="${pageContext.request.contextPath}/mypage/mypageOrder";
+	       
+	    } else {
+	        var msg = '결제에 실패하였습니다.';
+	        msg += '에러내용 : ' + rsp.error_msg;
+	        alert(msg);
+	        //location.href="./setOrderList_card?order_num="+num;
+	    }
+	  
+	    
+	});
+}else{
+	$.post("./insertOrderList", {storeNum : storeNum, id : id, totalPrice : totalPrice, orderContents : orderContents, address : address, phone : phone, comment : comment, tradeMethod : tradeMethod, usepoint : 0, couponNum : 0}, function(data){
+		setTimeout(function(){}, 1000);
+    })
     
-});
+    var msg = '주문이 완료되었습니다.';
+   
+   alert(msg);
+   
+   location.href="${pageContext.request.contextPath}/mypage/mypageOrder";
+}
 </script>
 
 </body>

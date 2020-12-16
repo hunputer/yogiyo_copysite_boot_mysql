@@ -222,14 +222,14 @@
 						<div class="control-label" style="padding-top: 2px;margin-bottom: 0px;margin-right: 10px">
 							포인트  
 						</div>
-						<input id="usepoint" type="text" name="usepoint" style="width:200px;">P (잔여 포인트 : ${member.point}P)
+						<input id="usepoint" value="0" type="text" name="usepoint" style="width:200px;">P (잔여 포인트 : ${member.point}P)
 					</div>
 					<div>
 						<div class="control-label" style="padding-top: 2px;margin-bottom: 0px;margin-right: 10px">
 							쿠폰   
 						</div>
 						<select name="couponNum">
-							<option value="">
+							<option value="0"></option>
 							<c:forEach items="${couponList}" var="vo" >
 							 	<option value="${vo.couponNum}">${vo.name}</option>	
 							</c:forEach>
@@ -267,7 +267,7 @@
 	                  			<div style="color: #fa0050; font-size: 14px; font-weight: bold" class="order-name">
 		                    		<span class="ng-binding">총 결제 금액</span>
 	                  			</div>
-	                  			<div style="color: #fa0050;font-size: 14px;font-weight: bold" class="order-price">${totalPrice}원</div>
+	                  			<div id="totalPrice" style="color: #fa0050;font-size: 14px;font-weight: bold" class="order-price">${totalPrice}원</div>
 	                  			<input type="hidden" name="totalPrice" value="${totalPrice}">
 	                  			<input type="hidden" name="orderContents" value="${orderContents}">
 	                
@@ -287,8 +287,19 @@
 	
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script>
+		var point = '${member.point}';
+		var totalPrice = '${totalPrice}';
+		
 		$("#address").click(function(){
 			execDaumPostcode();
+		})
+		
+		$("#usepoint").blur(function(){
+			var usepoint = $(this).val();
+			if(usepoint >= point){
+				alert(point + "P이하만 입력 가능합니다");
+				$(this).val('0');
+			}
 		})
 	
 	    function execDaumPostcode() {

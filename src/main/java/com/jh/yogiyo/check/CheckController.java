@@ -59,6 +59,10 @@ public class CheckController {
 		CouponVO couponVO = new CouponVO();
 		couponVO.setCouponNum(couponNum);
 		couponVO = orderService.getCoupon(couponVO);
+		if(couponVO == null) {
+			couponVO = new CouponVO();
+			couponVO.setPrice(0);
+		}
 		long totalPrice = orderListVO.getTotalPrice() - usepoint - couponVO.getPrice();
 		System.out.println(totalPrice);
 		
